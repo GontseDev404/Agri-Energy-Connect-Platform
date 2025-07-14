@@ -50,6 +50,22 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 var app = builder.Build();
 
+// Add global exception logging middleware
+app.Use(async (context, next) =>
+{
+    try
+    {
+        await next();
+    }
+    catch (Exception ex)
+    {
+        var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An unhandled exception occurred while processing the request.");
+        // Optionally, redirect to error page or return a generic error response
+        context.Response.Redirect("/Home/Error");
+    }
+});
+
 // Use localization
 var locOptions = app.Services.GetRequiredService<Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions>>();
 app.UseRequestLocalization(locOptions.Value);

@@ -196,3 +196,74 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     color: var(--primary-color);
 }
 
+/* Responsive Navbar Enhancements */
+@media (max-width: 767.98px) {
+    .navbar-nav .nav-link {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+        border-bottom: 1px solid #ececec;
+    }
+    .navbar-collapse {
+        background: rgba(255,255,255,0.95);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        border-radius: 0 0 16px 16px;
+    }
+    .navbar .nav-link.active {
+        background: var(--primary-color);
+        color: var(--white) !important;
+        border-radius: 8px;
+    }
+}
+
+/* Sticky Footer Enhancements */
+.footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 1.5rem 0;
+    font-size: 1rem;
+    text-align: center;
+}
+.footer a {
+    color: var(--accent-color);
+    margin-right: 1rem;
+    transition: color 0.2s;
+}
+.footer a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+/* Toast Notification Styles */
+.toast {
+    min-width: 250px;
+    max-width: 350px;
+    font-size: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.toast .toast-body {
+    font-weight: 500;
+}
+.toast.text-bg-success {
+    background-color: #3d550c !important;
+    color: #fff !important;
+}
+.toast.text-bg-danger {
+    background-color: #b02a37 !important;
+    color: #fff !important;
+}
+.toast.text-bg-info {
+    background-color: #0dcaf0 !important;
+    color: #fff !important;
+}
+.toast.text-bg-warning {
+    background-color: #ffc107 !important;
+    color: #333 !important;
+}
+
+/* Touch Target Enhancements */
+.btn, .nav-link, .form-control, .form-select {
+    min-height: 44px;
+    min-width: 44px;
+}
+

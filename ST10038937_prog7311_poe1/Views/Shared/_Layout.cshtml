@@ -25,48 +25,47 @@
     })();
 </script>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3 sticky-top" role="navigation" aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ST10038937 - Gontse Sebolai</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" id="mainNavbar">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" data-translate-key="Home">@Localizer["Home"]</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["action"] as string == "Index" && ViewContext.RouteData.Values["controller"] as string == "Home" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index" data-translate-key="Home" aria-current="page">@Localizer["Home"]</a>
                         </li>
                         @if (User.Identity?.IsAuthenticated == true)
                         {
                             @if (User.IsInRole("Farmer"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index" data-translate-key="MyProducts">@Localizer["My Products"]</a>
+                                    <a class="nav-link @(ViewContext.RouteData.Values["controller"] as string == "Product" ? "active" : "")" asp-area="" asp-controller="Product" asp-action="Index" data-translate-key="MyProducts">@Localizer["My Products"]</a>
                                 </li>
                             }
                             @if (User.IsInRole("Employee"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Farmer" asp-action="Index" data-translate-key="FarmerManagement">@Localizer["FarmerManagement"]</a>
+                                    <a class="nav-link @(ViewContext.RouteData.Values["controller"] as string == "Farmer" ? "active" : "")" asp-area="" asp-controller="Farmer" asp-action="Index" data-translate-key="FarmerManagement">@Localizer["FarmerManagement"]</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index" data-translate-key="Products">@Localizer["Products"]</a>
+                                    <a class="nav-link @(ViewContext.RouteData.Values["controller"] as string == "Product" ? "active" : "")" asp-area="" asp-controller="Product" asp-action="Index" data-translate-key="Products">@Localizer["Products"]</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="AuditLogs" asp-action="Index" data-translate-key="AuditLogs">@Localizer["Audit Logs"]</a>
+                                    <a class="nav-link @(ViewContext.RouteData.Values["controller"] as string == "AuditLogs" ? "active" : "")" asp-area="" asp-controller="AuditLogs" asp-action="Index" data-translate-key="AuditLogs">@Localizer["Audit Logs"]</a>
                                 </li>
                             }
                         }
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About" data-translate-key="About">@Localizer["About"]</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["action"] as string == "About" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="About" data-translate-key="About">@Localizer["About"]</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
-                    <form id="selectLanguage" asp-controller="Home" asp-action="SetLanguage" method="post" class="d-flex ms-auto">
+                    <form id="selectLanguage" asp-controller="Home" asp-action="SetLanguage" method="post" class="d-flex ms-auto" aria-label="Select language">
                         <label class="me-2" for="cultureSelect" data-translate-key="Language">@Localizer["Language"]:</label>
                         <input type="hidden" name="returnUrl" value="@(Context.Request.Path + Context.Request.QueryString)" />
-                        <select id="cultureSelect" name="culture" class="form-select form-select-sm me-2">
+                        <select id="cultureSelect" name="culture" class="form-select form-select-sm me-2" aria-label="Language selector">
                             <option value="en" data-translate-key="English">@Localizer["English"]</option>
                             <option value="af" data-translate-key="Afrikaans">@Localizer["Afrikaans"]</option>
                             <option value="zu" data-translate-key="isiZulu">@Localizer["isiZulu"]</option>
@@ -81,19 +80,49 @@
             <div class="content-container">
                 @RenderBody()
             </div>
-
+            <!-- Toast container for user feedback -->
+            <div aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+                <div id="toastContainer"></div>
+            </div>
 @section Scripts {
     @RenderSection("Scripts", required: false)
 }
-
         </main>
     </div>
-
-    <!-- Footer removed as requested -->
+    <footer class="footer mt-auto py-3 bg-light border-top">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div>
+                <span class="fw-bold">Agri-Energy Connect Platform</span> &copy; @DateTime.Now.Year
+            </div>
+            <div>
+                <a href="mailto:support@agrienergyconnect.com" class="text-decoration-none me-3">Contact Support</a>
+                <a asp-controller="Home" asp-action="About" class="text-decoration-none me-3">About</a>
+                <a asp-controller="Home" asp-action="Privacy" class="text-decoration-none">Privacy</a>
+            </div>
+        </div>
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/site-custom.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        // Toast feedback function
+        window.showToast = function (message, type = 'success') {
+            const toastId = 'toast-' + Date.now();
+            const toastHtml = `<div id="${toastId}" class="toast align-items-center text-bg-${type} border-0 mb-2" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">${message}</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>`;
+            const container = document.getElementById('toastContainer');
+            container.insertAdjacentHTML('beforeend', toastHtml);
+            const toastEl = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+            toast.show();
+            toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+        };
+    </script>
 </body>
 </html>
