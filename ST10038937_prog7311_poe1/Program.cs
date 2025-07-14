@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using ST10038937_prog7311_poe1.Data;
 using ST10038937_prog7311_poe1.Models;
 using ST10038937_prog7311_poe1.Services;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +44,92 @@ builder.Services.AddSingleton<ST10038937_prog7311_poe1.Services.ProductNotifier>
     return notifier;
 });
 
+// Add JWT Service
+builder.Services.AddScoped<IJwtService, JwtService>();
+
+// Add Notification Service
+builder.Services.AddScoped<INotificationService, NotificationService>();
+
+// Add Database Optimization Service
+builder.Services.AddScoped<IDatabaseOptimizationService, DatabaseOptimizationService>();
+
+// Add Security Service
+builder.Services.AddScoped<ISecurityService, SecurityService>();
+
+// Add HttpContextAccessor for IP logging
+builder.Services.AddHttpContextAccessor();
+
+// Configure JWT Authentication
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings["SecretKey"];
+var issuer = jwtSettings["Issuer"];
+var audience = jwtSettings["Audience"];
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = "Bearer";
+    options.DefaultChallengeScheme = "Bearer";
+})
+.AddJwtBearer("Bearer", options =>
+{
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(
+            System.Text.Encoding.UTF8.GetBytes(secretKey!)),
+        ValidateIssuer = true,
+        ValidIssuer = issuer,
+        ValidateAudience = true,
+        ValidAudience = audience,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
+// Add Swagger/OpenAPI support
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Agri-Energy Connect Platform API",
+        Version = "v1",
+        Description = "RESTful API for the Agri-Energy Connect Platform."
+    });
+    
+    // Add JWT authentication to Swagger
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+    
+    // Enable XML comments if available
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (System.IO.File.Exists(xmlPath))
+    {
+        options.IncludeXmlComments(xmlPath);
+    }
+});
+
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -69,6 +159,14 @@ app.Use(async (context, next) =>
 // Use localization
 var locOptions = app.Services.GetRequiredService<Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions>>();
 app.UseRequestLocalization(locOptions.Value);
+
+// Enable Swagger middleware
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Agri-Energy Connect Platform API v1");
+    options.RoutePrefix = "swagger";
+});
 
 // Initialize the database with seed data
 using (var scope = app.Services.CreateScope())
@@ -109,6 +207,7 @@ else
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -118,3 +217,5 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+public partial class Program { }

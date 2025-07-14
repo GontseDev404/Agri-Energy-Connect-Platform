@@ -1,41 +1,36 @@
 @model ST10038937_prog7311_poe1.Models.ForumPost
 
 @{
-    ViewData["Title"] = "Create a New Forum Post";
+    ViewData["Title"] = Localizer["Create Forum Post"];
 }
 
-<div class="container main-container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <section class="card shadow-sm" aria-labelledby="create-post-heading">
-                <div class="card-header">
-                    <h1 id="create-post-heading" class="h4 mb-0 text-white">@ViewData["Title"]</h1>
-                </div>
-                <div class="card-body">
-                    <form asp-action="Create" method="post" novalidate>
-                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+<h1 data-translate-key="Create Forum Post">Create Forum Post</h1>
 
-                        <div class="mb-3">
-                            <label asp-for="Title" class="form-label fw-bold">Post Title</label>
-                            <input asp-for="Title" class="form-control" placeholder="Enter a clear and descriptive title" aria-required="true" aria-describedby="title-validation" />
-                            <span asp-validation-for="Title" id="title-validation" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Content" class="form-label fw-bold">Your Message</label>
-                            <textarea asp-for="Content" class="form-control" rows="8" placeholder="Share your thoughts, ask a question, or start a discussion..." aria-required="true" aria-describedby="content-validation"></textarea>
-                            <span asp-validation-for="Content" id="content-validation" class="text-danger"></span>
-                        </div>
-
-                        <div class="d-flex justify-content-end gap-2 mt-4">
-                            <a asp-action="Index" class="btn btn-outline-secondary" aria-label="Cancel and return to the forum index">Cancel</a>
-                            <button type="submit" class="btn btn-primary" aria-label="Submit your new post to the forum">Create Post</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </div>
+<h4 data-translate-key="Forum Post">Forum Post</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label" data-translate-key="Title">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label" data-translate-key="Content">Content</label>
+                <textarea asp-for="Content" class="form-control" rows="10"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
+
+<div>
+    <a asp-action="Index" data-translate-key="Back to List">Back to List</a>
 </div>
 
 @section Scripts {

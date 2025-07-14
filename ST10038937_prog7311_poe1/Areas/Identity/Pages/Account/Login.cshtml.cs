@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using ST10038937_prog7311_poe1.Models;
+using ST10038937_prog7311_poe1.Services;
 
 namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
 {
@@ -22,11 +23,13 @@ namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IAuditService _auditService;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, IAuditService auditService)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _auditService = auditService;
         }
 
         [BindProperty]
@@ -78,31 +81,33 @@ namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+                string userId = user?.Id ?? "(unknown)";
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    await _auditService.LogActionAsync(userId, "Login Success", $"Email: {Input.Email}");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {
+                    await _auditService.LogActionAsync(userId, "Login Requires 2FA", $"Email: {Input.Email}");
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {
                     _logger.LogWarning("User account locked out.");
+                    await _auditService.LogActionAsync(userId, "Login Locked Out", $"Email: {Input.Email}");
                     return RedirectToPage("./Lockout");
                 }
                 else
                 {
+                    await _auditService.LogActionAsync(userId, "Login Failed", $"Email: {Input.Email}");
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return Page();
                 }
             }
-
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }

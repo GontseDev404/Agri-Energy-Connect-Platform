@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication;
 using ST10038937_prog7311_poe1.Data;
 using ST10038937_prog7311_poe1.Models;
+using ST10038937_prog7311_poe1.Services;
 
 namespace ST10038937_prog7311_poe1.Controllers;
 
@@ -20,17 +21,23 @@ public class HomeController : Controller
     private readonly ApplicationDbContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IStringLocalizer<HomeController> _localizer;
+    private readonly IAuditService _auditService;
+    private readonly IDatabaseOptimizationService _dbOptimizationService;
 
     public HomeController(
         ILogger<HomeController> logger, 
         ApplicationDbContext context, 
         UserManager<ApplicationUser> userManager,
-        IStringLocalizer<HomeController> localizer) // Injected
+        IStringLocalizer<HomeController> localizer,
+        IAuditService auditService,
+        IDatabaseOptimizationService dbOptimizationService)
     {
         _logger = logger;
         _context = context;
         _userManager = userManager;
         _localizer = localizer;
+        _auditService = auditService;
+        _dbOptimizationService = dbOptimizationService;
     }
 
     public async Task<IActionResult> Index()
@@ -42,16 +49,24 @@ public class HomeController : Controller
             
             if (User.IsInRole("Farmer"))
             {
-                // Get farmer profile
-                var farmer = user != null ? await _context.Farmers
-                    .FirstOrDefaultAsync(f => f.UserId == user.Id) : null;
+                // Get farmer profile with caching
+                var farmer = user != null ? await _dbOptimizationService.GetCachedSingleAsync(
+                    $"farmer_{user.Id}",
+                    async () => await _context.Farmers.FirstOrDefaultAsync(f => f.UserId == user.Id),
+                    TimeSpan.FromMinutes(10)
+                ) : null;
                 
                 if (farmer != null)
                 {
-                    // Get farmer's products
-                    var products = await _context.Products
-                        .Where(p => p.FarmerId == farmer.FarmerId)
-                        .ToListAsync();
+                    // Get farmer's products with caching
+                    var products = await _dbOptimizationService.GetCachedDataAsync(
+                        $"farmer_products_{farmer.FarmerId}",
+                        async () => await _context.Products
+                            .Where(p => p.FarmerId == farmer.FarmerId)
+                            .AsNoTracking()
+                            .ToListAsync(),
+                        TimeSpan.FromMinutes(5)
+                    );
                     
                     ViewBag.Farmer = farmer;
                     ViewBag.ProductCount = products.Count;
@@ -65,20 +80,33 @@ public class HomeController : Controller
             }
             else if (User.IsInRole("Employee"))
             {
-                // Get counts for employee dashboard
-                ViewBag.FarmerCount = await _context.Farmers.CountAsync();
-                ViewBag.ProductCount = await _context.Products.CountAsync();
-                ViewBag.Categories = await _context.Products
-                    .Select(p => p.Category)
-                    .Distinct()
-                    .ToListAsync();
+                // Get dashboard statistics with caching
+                var stats = await _dbOptimizationService.GetDashboardStatsAsync();
                 
-                // Get recent products
-                ViewBag.RecentProducts = await _context.Products
-                    .Include(p => p.Farmer)
-                    .OrderByDescending(p => p.ProductionDate)
-                    .Take(5)
-                    .ToListAsync();
+                ViewBag.FarmerCount = stats.GetValueOrDefault("Farmers", 0);
+                ViewBag.ProductCount = stats.GetValueOrDefault("Products", 0);
+                
+                // Get categories with caching
+                var categories = await _dbOptimizationService.GetCachedDataAsync(
+                    "product_categories",
+                    async () => await _context.Products
+                        .Select(p => p.Category)
+                        .Distinct()
+                        .AsNoTracking()
+                        .ToListAsync(),
+                    TimeSpan.FromMinutes(10)
+                );
+                ViewBag.Categories = categories;
+                
+                // Get recent products with caching
+                var recentProducts = await _dbOptimizationService.GetRecentDataAsync(
+                    _context.Products
+                        .Include(p => p.Farmer)
+                        .OrderByDescending(p => p.ProductionDate),
+                    5,
+                    "recent_products"
+                );
+                ViewBag.RecentProducts = recentProducts;
                 
                 return View("EmployeeDashboard");
             }
@@ -94,6 +122,11 @@ public class HomeController : Controller
     }
     
     public IActionResult About()
+    {
+        return View();
+    }
+    
+    public IActionResult ApiDocumentation()
     {
         return View();
     }
@@ -132,6 +165,9 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> Logout()
     {
+        var user = await _userManager.GetUserAsync(User);
+        string userId = user?.Id ?? "(unknown)";
+        await _auditService.LogActionAsync(userId, "Logout", $"User logged out");
         await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
         return RedirectToAction("Index", "Home");
     }

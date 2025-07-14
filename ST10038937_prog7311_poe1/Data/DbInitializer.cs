@@ -28,6 +28,31 @@ namespace ST10038937_prog7311_poe1.Data
                     {
                         await roleManager.CreateAsync(new IdentityRole("Employee"));
                     }
+                    // Add Admin role
+                    if (!await roleManager.RoleExistsAsync("Admin"))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole("Admin"));
+                    }
+
+                    // Add sample admin user if it doesn't exist
+                    var adminEmail = "admin@agrienergy.com";
+                    if (await userManager.FindByEmailAsync(adminEmail) == null)
+                    {
+                        var admin = new ApplicationUser
+                        {
+                            UserName = adminEmail,
+                            Email = adminEmail,
+                            EmailConfirmed = true,
+                            FirstName = "System",
+                            LastName = "Administrator",
+                            UserRole = "Admin"
+                        };
+                        var result = await userManager.CreateAsync(admin, "Admin1!");
+                        if (result.Succeeded)
+                        {
+                            await userManager.AddToRoleAsync(admin, "Admin");
+                        }
+                    }
 
                     // Add sample employee user if it doesn't exist
                     var employeeEmail = "employee@agrienergy.com";

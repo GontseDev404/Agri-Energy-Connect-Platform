@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Memory;
+using System;
+using System.Collections.Generic;
 
 namespace ST10038937_prog7311_poe1.Controllers
 {
@@ -14,20 +17,30 @@ namespace ST10038937_prog7311_poe1.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IMemoryCache _cache;
 
-        public ForumController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public ForumController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IMemoryCache cache)
         {
             _context = context;
             _userManager = userManager;
+            _cache = cache;
         }
 
         // GET: Forum
-                public async Task<IActionResult> Index()
+                public async Task<IActionResult> Index(string search)
         {
-            var posts = await _context.ForumPosts
-                .Include(p => p.User)
-                .OrderByDescending(p => p.CreatedAt)
-                .ToListAsync();
+            string cacheKey = $"forumPosts_{search}";
+            if (!_cache.TryGetValue(cacheKey, out List<ForumPost> posts))
+            {
+                var postsQuery = _context.ForumPosts.Include(p => p.User).AsNoTracking().OrderByDescending(p => p.CreatedAt).AsQueryable();
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    postsQuery = postsQuery.Where(p => p.Title.Contains(search) || p.Content.Contains(search));
+                }
+                posts = await postsQuery.ToListAsync();
+                _cache.Set(cacheKey, posts, TimeSpan.FromMinutes(1));
+            }
+            ViewBag.Search = search;
             return View(posts);
         }
 
@@ -112,7 +125,7 @@ namespace ST10038937_prog7311_poe1.Controllers
         }
 
         // GET: Forum/Delete/5
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +147,7 @@ namespace ST10038937_prog7311_poe1.Controllers
         // POST: Forum/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var forumPost = await _context.ForumPosts.FindAsync(id);
@@ -149,7 +162,7 @@ namespace ST10038937_prog7311_poe1.Controllers
         }
 
         // GET: Forum/DeleteReply/5
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> DeleteReply(int? id)
         {
             if (id == null)
@@ -173,7 +186,7 @@ namespace ST10038937_prog7311_poe1.Controllers
         // POST: Forum/DeleteReply/5
         [HttpPost, ActionName("DeleteReply")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Employee,Admin")]
         public async Task<IActionResult> DeleteReplyConfirmed(int id)
         {
             var reply = await _context.PostReplies.FindAsync(id);

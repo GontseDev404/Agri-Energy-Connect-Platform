@@ -1,18 +1,19 @@
 @model ST10038937_prog7311_poe1.Models.Product
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 
 @{
-    ViewData["Title"] = "Edit Product";
+    ViewData["Title"] = Localizer["EditProductTitle"];
 }
 
 <div class="container main-container">
-    <h1 class="display-4 mb-4">Edit Product</h1>
+    <h1 class="display-4 mb-4" data-translate-key="EditProductTitle">@Localizer["EditProductTitle"]</h1>
 
     <div class="row">
         <div class="col-md-8">
             <form asp-action="Edit">
                 <section class="card shadow" aria-labelledby="product-info-heading">
                     <div class="card-header">
-                        <h2 id="product-info-heading" class="h5 mb-0 text-white">Edit: @Model.Name</h2>
+                        <h2 id="product-info-heading" class="h5 mb-0 text-white" data-translate-key="EditProductInformation">@Localizer["EditProductInformation"]</h2>
                     </div>
                     <div class="card-body">
                         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
@@ -20,13 +21,13 @@
                         <input type="hidden" asp-for="FarmerId" />
 
                         <div class="mb-3">
-                            <label asp-for="Name" class="form-label fw-bold"></label>
+                            <label asp-for="Name" class="form-label fw-bold" data-translate-key="ProductName">@Localizer["ProductName"]</label>
                             <input asp-for="Name" id="Name" class="form-control" aria-required="true" aria-describedby="name-validation" />
                             <span asp-validation-for="Name" id="name-validation" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Category" class="form-label fw-bold"></label>
+                            <label asp-for="Category" class="form-label fw-bold" data-translate-key="Category">@Localizer["Category"]</label>
                             <select asp-for="Category" id="Category" class="form-select" aria-required="true" aria-describedby="category-validation">
                                 <option value="">Select Category</option>
                                 <option value="Vegetables">Vegetables</option>
@@ -41,35 +42,35 @@
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="ProductionDate" class="form-label fw-bold"></label>
-                            <input asp-for="ProductionDate" id="ProductionDate" class="form-control" type="date" aria-required="true" aria-describedby="date-validation" />
-                            <span asp-validation-for="ProductionDate" id="date-validation" class="text-danger"></span>
+                            <label asp-for="ProductionDate" class="form-label fw-bold" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</label>
+                            <input asp-for="ProductionDate" id="ProductionDate" class="form-control" type="date" aria-required="true" aria-describedby="productiondate-validation" />
+                            <span asp-validation-for="ProductionDate" id="productiondate-validation" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Price" class="form-label fw-bold"></label>
+                            <label asp-for="Price" class="form-label fw-bold" data-translate-key="Price">@Localizer["Price"]</label>
                             <div class="input-group">
                                 <span class="input-group-text">R</span>
-                                <input asp-for="Price" id="Price" class="form-control" type="number" step="0.01" min="0" aria-label="Price in Rand" aria-required="true" aria-describedby="price-validation" />
+                                <input asp-for="Price" id="Price" class="form-control" type="number" step="0.01" min="0" aria-label="@Localizer["PriceInRand"]" aria-required="true" aria-describedby="price-validation" />
                             </div>
                             <span asp-validation-for="Price" id="price-validation" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Description" class="form-label fw-bold"></label>
+                            <label asp-for="Description" class="form-label fw-bold" data-translate-key="Description">@Localizer["Description"]</label>
                             <textarea asp-for="Description" id="Description" class="form-control" rows="3"></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="QuantityAvailable" class="form-label fw-bold"></label>
+                            <label asp-for="QuantityAvailable" class="form-label fw-bold" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</label>
                             <input asp-for="QuantityAvailable" id="QuantityAvailable" class="form-control" type="number" min="0" aria-required="true" aria-describedby="quantity-validation" />
                             <span asp-validation-for="QuantityAvailable" id="quantity-validation" class="text-danger"></span>
                         </div>
 
                         <div class="d-flex justify-content-between mt-4">
-                            <a asp-action="Index" class="btn btn-outline-secondary" aria-label="Cancel editing and return to the product list">Back to List</a>
-                            <button type="submit" class="btn btn-primary" aria-label="Save changes to the product @Model.Name">Save Changes</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary" aria-label="@Localizer["BackToProductList"]">@Localizer["BackToProductList"]</a>
+                            <button type="submit" class="btn btn-primary" aria-label="@Localizer["SaveProductChanges"]" data-translate-key="SaveChanges">@Localizer["SaveChanges"]</button>
                         </div>
                     </div>
                 </section>

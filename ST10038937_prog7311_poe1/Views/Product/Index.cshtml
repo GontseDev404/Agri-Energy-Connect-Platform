@@ -2,28 +2,29 @@
 @using Microsoft.AspNetCore.Identity
 @using ST10038937_prog7311_poe1.Models
 @inject UserManager<ApplicationUser> UserManager
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = Localizer["ProductsTitle"];
     var isEmployee = User.IsInRole("Employee");
     var isFarmer = User.IsInRole("Farmer");
 }
 
 <div class="container main-container">
-    <h1 class="display-4 mb-4">Products</h1>
+    <h1 class="display-4 mb-4" data-translate-key="ProductsTitle">@Localizer["ProductsTitle"]</h1>
 
     @if (isEmployee)
     {
         <section class="card shadow mb-4" aria-labelledby="filter-heading">
             <div class="card-header">
-                <h2 id="filter-heading" class="h5 mb-0 text-white">Filter Products</h2>
+                <h2 id="filter-heading" class="h5 mb-0 text-white" data-translate-key="FilterProducts">@Localizer["FilterProducts"]</h2>
             </div>
             <div class="card-body">
                 <form asp-action="Index" method="get" class="row g-3 align-items-end">
                     <div class="col-md-3">
-                        <label for="farmerId" class="form-label fw-bold">Farmer</label>
-                        <select id="farmerId" name="farmerId" class="form-select" aria-label="Filter by farmer">
-                            <option value="">All Farmers</option>
+                        <label for="farmerId" class="form-label fw-bold" data-translate-key="Farmer">@Localizer["Farmer"]</label>
+                        <select id="farmerId" name="farmerId" class="form-select" aria-label="@Localizer["FilterByFarmer"]">
+                            <option value="">@Localizer["AllFarmers"]</option>
                             @foreach (var farmer in ViewBag.Farmers)
                             {
                                 <option value="@farmer.Value" selected="@(ViewBag.SelectedFarmerId == int.Parse(farmer.Value))">@farmer.Text</option>
@@ -31,63 +32,70 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <label for="category" class="form-label fw-bold">Category</label>
-                        <select id="category" name="category" class="form-select" aria-label="Filter by category">
-                            <option value="">All Categories</option>
-                            @foreach (var category in ViewBag.Categories)
+                        <label for="category" class="form-label fw-bold" data-translate-key="Category">@Localizer["Category"]</label>
+                        <select id="category" name="category" class="form-select" aria-label="@Localizer["FilterByCategory"]">
+                            <option value="">@Localizer["AllCategories"]</option>
+                            @foreach (var cat in ViewBag.Categories)
                             {
-                                <option value="@category" selected="@(ViewBag.SelectedCategory == category)">@category</option>
+                                <option value="@cat" selected="@(ViewBag.SelectedCategory == cat)">@cat</option>
                             }
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label for="startDate" class="form-label fw-bold">Start Date</label>
-                        <input type="date" id="startDate" name="startDate" class="form-control" value="@ViewBag.StartDate?.ToString("yyyy-MM-dd")" aria-label="Start date for filtering" />
+                        <label for="startDate" class="form-label fw-bold" data-translate-key="StartDate">@Localizer["StartDate"]</label>
+                        <input type="date" id="startDate" name="startDate" class="form-control" value="@(ViewBag.StartDate?.ToString("yyyy-MM-dd"))" />
                     </div>
                     <div class="col-md-2">
-                        <label for="endDate" class="form-label fw-bold">End Date</label>
-                        <input type="date" id="endDate" name="endDate" class="form-control" value="@ViewBag.EndDate?.ToString("yyyy-MM-dd")" aria-label="End date for filtering" />
+                        <label for="endDate" class="form-label fw-bold" data-translate-key="EndDate">@Localizer["EndDate"]</label>
+                        <input type="date" id="endDate" name="endDate" class="form-control" value="@(ViewBag.EndDate?.ToString("yyyy-MM-dd"))" />
                     </div>
-                    <div class="col-md-2 d-grid gap-2">
-                        <button type="submit" class="btn btn-primary" aria-label="Apply selected filters">Apply Filters</button>
-                        <a asp-action="Index" class="btn btn-outline-secondary" aria-label="Clear all filters">Clear</a>
+                    <div class="col-md-2">
+                        <label for="search" class="form-label fw-bold" data-translate-key="Search">@Localizer["Search"]</label>
+                        <input type="text" id="search" name="search" class="form-control" value="@ViewBag.Search" placeholder="@Localizer["SearchProductsPlaceholder"]" aria-label="@Localizer["SearchProducts"]" />
+                    </div>
+                    <div class="col-md-12 text-end mt-3">
+                        <button type="submit" class="btn btn-primary" data-translate-key="ApplyFilters">@Localizer["ApplyFilters"]</button>
                     </div>
                 </form>
             </div>
         </section>
     }
-
     @if (isFarmer)
     {
         <div class="row mb-3">
-            <div class="col">
+            <div class="col-md-6">
+                <form asp-action="Index" method="get" class="input-group mb-2">
+                    <input type="text" name="search" class="form-control" value="@ViewBag.Search" placeholder="Search your products..." aria-label="Search products" />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+            <div class="col-md-6 text-end">
                 <a asp-action="Create" class="btn btn-primary" aria-label="Add a new product to the marketplace">Add New Product</a>
             </div>
         </div>
     }
 
-    <section class="card shadow" aria-labelledby="products-heading">
+    <section class="card shadow mb-4" aria-labelledby="products-list-heading">
         <div class="card-header">
-            <h2 id="products-heading" class="h5 mb-0 text-white">Product Listings</h2>
+            <h2 id="products-list-heading" class="h5 mb-0 text-white" data-translate-key="ProductsList">@Localizer["ProductsList"]</h2>
         </div>
         <div class="card-body">
             @if (Model.Any())
             {
                 <div class="table-responsive">
-                    <table class="table table-hover" aria-label="List of all products">
-                        <caption>List of products available on the platform. Actions available depend on user role.</caption>
-                        <thead class="table-light">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead>
                             <tr>
-                                <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
-                                <th scope="col">@Html.DisplayNameFor(model => model.Category)</th>
-                                <th scope="col">@Html.DisplayNameFor(model => model.ProductionDate)</th>
-                                <th scope="col">@Html.DisplayNameFor(model => model.Price)</th>
-                                <th scope="col">@Html.DisplayNameFor(model => model.QuantityAvailable)</th>
+                                <th data-translate-key="ProductName">@Localizer["ProductName"]</th>
+                                <th data-translate-key="Category">@Localizer["Category"]</th>
+                                <th data-translate-key="ProductionDate">@Localizer["ProductionDate"]</th>
+                                <th data-translate-key="Price">@Localizer["Price"]</th>
+                                <th data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</th>
                                 @if (isEmployee)
                                 {
-                                    <th scope="col">Farmer</th>
+                                    <th data-translate-key="Farmer">@Localizer["Farmer"]</th>
                                 }
-                                <th scope="col">Actions</th>
+                                <th data-translate-key="Actions">@Localizer["Actions"]</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,12 +112,12 @@
                                         <td>@(item.Farmer?.Name)</td>
                                     }
                                     <td>
-                                        <div class="btn-group" role="group" aria-label="Product actions for @item.Name">
-                                            <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-info btn-sm" aria-label="View details for @item.Name">Details</a>
+                                        <div class="btn-group" role="group" aria-label="@Localizer["ProductActionsFor"] @item.Name">
+                                            <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-info btn-sm" aria-label="@Localizer["ViewDetailsFor"] @item.Name" data-translate-key="Details">@Localizer["Details"]</a>
                                             @if (isFarmer)
                                             {
-                                                <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-warning btn-sm" aria-label="Edit @item.Name">Edit</a>
-                                                <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger btn-sm" aria-label="Delete @item.Name">Delete</a>
+                                                <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-warning btn-sm" aria-label="@Localizer["Edit"] @item.Name" data-translate-key="Edit">@Localizer["Edit"]</a>
+                                                <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger btn-sm" aria-label="@Localizer["Delete"] @item.Name" data-translate-key="Delete">@Localizer["Delete"]</a>
                                             }
                                         </div>
                                     </td>
@@ -121,8 +129,8 @@
             }
             else
             {
-                <div class="alert alert-info" role="alert">
-                    No products found. @(isFarmer ? "Click 'Add New Product' to add your first product." : "Try changing your filter criteria.")
+                <div class="alert alert-info" role="alert" data-translate-key="NoProductsFound">
+                    @Localizer["NoProductsFound"] @(isFarmer ? Localizer["AddFirstProduct"] : Localizer["TryChangingFilter"])
                 </div>
             }
         </div>

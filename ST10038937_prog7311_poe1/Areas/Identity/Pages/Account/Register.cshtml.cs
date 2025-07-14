@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using ST10038937_prog7311_poe1.Data;
 using ST10038937_prog7311_poe1.Models;
+using ST10038937_prog7311_poe1.Services;
 
 namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
 {
@@ -27,19 +28,22 @@ namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _context;
+        private readonly IAuditService _auditService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             RoleManager<IdentityRole> roleManager,
-            ApplicationDbContext context)
+            ApplicationDbContext context,
+            IAuditService auditService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _roleManager = roleManager;
             _context = context;
+            _auditService = auditService;
         }
 
         [BindProperty]
@@ -101,6 +105,7 @@ namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
                 var existingUser = await _userManager.FindByEmailAsync(email);
                 if (existingUser != null)
                 {
+                    await _auditService.LogActionAsync(existingUser.Id, "Registration Failed - Email Exists", $"Email: {email}");
                     ModelState.AddModelError(string.Empty, "Email already exists. Please choose a different username.");
                     return Page();
                 }
@@ -120,7 +125,8 @@ namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
                     
                     if (result.Succeeded)
                     {
-                    _logger.LogInformation("User created a new account with password.");
+                        _logger.LogInformation("User created a new account with password.");
+                        await _auditService.LogActionAsync(user.Id, "Registration Success", $"Email: {email}, Role: {Input.Role}");
 
                     // Add user to the role
                     if (!await _roleManager.RoleExistsAsync(Input.Role))
@@ -157,6 +163,7 @@ namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
                         {
                             ModelState.AddModelError(string.Empty, error.Description);
                         }
+                        await _auditService.LogActionAsync("(unknown)", "Registration Failed - Identity Error", $"Email: {email}, Errors: {string.Join(", ", result.Errors.Select(e => e.Description))}");
                         return Page();
                     }
                 }
@@ -164,6 +171,7 @@ namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
                 {
                     // Log the exception
                     _logger.LogError(ex, "Error during registration process");
+                    await _auditService.LogActionAsync("(unknown)", "Registration Failed - Exception", $"Email: {email}, Exception: {ex.Message}");
                     ModelState.AddModelError(string.Empty, "An error occurred during registration. Please try again later.");
                     return Page();
                 }

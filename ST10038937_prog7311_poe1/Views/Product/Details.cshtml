@@ -2,37 +2,38 @@
 @using Microsoft.AspNetCore.Identity
 @using ST10038937_prog7311_poe1.Models
 @inject UserManager<ApplicationUser> UserManager
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 
 @{
-    ViewData["Title"] = "Product Details";
+    ViewData["Title"] = Localizer["ProductDetailsTitle"];
     var isEmployee = User.IsInRole("Employee");
     var isFarmer = User.IsInRole("Farmer");
 }
 
 <div class="container main-container">
-    <h1 class="display-4 mb-4">Product Details</h1>
+    <h1 class="display-4 mb-4" data-translate-key="ProductDetailsTitle">@Localizer["ProductDetailsTitle"]</h1>
 
     <div class="row">
         <main class="col-md-8">
             <section class="card shadow mb-4" aria-labelledby="product-details-heading">
                 <div class="card-header">
-                    <h2 id="product-details-heading" class="h5 mb-0 text-white">@Model.Name</h2>
+                    <h2 id="product-details-heading" class="h5 mb-0 text-white" data-translate-key="ProductDetails">@Localizer["ProductDetails"]</h2>
                 </div>
                 <div class="card-body">
                     <dl class="row">
-                        <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.Category)</dt>
+                        <dt class="col-sm-4 fw-bold" data-translate-key="Category">@Localizer["Category"]</dt>
                         <dd class="col-sm-8">@Html.DisplayFor(model => model.Category)</dd>
 
-                        <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.ProductionDate)</dt>
+                        <dt class="col-sm-4 fw-bold" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</dt>
                         <dd class="col-sm-8">@Model.ProductionDate.ToLongDateString()</dd>
 
-                        <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.Price)</dt>
+                        <dt class="col-sm-4 fw-bold" data-translate-key="Price">@Localizer["Price"]</dt>
                         <dd class="col-sm-8">R @Html.DisplayFor(model => model.Price)</dd>
 
-                        <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.QuantityAvailable)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.QuantityAvailable) units</dd>
+                        <dt class="col-sm-4 fw-bold" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.QuantityAvailable) @Localizer["Units"]</dd>
 
-                        <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.Description)</dt>
+                        <dt class="col-sm-4 fw-bold" data-translate-key="Description">@Localizer["Description"]</dt>
                         <dd class="col-sm-8">@Html.DisplayFor(model => model.Description)</dd>
 
                         @if (isEmployee)
@@ -51,12 +52,12 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-between align-items-center">
-                        <a asp-action="Index" class="btn btn-outline-secondary" aria-label="Return to the full product list">Back to List</a>
+                        <a asp-action="Index" class="btn btn-outline-secondary" aria-label="@Localizer["BackToProductList"]">@Localizer["BackToProductList"]</a>
                         @if (isFarmer)
                         {
                             <div class="btn-group" role="group">
-                                <a asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-warning" aria-label="Edit this product: @Model.Name">Edit</a>
-                                <a asp-action="Delete" asp-route-id="@Model.ProductId" class="btn btn-danger" aria-label="Delete this product: @Model.Name">Delete</a>
+                                <a asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-warning" aria-label="@Localizer["Edit"]">@Localizer["Edit"]</a>
+                                <a asp-action="Delete" asp-route-id="@Model.ProductId" class="btn btn-danger" aria-label="@Localizer["Delete"]">@Localizer["Delete"]</a>
                             </div>
                         }
                     </div>

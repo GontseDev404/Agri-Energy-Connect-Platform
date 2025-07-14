@@ -1,61 +1,52 @@
 @model ST10038937_prog7311_poe1.Models.Farmer
 
 @{
-    ViewData["Title"] = "Edit Farmer";
+    ViewData["Title"] = Localizer["Edit Farmer"];
 }
 
-<div class="container">
-    <h1 class="display-4 mb-4">Edit Farmer</h1>
+<h1 data-translate-key="Edit Farmer">Edit Farmer</h1>
 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-body">
-                    <form asp-action="Edit">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="FarmerId" />
-                        <input type="hidden" asp-for="UserId" />
-                        
-                        <div class="mb-3">
-                            <label asp-for="Name" class="form-label"></label>
-                            <input asp-for="Name" class="form-control" />
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label asp-for="FarmName" class="form-label"></label>
-                            <input asp-for="FarmName" class="form-control" />
-                            <span asp-validation-for="FarmName" class="text-danger"></span>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label asp-for="Address" class="form-label"></label>
-                            <input asp-for="Address" class="form-control" />
-                            <span asp-validation-for="Address" class="text-danger"></span>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label asp-for="PhoneNumber" class="form-label"></label>
-                            <input asp-for="PhoneNumber" class="form-control" />
-                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label asp-for="Email" class="form-label"></label>
-                            <input asp-for="Email" class="form-control" type="email" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                            <small class="form-text text-muted">This email will be used as the login username for the farmer.</small>
-                        </div>
-                        
-                        <div class="d-flex justify-content-between">
-                            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-                    </form>
-                </div>
+<h4 data-translate-key="Farmer">Farmer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FarmerId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label" data-translate-key="Name">Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="FarmName" class="control-label" data-translate-key="Farm Name">Farm Name</label>
+                <input asp-for="FarmName" class="form-control" />
+                <span asp-validation-for="FarmName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label" data-translate-key="Email">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label" data-translate-key="Phone">Phone</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label" data-translate-key="Address">Address</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
+
+<div>
+    <a asp-action="Index" data-translate-key="Back to List">Back to List</a>
 </div>
 
 @section Scripts {

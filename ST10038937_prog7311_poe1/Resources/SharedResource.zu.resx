@@ -4,6 +4,25 @@
   <data name="Welcome" xml:space="preserve">
     <value>Siyakwamukela ku-Agri-Energy Connect!</value>
   </data>
+  <data name="WelcomeTitle" xml:space="preserve"><value>Siyakwamukela ku-Agri-Energy Connect</value></data>
+  <data name="AgriEnergyConnect" xml:space="preserve"><value>Agri-Energy Connect</value></data>
+  <data name="HeroLead" xml:space="preserve"><value>Sithuthukisa umphakathi wezolimo ngokuxhumanisa ezolimo ezisimeme nezixazululo zamandla zesimanje. Joyina ukuze sakhe ikusasa eliluhlaza.</value></data>
+  <data name="GetStarted" xml:space="preserve"><value>Qala</value></data>
+  <data name="RegisterForAccount" xml:space="preserve"><value>Bhalisa i-akhawunti entsha</value></data>
+  <data name="Login" xml:space="preserve"><value>Ngena</value></data>
+  <data name="LoginToAccount" xml:space="preserve"><value>Ngena ku-akhawunti yakho ekhona</value></data>
+  <data name="ViewProducts" xml:space="preserve"><value>Buka Imikhiqizo</value></data>
+  <data name="GoToDashboard" xml:space="preserve"><value>Hamba kuDashboard</value></data>
+  <data name="OurCoreServices" xml:space="preserve"><value>Izinsiza Zethu Eziyinhloko</value></data>
+  <data name="ProductMarketplace" xml:space="preserve"><value>Imakethe Yemikhiqizo</value></data>
+  <data name="ProductMarketplaceDescription" xml:space="preserve"><value>Indawo emaphakathi lapho abalimi bengabeka khona, baphathe, futhi bathengise imikhiqizo yabo ngokuqondile emakethe ebanzi, benokulawula okuphelele kwesitoko namanani.</value></data>
+  <data name="BrowseProducts" xml:space="preserve"><value>Buka Imikhiqizo</value></data>
+  <data name="CommunityHub" xml:space="preserve"><value>Isikhungo Somphakathi</value></data>
+  <data name="CommunityHubDescription" xml:space="preserve"><value>Xhumana nabanye abalimi nochwepheshe embuthanweni womphakathi. Yabelana ngolwazi, buza imibuzo, futhi usebenzisane ngemibono emisha.</value></data>
+  <data name="JoinDiscussion" xml:space="preserve"><value>Joyina Ingxoxo</value></data>
+  <data name="SecureAudited" xml:space="preserve"><value>Iphephile &amp; Ihloliwe</value></data>
+  <data name="SecureAuditedDescription" xml:space="preserve"><value>Ipulatifomu yethu yakhelwe ukuphepha engqondweni, inikeza ukufinyelela okusekelwe ezindimeni kanye nemikhondo yokuhlola eqinile ukuqinisekisa ubuqotho bedatha.</value></data>
+  <data name="ViewAuditLogs" xml:space="preserve"><value>Buka Amarekhodi Okuhlola</value></data>
   <data name="Forum" xml:space="preserve">
     <value>I-Forum yomphakathi</value>
   </data>
@@ -164,5 +183,503 @@
   </data>
   <data name="DevelopmentApproachDescription" xml:space="preserve">
     <value>Le phrojekthi yathuthukiswa kusetshenziswa indlela yokusebenza ephindaphindayo nekhulayo, eholwa yizimiso ze-agile. Sigxile ekuletheni izingxenye ezisebenzayo ngezigaba, sivumela impendulo eqhubekayo nokucwengwa. Le ndlela igcizelele ikhwalithi yekhodi, ukuhambisana nemikhuba emihle, nokuzibophezela ekwakheni umkhiqizo wokugcina oqinile futhi ogxile kumsebenzisi.</value>
+  </data>
+  <data name="ProductsTitle" xml:space="preserve"><value>Imikhiqizo</value></data>
+  <data name="FilterProducts" xml:space="preserve"><value>Hlunga Imikhiqizo</value></data>
+  <data name="Farmer" xml:space="preserve"><value>Umlimi</value></data>
+  <data name="FilterByFarmer" xml:space="preserve"><value>Hlunga ngomlimi</value></data>
+  <data name="AllFarmers" xml:space="preserve"><value>Bonke Abalimi</value></data>
+  <data name="Category" xml:space="preserve"><value>Isigaba</value></data>
+  <data name="FilterByCategory" xml:space="preserve"><value>Hlunga ngesigaba</value></data>
+  <data name="AllCategories" xml:space="preserve"><value>Zonke Izigaba</value></data>
+  <data name="StartDate" xml:space="preserve"><value>Usuku Lokuqala</value></data>
+  <data name="EndDate" xml:space="preserve"><value>Usuku Lokugcina</value></data>
+  <data name="Search" xml:space="preserve"><value>Sesha</value></data>
+  <data name="SearchProductsPlaceholder" xml:space="preserve"><value>Igama lomkhiqizo noma incazelo</value></data>
+  <data name="SearchProducts" xml:space="preserve"><value>Sesha imikhiqizo</value></data>
+  <data name="ApplyFilters" xml:space="preserve"><value>Faka Izihlungi</value></data>
+  <data name="ProductsList" xml:space="preserve"><value>Uhlu Lwemikhiqizo</value></data>
+  <data name="ProductName" xml:space="preserve"><value>Igama Lomkhiqizo</value></data>
+  <data name="ProductionDate" xml:space="preserve"><value>Usuku Lokukhiqiza</value></data>
+  <data name="Price" xml:space="preserve"><value>Intengo</value></data>
+  <data name="QuantityAvailable" xml:space="preserve"><value>Inani Elitholakalayo</value></data>
+  <data name="Actions" xml:space="preserve"><value>Izenzo</value></data>
+  <data name="ProductActionsFor" xml:space="preserve"><value>Izenzo zomkhiqizo</value></data>
+  <data name="ViewDetailsFor" xml:space="preserve"><value>Buka imininingwane ye</value></data>
+  <data name="Details" xml:space="preserve"><value>Imininingwane</value></data>
+  <data name="Edit" xml:space="preserve"><value>Hlela</value></data>
+  <data name="Delete" xml:space="preserve"><value>Susa</value></data>
+  <data name="NoProductsFound" xml:space="preserve"><value>Ayikho imikhiqizo etholakele.</value></data>
+  <data name="AddFirstProduct" xml:space="preserve"><value>Chofoza 'Engeza Umkhiqizo Omusha' ukuze ungeze umkhiqizo wakho wokuqala.</value></data>
+  <data name="TryChangingFilter" xml:space="preserve"><value>Zama ukushintsha izihlungi zakho.</value></data>
+  <data name="AddNewProductTitle" xml:space="preserve"><value>Engeza Umkhiqizo Omusha</value></data>
+  <data name="ProductInformation" xml:space="preserve"><value>Ulwazi Lomkhiqizo</value></data>
+  <data name="ProductNamePlaceholder" xml:space="preserve"><value>isb., Utamatisi Abaluhlaza</value></data>
+  <data name="CategoryPlaceholder" xml:space="preserve"><value>isb., Imifino</value></data>
+  <data name="SelectCategory" xml:space="preserve"><value>Khetha Isigaba</value></data>
+  <data name="Vegetables" xml:space="preserve"><value>Imifino</value></data>
+  <data name="Fruits" xml:space="preserve"><value>Izithelo</value></data>
+  <data name="Dairy" xml:space="preserve"><value>Ubisi</value></data>
+  <data name="Grains" xml:space="preserve"><value>Okusanhlamvu</value></data>
+  <data name="Meat" xml:space="preserve"><value>Inyama</value></data>
+  <data name="Poultry" xml:space="preserve"><value>Izinkukhu</value></data>
+  <data name="Other" xml:space="preserve"><value>Okunye</value></data>
+  <data name="PricePlaceholder" xml:space="preserve"><value>isb., 25.50</value></data>
+  <data name="PriceInRand" xml:space="preserve"><value>Intengo ngoRand</value></data>
+  <data name="DescriptionPlaceholder" xml:space="preserve"><value>Nikeza incazelo emfushane yomkhiqizo</value></data>
+  <data name="QuantityAvailablePlaceholder" xml:space="preserve"><value>isb., 100</value></data>
+  <data name="SubmitAndCreateProduct" xml:space="preserve"><value>Thumela futhi engeza umkhiqizo omusha</value></data>
+  <data name="CreateProduct" xml:space="preserve"><value>Engeza Umkhiqizo</value></data>
+  <data name="BackToProductList" xml:space="preserve"><value>Buyela Ohlwini Lwemikhiqizo</value></data>
+  <data name="FarmInformation" xml:space="preserve"><value>Ulwazi Lwepulazi</value></data>
+  <data name="Farm" xml:space="preserve"><value>Ipulazi</value></data>
+  <data name="FarmInformationHelpText" xml:space="preserve"><value>Lo mkhiqizo uzoxhunyaniswa obala nephrofayela yakho yepulazi.</value></data>
+  <data name="EditProductTitle" xml:space="preserve"><value>Hlela Umkhiqizo</value></data>
+  <data name="EditProductInformation" xml:space="preserve"><value>Hlela Ulwazi Lomkhiqizo</value></data>
+  <data name="SaveProductChanges" xml:space="preserve"><value>Londoloza izinguquko kumkhiqizo</value></data>
+  <data name="SaveChanges" xml:space="preserve"><value>Londoloza Izinguquko</value></data>
+  <data name="ProductDetailsTitle" xml:space="preserve"><value>Imininingwane Yomkhiqizo</value></data>
+  <data name="ProductDetails" xml:space="preserve"><value>Imininingwane Yomkhiqizo</value></data>
+  <data name="Units" xml:space="preserve"><value>amayunithi</value></data>
+  <data name="DeleteProductTitle" xml:space="preserve"><value>Susa Umkhiqizo</value></data>
+  <data name="Warning" xml:space="preserve"><value>Isixwayiso!</value></data>
+  <data name="DeleteProductWarning" xml:space="preserve"><value>Uqinisekile ukuthi ufuna ukususa lo mkhiqizo unomphela? Lesi senzo asikwazi ukubuyiselwa emuva.</value></data>
+  <data name="ConfirmDeletion" xml:space="preserve"><value>Qinisekisa Ukususwa kuka</value></data>
+  <data name="CancelAndReturn" xml:space="preserve"><value>Khansela futhi ubuyele ohlwini lwemikhiqizo</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Khansela</value></data>
+  <data name="ConfirmPermanentDeletion" xml:space="preserve"><value>Qinisekisa ukususwa unomphela komkhiqizo</value></data>
+  <data name="DeletePermanently" xml:space="preserve"><value>Susa Unomphela</value></data>
+  <data name="FarmersTitle" xml:space="preserve"><value>Abalimi</value></data>
+  <data name="AddNewFarmer" xml:space="preserve"><value>Engeza Umlimi Omusha</value></data>
+  <data name="RegisterNewFarmerProfile" xml:space="preserve"><value>Bhalisa iphrofayela yomlimi omusha</value></data>
+  <data name="SearchFarmersPlaceholder" xml:space="preserve"><value>Sesha ngegama, ipulazi, noma i-imeyili...</value></data>
+  <data name="SearchFarmers" xml:space="preserve"><value>Sesha abalimi</value></data>
+  <data name="Close" xml:space="preserve"><value>Vala</value></data>
+  <data name="FarmersList" xml:space="preserve"><value>Abalimi Ababhalisiwe</value></data>
+  <data name="FarmerName" xml:space="preserve"><value>Igama Lomlimi</value></data>
+  <data name="FarmName" xml:space="preserve"><value>Igama Lepulazi</value></data>
+  <data name="Email" xml:space="preserve"><value>I-imeyili</value></data>
+  <data name="PhoneNumber" xml:space="preserve"><value>Inombolo Yocingo</value></data>
+  <data name="FarmerActionsFor" xml:space="preserve"><value>Izenzo zika</value></data>
+  <data name="ViewDetailsFor" xml:space="preserve"><value>Buka imininingwane ka</value></data>
+  <data name="NoFarmersFound" xml:space="preserve"><value>Abalimi abatholakele.</value></data>
+  <data name="Are you sure you want to delete this farmer?" xml:space="preserve">
+    <value>Uqinisekile ukuthi ufuna ukususa lo mlimi?</value>
+  </data>
+  <data name="Are you sure you want to delete this forum post?" xml:space="preserve">
+    <value>Uqinisekile ukuthi ufuna ukususa le posti yeforamu?</value>
+  </data>
+  <data name="Are you sure you want to delete this product?" xml:space="preserve">
+    <value>Uqinisekile ukuthi ufuna ukususa lo mkhiqizo?</value>
+  </data>
+  <data name="Are you sure you want to delete this reply?" xml:space="preserve">
+    <value>Uqinisekile ukuthi ufuna ukususa le impendulo?</value>
+  </data>
+  <data name="Audit Logs" xml:space="preserve">
+    <value>Ama-Log Okuhlola</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>Buyela Emgqeni</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Isigaba</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Dala</value>
+  </data>
+  <data name="Create Farmer" xml:space="preserve">
+    <value>Dala Umlimi</value>
+  </data>
+  <data name="Create Forum Post" xml:space="preserve">
+    <value>Dala I-Posti Yeforamu</value>
+  </data>
+  <data name="Create New Product" xml:space="preserve">
+    <value>Dala Umkhiqizo Omusha</value>
+  </data>
+  <data name="Create Product" xml:space="preserve">
+    <value>Dala Umkhiqizo</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Susa</value>
+  </data>
+  <data name="Delete Farmer" xml:space="preserve">
+    <value>Susa Umlimi</value>
+  </data>
+  <data name="Delete Forum Post" xml:space="preserve">
+    <value>Susa I-Posti Yeforamu</value>
+  </data>
+  <data name="Delete Product" xml:space="preserve">
+    <value>Susa Umkhiqizo</value>
+  </data>
+  <data name="Delete Reply" xml:space="preserve">
+    <value>Susa Impendulo</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Incazelo</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Hlela</value>
+  </data>
+  <data name="Edit Farmer" xml:space="preserve">
+    <value>Hlela Umlimi</value>
+  </data>
+  <data name="Edit Forum Post" xml:space="preserve">
+    <value>Hlela I-Posti Yeforamu</value>
+  </data>
+  <data name="Edit Product" xml:space="preserve">
+    <value>Hlela Umkhiqizo</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>I-imeyili</value>
+  </data>
+  <data name="Employee Dashboard" xml:space="preserve">
+    <value>I-Dashboard Yomsebenzi</value>
+  </data>
+  <data name="Farmer" xml:space="preserve">
+    <value>Umlimi</value>
+  </data>
+  <data name="Farmer Dashboard" xml:space="preserve">
+    <value>I-Dashboard Yomlimi</value>
+  </data>
+  <data name="Farmer Details" xml:space="preserve">
+    <value>Imininingwane Yomlimi</value>
+  </data>
+  <data name="Farmers" xml:space="preserve">
+    <value>Abalimi</value>
+  </data>
+  <data name="Farm Name" xml:space="preserve">
+    <value>Igama Lasepulazini</value>
+  </data>
+  <data name="Forum" xml:space="preserve">
+    <value>Iforamu</value>
+  </data>
+  <data name="Forum Post" xml:space="preserve">
+    <value>I-Posti Yeforamu</value>
+  </data>
+  <data name="Forum Post Details" xml:space="preserve">
+    <value>Imininingwane Yeposti Yeforamu</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Ekhaya</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Ngena</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Phuma</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Igama</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Ucingo</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Intengo</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Ubumfihlo</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Umkhiqizo</value>
+  </data>
+  <data name="Product Details" xml:space="preserve">
+    <value>Imininingwane Yomkhiqizo</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Imikhiqizo</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Bhalisa</value>
+  </data>
+  <data name="Reply" xml:space="preserve">
+    <value>Phendula</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Londoloza</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Sesha</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Isihloko</value>
+  </data>
+  <data name="Welcome to Agri-Energy Connect Platform" xml:space="preserve">
+    <value>Siyakwamukela ku-Agri-Energy Connect Platform</value>
+  </data>
+  <data name="ForumPostTitle" xml:space="preserve"><value>I-Posti Yeforamu</value></data>
+  <data name="ForumPostContent" xml:space="preserve"><value>Okuqukethwe</value></data>
+  <data name="ForumPostPostedBy" xml:space="preserve"><value>Kuthunyelwe ngu</value></data>
+  <data name="ForumPostPostedOn" xml:space="preserve"><value>Kuthunyelwe ngo</value></data>
+  <data name="ForumPostReplies" xml:space="preserve"><value>Izimpendulo</value></data>
+  <data name="ForumPostReply" xml:space="preserve"><value>Phendula</value></data>
+  <data name="ForumPostReplyPlaceholder" xml:space="preserve"><value>Phendula i-Posti Yeforamu</value></data>
+  <data name="ForumPostReplySubmit" xml:space="preserve"><value>Thumela</value></data>
+  <data name="ForumPostReplyCancel" xml:space="preserve"><value>Khansela</value></data>
+  <data name="ForumPostReplyWarning" xml:space="preserve"><value>Isixwayiso!</value></data>
+  <data name="ForumPostReplyDeleteWarning" xml:space="preserve"><value>Uqinisekile ukuthi ufuna ukususa le impendulo?</value></data>
+  <data name="ForumPostReplyConfirmDeletion" xml:space="preserve"><value>Qinisekisa Ukususwa kuka</value></data>
+  <data name="ForumPostReplyCancelAndReturn" xml:space="preserve"><value>Khansela futhi ubuyele ohlwini lwemikhiqizo</value></data>
+  <data name="ForumPostReplyDeletePermanently" xml:space="preserve"><value>Susa Unomphela</value></data>
+  <data name="ForumPostReplyDelete" xml:space="preserve"><value>Susa Impendulo</value></data>
+  <data name="ForumPostReplyEdit" xml:space="preserve"><value>Hlela I-Posti Yeforamu</value></data>
+  <data name="ForumPostReplyEditInformation" xml:space="preserve"><value>Hlela Ulwazi Lomkhiqizo</value></data>
+  <data name="ForumPostReplySaveChanges" xml:space="preserve"><value>Londoloza Izinguquko</value></data>
+  <data name="ForumPostReplySaveProductChanges" xml:space="preserve"><value>Londoloza izinguquko kumkhiqizo</value></data>
+  <data name="ForumPostReplyBackToProductList" xml:space="preserve"><value>Buyela Ohlwini Lwemikhiqizo</value></data>
+  <data name="ForumPostReplyProductInformation" xml:space="preserve"><value>Ulwazi Lomkhiqizo</value></data>
+  <data name="ForumPostReplyProductName" xml:space="preserve"><value>Igama Lomkhiqizo</value></data>
+  <data name="ForumPostReplyProductionDate" xml:space="preserve"><value>Usuku Lokukhiqiza</value></data>
+  <data name="ForumPostReplyPrice" xml:space="preserve"><value>Intengo</value></data>
+  <data name="ForumPostReplyQuantityAvailable" xml:space="preserve"><value>Inani Elitholakalayo</value></data>
+  <data name="ForumPostReplyActions" xml:space="preserve"><value>Izenzo</value></data>
+  <data name="ForumPostReplyProductActionsFor" xml:space="preserve"><value>Izenzo zomkhiqizo</value></data>
+  <data name="ForumPostReplyViewDetailsFor" xml:space="preserve"><value>Buka imininingwane ye</value></data>
+  <data name="ForumPostReplyDetails" xml:space="preserve"><value>Imininingwane</value></data>
+  <data name="ForumPostReplyEdit" xml:space="preserve"><value>Hlela Umkhiqizo</value></data>
+  <data name="ForumPostReplyDelete" xml:space="preserve"><value>Susa Umkhiqizo</value></data>
+  <data name="ForumPostReplyNoProductsFound" xml:space="preserve"><value>Ayikho imikhiqizo etholakele.</value></data>
+  <data name="ForumPostReplyAddFirstProduct" xml:space="preserve"><value>Chofoza 'Engeza Umkhiqizo Omusha' ukuze ungeze umkhiqizo wakho wokuqala.</value></data>
+  <data name="ForumPostReplyTryChangingFilter" xml:space="preserve"><value>Zama ukushintsha izihlungi zakho.</value></data>
+  <data name="ForumPostReplyAddNewProductTitle" xml:space="preserve"><value>Engeza Umkhiqizo Omusha</value></data>
+  <data name="ForumPostReplyProductNamePlaceholder" xml:space="preserve"><value>isb., Utamatisi Abaluhlaza</value></data>
+  <data name="ForumPostReplyCategoryPlaceholder" xml:space="preserve"><value>isb., Imifino</value></data>
+  <data name="ForumPostReplySelectCategory" xml:space="preserve"><value>Khetha Isigaba</value></data>
+  <data name="ForumPostReplyVegetables" xml:space="preserve"><value>Imifino</value></data>
+  <data name="ForumPostReplyFruits" xml:space="preserve"><value>Izithelo</value></data>
+  <data name="ForumPostReplyDairy" xml:space="preserve"><value>Ubisi</value></data>
+  <data name="ForumPostReplyGrains" xml:space="preserve"><value>Okusanhlamvu</value></data>
+  <data name="ForumPostReplyMeat" xml:space="preserve"><value>Inyama</value></data>
+  <data name="ForumPostReplyPoultry" xml:space="preserve"><value>Izinkukhu</value></data>
+  <data name="ForumPostReplyOther" xml:space="preserve"><value>Okunye</value></data>
+  <data name="ForumPostReplyPricePlaceholder" xml:space="preserve"><value>isb., 25.50</value></data>
+  <data name="ForumPostReplyPriceInRand" xml:space="preserve"><value>Intengo ngoRand</value></data>
+  <data name="ForumPostReplyDescriptionPlaceholder" xml:space="preserve"><value>Nikeza incazelo emfushane yomkhiqizo</value></data>
+  <data name="ForumPostReplyQuantityAvailablePlaceholder" xml:space="preserve"><value>isb., 100</value></data>
+  <data name="ForumPostReplySubmitAndCreateProduct" xml:space="preserve"><value>Thumela futhi engeza umkhiqizo omusha</value></data>
+  <data name="ForumPostReplyCreateProduct" xml:space="preserve"><value>Engeza Umkhiqizo</value></data>
+  <data name="ForumPostReplyBackToProductList" xml:space="preserve"><value>Buyela Ohlwini Lwemikhiqizo</value></data>
+  <data name="ForumPostReplyFarmInformation" xml:space="preserve"><value>Ulwazi Lwepulazi</value></data>
+  <data name="ForumPostReplyFarm" xml:space="preserve"><value>Ipulazi</value></data>
+  <data name="ForumPostReplyFarmInformationHelpText" xml:space="preserve"><value>Lo mkhiqizo uzoxhunyaniswa obala nephrofayela yakho yepulazi.</value></data>
+  <data name="ForumPostReplyEditProductTitle" xml:space="preserve"><value>Hlela Umkhiqizo</value></data>
+  <data name="ForumPostReplyEditProductInformation" xml:space="preserve"><value>Hlela Ulwazi Lomkhiqizo</value></data>
+  <data name="ForumPostReplySaveProductChanges" xml:space="preserve"><value>Londoloza izinguquko kumkhiqizo</value></data>
+  <data name="ForumPostReplySaveChanges" xml:space="preserve"><value>Londoloza Izinguquko</value></data>
+  <data name="ForumPostReplyProductDetailsTitle" xml:space="preserve"><value>Imininingwane Yomkhiqizo</value></data>
+  <data name="ForumPostReplyProductDetails" xml:space="preserve"><value>Imininingwane Yomkhiqizo</value></data>
+  <data name="ForumPostReplyUnits" xml:space="preserve"><value>amayunithi</value></data>
+  <data name="ForumPostReplyDeleteProductTitle" xml:space="preserve"><value>Susa Umkhiqizo</value></data>
+  <data name="ForumPostReplyWarning" xml:space="preserve"><value>Isixwayiso!</value></data>
+  <data name="ForumPostReplyDeleteProductWarning" xml:space="preserve"><value>Uqinisekile ukuthi ufuna ukususa lo mkhiqizo unomphela? Lesi senzo asikwazi ukubuyiselwa emuva.</value></data>
+  <data name="ForumPostReplyConfirmDeletion" xml:space="preserve"><value>Qinisekisa Ukususwa kuka</value></data>
+  <data name="ForumPostReplyCancelAndReturn" xml:space="preserve"><value>Khansela futhi ubuyele ohlwini lwemikhiqizo</value></data>
+  <data name="ForumPostReplyCancel" xml:space="preserve"><value>Khansela</value></data>
+  <data name="ForumPostReplyConfirmPermanentDeletion" xml:space="preserve"><value>Qinisekisa ukususwa unomphela komkhiqizo</value></data>
+  <data name="ForumPostReplyDeletePermanently" xml:space="preserve"><value>Susa Unomphela</value></data>
+  <data name="ForumPostReplyFarmersTitle" xml:space="preserve"><value>Abalimi</value></data>
+  <data name="ForumPostReplyAddNewFarmer" xml:space="preserve"><value>Engeza Umlimi Omusha</value></data>
+  <data name="ForumPostReplyRegisterNewFarmerProfile" xml:space="preserve"><value>Bhalisa iphrofayela yomlimi omusha</value></data>
+  <data name="ForumPostReplySearchFarmersPlaceholder" xml:space="preserve"><value>Sesha ngegama, ipulazi, noma i-imeyili...</value></data>
+  <data name="ForumPostReplySearchFarmers" xml:space="preserve"><value>Sesha abalimi</value></data>
+  <data name="ForumPostReplyClose" xml:space="preserve"><value>Vala</value></data>
+  <data name="ForumPostReplyFarmersList" xml:space="preserve"><value>Abalimi Ababhalisiwe</value></data>
+  <data name="ForumPostReplyFarmerName" xml:space="preserve"><value>Igama Lomlimi</value></data>
+  <data name="ForumPostReplyFarmName" xml:space="preserve"><value>Igama Lepulazi</value></data>
+  <data name="ForumPostReplyEmail" xml:space="preserve"><value>I-imeyili</value></data>
+  <data name="ForumPostReplyPhoneNumber" xml:space="preserve"><value>Inombolo Yocingo</value></data>
+  <data name="ForumPostReplyFarmerActionsFor" xml:space="preserve"><value>Izenzo zika</value></data>
+  <data name="ForumPostReplyViewDetailsFor" xml:space="preserve"><value>Buka imininingwane ka</value></data>
+  <data name="ForumPostReplyNoFarmersFound" xml:space="preserve"><value>Abalimi abatholakele.</value></data>
+  <data name="ForumPostReplyAre you sure you want to delete this farmer?" xml:space="preserve">
+    <value>Uqinisekile ukuthi ufuna ukususa lo mlimi?</value>
+  </data>
+  <data name="ForumPostReplyAre you sure you want to delete this forum post?" xml:space="preserve">
+    <value>Uqinisekile ukuthi ufuna ukususa le posti yeforamu?</value>
+  </data>
+  <data name="ForumPostReplyAre you sure you want to delete this product?" xml:space="preserve">
+    <value>Uqinisekile ukuthi ufuna ukususa lo mkhiqizo?</value>
+  </data>
+  <data name="ForumPostReplyAre you sure you want to delete this reply?" xml:space="preserve">
+    <value>Uqinisekile ukuthi ufuna ukususa le impendulo?</value>
+  </data>
+  <data name="ForumPostReplyAudit Logs" xml:space="preserve">
+    <value>Ama-Log Okuhlola</value>
+  </data>
+  <data name="ForumPostReplyBack to List" xml:space="preserve">
+    <value>Buyela Emgqeni</value>
+  </data>
+  <data name="ForumPostReplyCategory" xml:space="preserve">
+    <value>Isigaba</value>
+  </data>
+  <data name="ForumPostReplyCreate" xml:space="preserve">
+    <value>Dala</value>
+  </data>
+  <data name="ForumPostReplyCreate Farmer" xml:space="preserve">
+    <value>Dala Umlimi</value>
+  </data>
+  <data name="ForumPostReplyCreate Forum Post" xml:space="preserve">
+    <value>Dala I-Posti Yeforamu</value>
+  </data>
+  <data name="ForumPostReplyCreate New Product" xml:space="preserve">
+    <value>Dala Umkhiqizo Omusha</value>
+  </data>
+  <data name="ForumPostReplyCreate Product" xml:space="preserve">
+    <value>Dala Umkhiqizo</value>
+  </data>
+  <data name="ForumPostReplyDelete" xml:space="preserve">
+    <value>Susa</value>
+  </data>
+  <data name="ForumPostReplyDelete Farmer" xml:space="preserve">
+    <value>Susa Umlimi</value>
+  </data>
+  <data name="ForumPostReplyDelete Forum Post" xml:space="preserve">
+    <value>Susa I-Posti Yeforamu</value>
+  </data>
+  <data name="ForumPostReplyDelete Product" xml:space="preserve">
+    <value>Susa Umkhiqizo</value>
+  </data>
+  <data name="ForumPostReplyDelete Reply" xml:space="preserve">
+    <value>Susa Impendulo</value>
+  </data>
+  <data name="ForumPostReplyDescription" xml:space="preserve">
+    <value>Incazelo</value>
+  </data>
+  <data name="ForumPostReplyEdit" xml:space="preserve">
+    <value>Hlela</value>
+  </data>
+  <data name="ForumPostReplyEdit Farmer" xml:space="preserve">
+    <value>Hlela Umlimi</value>
+  </data>
+  <data name="ForumPostReplyEdit Forum Post" xml:space="preserve">
+    <value>Hlela I-Posti Yeforamu</value>
+  </data>
+  <data name="ForumPostReplyEdit Product" xml:space="preserve">
+    <value>Hlela Umkhiqizo</value>
+  </data>
+  <data name="ForumPostReplyEmail" xml:space="preserve">
+    <value>I-imeyili</value>
+  </data>
+  <data name="ForumPostReplyEmployee Dashboard" xml:space="preserve">
+    <value>I-Dashboard Yomsebenzi</value>
+  </data>
+  <data name="ForumPostReplyFarmer" xml:space="preserve">
+    <value>Umlimi</value>
+  </data>
+  <data name="ForumPostReplyFarmer Dashboard" xml:space="preserve">
+    <value>I-Dashboard Yomlimi</value>
+  </data>
+  <data name="ForumPostReplyFarmer Details" xml:space="preserve">
+    <value>Imininingwane Yomlimi</value>
+  </data>
+  <data name="ForumPostReplyFarmers" xml:space="preserve">
+    <value>Abalimi</value>
+  </data>
+  <data name="ForumPostReplyFarm Name" xml:space="preserve">
+    <value>Igama Lasepulazini</value>
+  </data>
+  <data name="ForumPostReplyForum" xml:space="preserve">
+    <value>Iforamu</value>
+  </data>
+  <data name="ForumPostReplyForum Post" xml:space="preserve">
+    <value>I-Posti Yeforamu</value>
+  </data>
+  <data name="ForumPostReplyForum Post Details" xml:space="preserve">
+    <value>Imininingwane Yeposti Yeforamu</value>
+  </data>
+  <data name="ForumPostReplyHome" xml:space="preserve">
+    <value>Ekhaya</value>
+  </data>
+  <data name="ForumPostReplyLogin" xml:space="preserve">
+    <value>Ngena</value>
+  </data>
+  <data name="ForumPostReplyLogout" xml:space="preserve">
+    <value>Phuma</value>
+  </data>
+  <data name="ForumPostReplyName" xml:space="preserve">
+    <value>Igama</value>
+  </data>
+  <data name="ForumPostReplyPhone" xml:space="preserve">
+    <value>Ucingo</value>
+  </data>
+  <data name="ForumPostReplyPrice" xml:space="preserve">
+    <value>Intengo</value>
+  </data>
+  <data name="ForumPostReplyPrivacy" xml:space="preserve">
+    <value>Ubumfihlo</value>
+  </data>
+  <data name="ForumPostReplyProduct" xml:space="preserve">
+    <value>Umkhiqizo</value>
+  </data>
+  <data name="ForumPostReplyProduct Details" xml:space="preserve">
+    <value>Imininingwane Yomkhiqizo</value>
+  </data>
+  <data name="ForumPostReplyProducts" xml:space="preserve">
+    <value>Imikhiqizo</value>
+  </data>
+  <data name="ForumPostReplyRegister" xml:space="preserve">
+    <value>Bhalisa</value>
+  </data>
+  <data name="ForumPostReplyReply" xml:space="preserve">
+    <value>Phendula</value>
+  </data>
+  <data name="ForumPostReplySave" xml:space="preserve">
+    <value>Londoloza</value>
+  </data>
+  <data name="ForumPostReplySearch" xml:space="preserve">
+    <value>Sesha</value>
+  </data>
+  <data name="ForumPostReplyTitle" xml:space="preserve">
+    <value>Isihloko</value>
+  </data>
+  <data name="ForumPostReplyWelcome to Agri-Energy Connect Platform" xml:space="preserve">
+    <value>Siyakwamukela ku-Agri-Energy Connect Platform</value>
+  </data>
+
+  <!-- Notification System -->
+  <data name="Notifications" xml:space="preserve">
+    <value>Izaziso</value>
+  </data>
+  <data name="MarkAllAsRead" xml:space="preserve">
+    <value>Phawula Konke Njengokufundile</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Vuselela</value>
+  </data>
+  <data name="NoNotifications" xml:space="preserve">
+    <value>Azikho izaziso</value>
+  </data>
+  <data name="NoNotificationsDescription" xml:space="preserve">
+    <value>Uyabhaliswa! Azikho izaziso ezintsha okwamanje.</value>
+  </data>
+  <data name="MarkAsRead" xml:space="preserve">
+    <value>Phawula Njengokufundile</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Susa</value>
+  </data>
+  <data name="Critical" xml:space="preserve">
+    <value>Kubucayi</value>
+  </data>
+  <data name="High" xml:space="preserve">
+    <value>Ephakeme</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Entsha</value>
+  </data>
+  <data name="ViewAllNotifications" xml:space="preserve">
+    <value>Buka Zonke Izaziso</value>
+  </data>
+  <data name="ConfirmDeleteNotification" xml:space="preserve">
+    <value>Uqinisekile ukuthi ufuna ukususa lesi saziso?</value>
+  </data>
+  <data name="ErrorMarkingAsRead" xml:space="preserve">
+    <value>Iphutha ekumakweni kwesaziso njengokufundile. Sicela uzame futhi.</value>
+  </data>
+  <data name="ErrorDeletingNotification" xml:space="preserve">
+    <value>Iphutha ekususeni isaziso. Sicela uzame futhi.</value>
+  </data>
+  <data name="ErrorMarkingAllAsRead" xml:space="preserve">
+    <value>Iphutha ekumakweni kuzo zonke izaziso njengokufundile. Sicela uzame futhi.</value>
   </data>
 </root>

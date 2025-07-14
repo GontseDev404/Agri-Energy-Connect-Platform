@@ -1,68 +1,77 @@
 @model IEnumerable<ST10038937_prog7311_poe1.Models.Farmer>
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 
 @{
-    ViewData["Title"] = "Farmers";
+    ViewData["Title"] = Localizer["FarmersTitle"];
 }
 
 <div class="container main-container">
     <header class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="display-4">Farmers</h1>
-        <a asp-action="Create" class="btn btn-primary" aria-label="Register a new farmer profile">Add New Farmer</a>
+        <h1 class="display-4" data-translate-key="FarmersTitle">@Localizer["FarmersTitle"]</h1>
+        <a asp-action="Create" class="btn btn-primary" aria-label="@Localizer["RegisterNewFarmerProfile"]" data-translate-key="AddNewFarmer">@Localizer["AddNewFarmer"]</a>
     </header>
+    <form asp-action="Index" method="get" class="row mb-3 g-2 align-items-end">
+        <div class="col-md-4">
+            <input type="text" name="search" class="form-control" value="@ViewBag.Search" placeholder="@Localizer["SearchFarmersPlaceholder"]" aria-label="@Localizer["SearchFarmers"]" />
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary" data-translate-key="Search">@Localizer["Search"]</button>
+        </div>
+    </form>
 
     @if (TempData["SuccessMessage"] != null)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             @TempData["SuccessMessage"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="@Localizer["Close"]"></button>
         </div>
     }
 
-    <section class="card shadow" aria-labelledby="farmers-table-heading">
+    <section class="card shadow mb-4" aria-labelledby="farmers-list-heading">
         <div class="card-header">
-            <h2 id="farmers-table-heading" class="h5 mb-0 text-white">Registered Farmers</h2>
+            <h2 id="farmers-list-heading" class="h5 mb-0 text-white" data-translate-key="FarmersList">@Localizer["FarmersList"]</h2>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <caption class="visually-hidden">A list of all registered farmers with actions to view, edit, or delete their profiles.</caption>
-                    <thead class="table-light">
-                        <tr>
-                            <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
-                            <th scope="col">@Html.DisplayNameFor(model => model.FarmName)</th>
-                            <th scope="col">@Html.DisplayNameFor(model => model.Address)</th>
-                            <th scope="col">@Html.DisplayNameFor(model => model.PhoneNumber)</th>
-                            <th scope="col">@Html.DisplayNameFor(model => model.Email)</th>
-                            <th scope="col">Products</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead>
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                                <td>@Html.DisplayFor(modelItem => item.FarmName)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                                <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                                <td>
-                                    <a asp-controller="Product" asp-action="Index" asp-route-farmerId="@item.FarmerId" class="btn btn-outline-primary btn-sm" aria-label="View products for @item.Name">
-                                        View Products
-                                    </a>
-                                </td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Actions for @item.Name">
-                                        <a asp-action="Details" asp-route-id="@item.FarmerId" class="btn btn-info btn-sm" aria-label="View details for @item.Name">Details</a>
-                                        <a asp-action="Edit" asp-route-id="@item.FarmerId" class="btn btn-warning btn-sm" aria-label="Edit details for @item.Name">Edit</a>
-                                        <a asp-action="Delete" asp-route-id="@item.FarmerId" class="btn btn-danger btn-sm" aria-label="Delete profile for @item.Name">Delete</a>
-                                    </div>
-                                </td>
+                                <th data-translate-key="FarmerName">@Localizer["FarmerName"]</th>
+                                <th data-translate-key="FarmName">@Localizer["FarmName"]</th>
+                                <th data-translate-key="Email">@Localizer["Email"]</th>
+                                <th data-translate-key="PhoneNumber">@Localizer["PhoneNumber"]</th>
+                                <th data-translate-key="Actions">@Localizer["Actions"]</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.FarmName)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="@Localizer["FarmerActionsFor"] @item.Name">
+                                            <a asp-action="Details" asp-route-id="@item.FarmerId" class="btn btn-info btn-sm" aria-label="@Localizer["ViewDetailsFor"] @item.Name" data-translate-key="Details">@Localizer["Details"]</a>
+                                            <a asp-action="Edit" asp-route-id="@item.FarmerId" class="btn btn-warning btn-sm" aria-label="@Localizer["Edit"] @item.Name" data-translate-key="Edit">@Localizer["Edit"]</a>
+                                            <a asp-action="Delete" asp-route-id="@item.FarmerId" class="btn btn-danger btn-sm" aria-label="@Localizer["Delete"] @item.Name" data-translate-key="Delete">@Localizer["Delete"]</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info" role="alert" data-translate-key="NoFarmersFound">
+                    @Localizer["NoFarmersFound"]
+                </div>
+            }
         </div>
     </section>
 </div>

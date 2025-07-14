@@ -1,9 +1,37 @@
 @using Microsoft.AspNetCore.Identity
 @using ST10038937_prog7311_poe1.Models
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 
 <ul class="navbar-nav">
     @if (User.Identity != null && User.Identity.IsAuthenticated)
     {
+        <!-- Notification Dropdown -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle position-relative" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="View notifications">
+                <i class="bi bi-bell" aria-hidden="true"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge" style="display: none;">
+                    0
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end notification-dropdown" aria-labelledby="notificationDropdown" style="width: 350px; max-height: 400px; overflow-y: auto;">
+                <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                    <h6 class="mb-0">@Localizer["Notifications"]</h6>
+                    <div class="d-flex gap-1">
+                        <button class="btn btn-sm btn-outline-primary mark-all-read-btn" disabled>
+                            <i class="bi bi-check-all"></i>
+                        </button>
+                        <a href="@Url.Action("Index", "Notification")" class="btn btn-sm btn-outline-secondary">
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center py-4">
+                    <i class="bi bi-bell-slash text-muted mb-2"></i>
+                    <p class="text-muted small mb-0">@Localizer["NoNotifications"]</p>
+                </div>
+            </div>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage" title="Manage" aria-label="Manage your account">
                 <i class="bi bi-person-circle me-1" aria-hidden="true"></i>
@@ -33,3 +61,94 @@
         </li>
     }
 </ul>
+
+<script>
+$(document).ready(function() {
+    // Load notifications when dropdown is shown
+    $('#notificationDropdown').on('show.bs.dropdown', function() {
+        loadNotifications();
+    });
+
+    function loadNotifications() {
+        $.get('@Url.Action("Partial", "Notification")')
+            .done(function(data) {
+                $('.notification-dropdown').html(data);
+                initializeNotificationHandlers();
+            })
+            .fail(function() {
+                console.error('Failed to load notifications');
+            });
+    }
+
+    function initializeNotificationHandlers() {
+        // Mark as read functionality
+        $('.mark-read-btn').on('click', function(e) {
+            e.preventDefault();
+            var notificationId = $(this).data('notification-id');
+            var item = $(this).closest('.notification-item');
+            
+            $.post('@Url.Action("MarkAsRead", "Notification")', { id: notificationId })
+                .done(function(response) {
+                    if (response.success) {
+                        item.removeClass('bg-light');
+                        item.find('.fw-bold').removeClass('fw-bold');
+                        item.attr('data-notification-read', 'true');
+                        updateNotificationCount(response.unreadCount);
+                    }
+                });
+        });
+
+        // Delete notification functionality
+        $('.delete-notification-btn').on('click', function(e) {
+            e.preventDefault();
+            var notificationId = $(this).data('notification-id');
+            var item = $(this).closest('.notification-item');
+            
+            if (confirm('@Localizer["ConfirmDeleteNotification"]')) {
+                $.post('@Url.Action("Delete", "Notification")', { id: notificationId })
+                    .done(function(response) {
+                        if (response.success) {
+                            item.fadeOut(function() {
+                                $(this).remove();
+                                if ($('.notification-item').length === 0) {
+                                    $('.notification-dropdown').html('<div class="text-center py-4"><i class="bi bi-bell-slash text-muted mb-2"></i><p class="text-muted small mb-0">@Localizer["NoNotifications"]</p></div>');
+                                }
+                            });
+                            updateNotificationCount(response.unreadCount);
+                        }
+                    });
+            }
+        });
+
+        // Mark all as read functionality
+        $('.mark-all-read-btn').on('click', function() {
+            $.post('@Url.Action("MarkAllAsRead", "Notification")')
+                .done(function(response) {
+                    if (response.success) {
+                        $('.notification-item').removeClass('bg-light');
+                        $('.notification-item .fw-bold').removeClass('fw-bold');
+                        $('.notification-item').attr('data-notification-read', 'true');
+                        $('.mark-all-read-btn').prop('disabled', true);
+                        updateNotificationCount(0);
+                    }
+                });
+        });
+    }
+
+    function updateNotificationCount(count) {
+        var badge = $('.notification-badge');
+        badge.text(count);
+        if (count === 0) {
+            badge.hide();
+        } else {
+            badge.show();
+        }
+    }
+
+    // Load initial notification count
+    $.get('@Url.Action("UnreadCount", "Notification")')
+        .done(function(response) {
+            updateNotificationCount(response.count);
+        });
+});
+</script>

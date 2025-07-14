@@ -4,6 +4,7 @@
   <data name="Welcome" xml:space="preserve">
     <value>Welkom by Agri-Energy Connect!</value>
   </data>
+  <data name="WelcomeTitle" xml:space="preserve"><value>Welkom by Agri-Energy Connect</value></data>
   <data name="Forum" xml:space="preserve">
     <value>Gemeenskapsforum</value>
   </data>
@@ -13,6 +14,24 @@
   <data name="Language" xml:space="preserve">
     <value>Taal</value>
   </data>
+  <data name="AgriEnergyConnect" xml:space="preserve"><value>Agri-Energy Connect</value></data>
+  <data name="HeroLead" xml:space="preserve"><value>Bemagtig die landbougemeenskap deur die gaping tussen volhoubare boerdery en moderne energie-oplossings te oorbrug. Sluit aan om 'n groener toekoms te kweek.</value></data>
+  <data name="GetStarted" xml:space="preserve"><value>Begin Nou</value></data>
+  <data name="RegisterForAccount" xml:space="preserve"><value>Registreer vir 'n nuwe rekening</value></data>
+  <data name="Login" xml:space="preserve"><value>Teken In</value></data>
+  <data name="LoginToAccount" xml:space="preserve"><value>Teken in op jou bestaande rekening</value></data>
+  <data name="ViewProducts" xml:space="preserve"><value>Besoek Produkte</value></data>
+  <data name="GoToDashboard" xml:space="preserve"><value>Gaan na Dashboard</value></data>
+  <data name="OurCoreServices" xml:space="preserve"><value>Ons Kern Dienste</value></data>
+  <data name="ProductMarketplace" xml:space="preserve"><value>Produkmark</value></data>
+  <data name="ProductMarketplaceDescription" xml:space="preserve"><value>'n Sentrale plek waar boere hul produkte kan lys, bestuur en direk aan 'n wyer mark kan verkoop, met volle beheer oor voorraad en pryse.</value></data>
+  <data name="BrowseProducts" xml:space="preserve"><value>Besoek Produkte</value></data>
+  <data name="CommunityHub" xml:space="preserve"><value>Gemeenskapsentrum</value></data>
+  <data name="CommunityHubDescription" xml:space="preserve"><value>Skakel met mede-boere en kundiges in ons gemeenskapsforum. Deel kennis, vra vrae, en werk saam aan nuwe idees.</value></data>
+  <data name="JoinDiscussion" xml:space="preserve"><value>Sluit Aan by Bespreking</value></data>
+  <data name="SecureAudited" xml:space="preserve"><value>Veilig &amp; Geoudit</value></data>
+  <data name="SecureAuditedDescription" xml:space="preserve"><value>Ons platform is gebou met sekuriteit in gedagte, met rolgebaseerde toegang en omvattende ouditspore om data-integriteit te verseker.</value></data>
+  <data name="ViewAuditLogs" xml:space="preserve"><value>Besoek Ouditlogs</value></data>
 
   <!-- About Page -->
   <data name="AboutAgriEnergyConnect" xml:space="preserve">
@@ -164,5 +183,133 @@
   </data>
   <data name="DevelopmentApproachDescription" xml:space="preserve">
     <value>Hierdie projek is ontwikkel met behulp van 'n iteratiewe en inkrementele metodologie, gelei deur ratse beginsels. Ons het gefokus op die lewering van funksionele komponente in fases, wat deurlopende terugvoer en verfyning moontlik gemaak het. Hierdie benadering het klem gelê op kodekwaliteit, nakoming van beste praktyke en 'n verbintenis tot die bou van 'n robuuste en gebruiker-sentriese finale produk.</value>
+  </data>
+  <data name="ProductsTitle" xml:space="preserve"><value>Produkte</value></data>
+  <data name="FilterProducts" xml:space="preserve"><value>Filter Produkte</value></data>
+  <data name="Farmer" xml:space="preserve"><value>Boer</value></data>
+  <data name="FilterByFarmer" xml:space="preserve"><value>Filter volgens boer</value></data>
+  <data name="AllFarmers" xml:space="preserve"><value>Alle Boere</value></data>
+  <data name="Category" xml:space="preserve"><value>Kategorie</value></data>
+  <data name="FilterByCategory" xml:space="preserve"><value>Filter volgens kategorie</value></data>
+  <data name="AllCategories" xml:space="preserve"><value>Alle Kategorieë</value></data>
+  <data name="StartDate" xml:space="preserve"><value>Begindatum</value></data>
+  <data name="EndDate" xml:space="preserve"><value>Einddatum</value></data>
+  <data name="Search" xml:space="preserve"><value>Soek</value></data>
+  <data name="SearchProductsPlaceholder" xml:space="preserve"><value>Produknaam of beskrywing</value></data>
+  <data name="SearchProducts" xml:space="preserve"><value>Soek produkte</value></data>
+  <data name="ApplyFilters" xml:space="preserve"><value>Pas Filters Toe</value></data>
+  <data name="ProductsList" xml:space="preserve"><value>Produklys</value></data>
+  <data name="ProductName" xml:space="preserve"><value>Produknaam</value></data>
+  <data name="ProductionDate" xml:space="preserve"><value>Produksiedatum</value></data>
+  <data name="Price" xml:space="preserve"><value>Prys</value></data>
+  <data name="QuantityAvailable" xml:space="preserve"><value>Beskikbare Hoeveelheid</value></data>
+  <data name="Actions" xml:space="preserve"><value>Handelinge</value></data>
+  <data name="ProductActionsFor" xml:space="preserve"><value>Handelinge vir produk</value></data>
+  <data name="ViewDetailsFor" xml:space="preserve"><value>Besoek besonderhede vir</value></data>
+  <data name="Details" xml:space="preserve"><value>Besonderhede</value></data>
+  <data name="Edit" xml:space="preserve"><value>Wysig</value></data>
+  <data name="Delete" xml:space="preserve"><value>Verwyder</value></data>
+  <data name="NoProductsFound" xml:space="preserve"><value>Geen produkte gevind nie.</value></data>
+  <data name="AddFirstProduct" xml:space="preserve"><value>Klik 'Voeg Nuwe Produk By' om jou eerste produk by te voeg.</value></data>
+  <data name="TryChangingFilter" xml:space="preserve"><value>Probeer om jou filterkriteria te verander.</value></data>
+  <data name="AddNewProductTitle" xml:space="preserve"><value>Voeg Nuwe Produk By</value></data>
+  <data name="ProductInformation" xml:space="preserve"><value>Produk Inligting</value></data>
+  <data name="ProductNamePlaceholder" xml:space="preserve"><value>bv. Organiese Tamaties</value></data>
+  <data name="CategoryPlaceholder" xml:space="preserve"><value>bv. Groente</value></data>
+  <data name="SelectCategory" xml:space="preserve"><value>Kies Kategorie</value></data>
+  <data name="Vegetables" xml:space="preserve"><value>Groente</value></data>
+  <data name="Fruits" xml:space="preserve"><value>Vrugte</value></data>
+  <data name="Dairy" xml:space="preserve"><value>Suiwel</value></data>
+  <data name="Grains" xml:space="preserve"><value>Graan</value></data>
+  <data name="Meat" xml:space="preserve"><value>Vleis</value></data>
+  <data name="Poultry" xml:space="preserve"><value>Pluimvee</value></data>
+  <data name="Other" xml:space="preserve"><value>Ander</value></data>
+  <data name="PricePlaceholder" xml:space="preserve"><value>bv. 25.50</value></data>
+  <data name="PriceInRand" xml:space="preserve"><value>Prys in Rand</value></data>
+  <data name="DescriptionPlaceholder" xml:space="preserve"><value>Verskaf 'n kort beskrywing van die produk</value></data>
+  <data name="QuantityAvailablePlaceholder" xml:space="preserve"><value>bv. 100</value></data>
+  <data name="SubmitAndCreateProduct" xml:space="preserve"><value>Dien in en skep nuwe produk</value></data>
+  <data name="CreateProduct" xml:space="preserve"><value>Skep Produk</value></data>
+  <data name="BackToProductList" xml:space="preserve"><value>Terug na Produklys</value></data>
+  <data name="FarmInformation" xml:space="preserve"><value>Plaas Inligting</value></data>
+  <data name="Farm" xml:space="preserve"><value>Plaas</value></data>
+  <data name="FarmInformationHelpText" xml:space="preserve"><value>Hierdie produk sal publiek met jou plaasprofiel geassosieer word.</value></data>
+  <data name="EditProductTitle" xml:space="preserve"><value>Wysig Produk</value></data>
+  <data name="EditProductInformation" xml:space="preserve"><value>Wysig Produk Inligting</value></data>
+  <data name="SaveProductChanges" xml:space="preserve"><value>Stoor veranderinge aan die produk</value></data>
+  <data name="SaveChanges" xml:space="preserve"><value>Stoor Veranderinge</value></data>
+  <data name="ProductDetailsTitle" xml:space="preserve"><value>Produk Besonderhede</value></data>
+  <data name="ProductDetails" xml:space="preserve"><value>Produk Besonderhede</value></data>
+  <data name="Units" xml:space="preserve"><value>eenhede</value></data>
+  <data name="DeleteProductTitle" xml:space="preserve"><value>Verwyder Produk</value></data>
+  <data name="Warning" xml:space="preserve"><value>Waarskuwing!</value></data>
+  <data name="DeleteProductWarning" xml:space="preserve"><value>Is jy seker jy wil hierdie produk permanent verwyder? Hierdie aksie kan nie ongedaan gemaak word nie.</value></data>
+  <data name="ConfirmDeletion" xml:space="preserve"><value>Bevestig Verwydering van</value></data>
+  <data name="CancelAndReturn" xml:space="preserve"><value>Kanselleer en keer terug na produklys</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Kanselleer</value></data>
+  <data name="ConfirmPermanentDeletion" xml:space="preserve"><value>Bevestig permanente verwydering van produk</value></data>
+  <data name="DeletePermanently" xml:space="preserve"><value>Verwyder Permanent</value></data>
+  <data name="FarmersTitle" xml:space="preserve"><value>Boere</value></data>
+  <data name="AddNewFarmer" xml:space="preserve"><value>Voeg Nuwe Boer By</value></data>
+  <data name="RegisterNewFarmerProfile" xml:space="preserve"><value>Registreer 'n nuwe boerprofiel</value></data>
+  <data name="SearchFarmersPlaceholder" xml:space="preserve"><value>Soek volgens naam, plaas of e-pos...</value></data>
+  <data name="SearchFarmers" xml:space="preserve"><value>Soek boere</value></data>
+  <data name="Close" xml:space="preserve"><value>Maak toe</value></data>
+  <data name="FarmersList" xml:space="preserve"><value>Geregistreerde Boere</value></data>
+  <data name="FarmerName" xml:space="preserve"><value>Boer Naam</value></data>
+  <data name="FarmName" xml:space="preserve"><value>Plaas Naam</value></data>
+  <data name="Email" xml:space="preserve"><value>E-pos</value></data>
+  <data name="PhoneNumber" xml:space="preserve"><value>Telefoonnommer</value></data>
+  <data name="FarmerActionsFor" xml:space="preserve"><value>Handelinge vir</value></data>
+  <data name="ViewDetailsFor" xml:space="preserve"><value>Besoek besonderhede vir</value></data>
+  <data name="NoFarmersFound" xml:space="preserve"><value>Geen boere gevind nie.</value></data>
+  <data name="AuditLogs" xml:space="preserve"><value>Oudit Logs</value></data>
+  <data name="NoAuditLogsFound" xml:space="preserve"><value>Geen oudit logs gevind nie.</value></data>
+
+  <!-- Notification System -->
+  <data name="Notifications" xml:space="preserve">
+    <value>Kennisgewings</value>
+  </data>
+  <data name="MarkAllAsRead" xml:space="preserve">
+    <value>Merk Alles as Gelees</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Verfris</value>
+  </data>
+  <data name="NoNotifications" xml:space="preserve">
+    <value>Geen kennisgewings</value>
+  </data>
+  <data name="NoNotificationsDescription" xml:space="preserve">
+    <value>Jy is bygewerk! Geen nuwe kennisgewings op die oomblik nie.</value>
+  </data>
+  <data name="MarkAsRead" xml:space="preserve">
+    <value>Merk as Gelees</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Verwyder</value>
+  </data>
+  <data name="Critical" xml:space="preserve">
+    <value>Krities</value>
+  </data>
+  <data name="High" xml:space="preserve">
+    <value>Hoog</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Nuut</value>
+  </data>
+  <data name="ViewAllNotifications" xml:space="preserve">
+    <value>Besoek Alle Kennisgewings</value>
+  </data>
+  <data name="ConfirmDeleteNotification" xml:space="preserve">
+    <value>Is jy seker jy wil hierdie kennisgewing verwyder?</value>
+  </data>
+  <data name="ErrorMarkingAsRead" xml:space="preserve">
+    <value>Fout met die merk van kennisgewing as gelees. Probeer asseblief weer.</value>
+  </data>
+  <data name="ErrorDeletingNotification" xml:space="preserve">
+    <value>Fout met die verwydering van kennisgewing. Probeer asseblief weer.</value>
+  </data>
+  <data name="ErrorMarkingAllAsRead" xml:space="preserve">
+    <value>Fout met die merk van alle kennisgewings as gelees. Probeer asseblief weer.</value>
   </data>
 </root>

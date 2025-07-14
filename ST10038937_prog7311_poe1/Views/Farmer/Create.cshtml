@@ -1,80 +1,51 @@
 @model ST10038937_prog7311_poe1.Models.Farmer
 
 @{
-    ViewData["Title"] = "Add New Farmer";
+    ViewData["Title"] = Localizer["Create Farmer"];
 }
 
-<div class="container main-container">
-    <header class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="display-4">Register New Farmer</h1>
-        <a asp-action="Index" class="btn btn-outline-secondary" aria-label="Cancel and return to the farmer list">Back to List</a>
-    </header>
+<h1 data-translate-key="Create Farmer">Create Farmer</h1>
 
-    <div class="row">
-        <div class="col-md-8">
-            <section class="card shadow" aria-labelledby="farmer-form-heading">
-                <div class="card-header">
-                    <h2 id="farmer-form-heading" class="h5 mb-0 text-white">Farmer Details</h2>
-                </div>
-                <div class="card-body">
-                    <form asp-action="Create">
-                        <div asp-validation-summary="All" class="text-danger alert alert-danger" role="alert"></div>
-
-                        <div class="mb-3">
-                            <label asp-for="Name" class="form-label"></label>
-                            <input asp-for="Name" class="form-control" placeholder="e.g., John Doe" required aria-required="true" aria-describedby="name-validation" />
-                            <span asp-validation-for="Name" class="text-danger" id="name-validation"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="FarmName" class="form-label"></label>
-                            <input asp-for="FarmName" class="form-control" placeholder="e.g., Sunrise Farms" required aria-required="true" aria-describedby="farm-name-validation" />
-                            <span asp-validation-for="FarmName" class="text-danger" id="farm-name-validation"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Address" class="form-label"></label>
-                            <input asp-for="Address" class="form-control" placeholder="e.g., 123 Farm Road, Springfield" required aria-required="true" aria-describedby="address-validation" />
-                            <span asp-validation-for="Address" class="text-danger" id="address-validation"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="PhoneNumber" class="form-label"></label>
-                            <input asp-for="PhoneNumber" class="form-control" placeholder="e.g., (555) 123-4567" required aria-required="true" aria-describedby="phone-validation" />
-                            <span asp-validation-for="PhoneNumber" class="text-danger" id="phone-validation"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Email" class="form-label"></label>
-                            <input asp-for="Email" class="form-control" type="email" placeholder="e.g., farmer@example.com" required aria-required="true" aria-describedby="email-validation email-help" />
-                            <span asp-validation-for="Email" class="text-danger" id="email-validation"></span>
-                            <small id="email-help" class="form-text text-muted">This email will be used as the login username for the farmer.</small>
-                        </div>
-
-                        <div class="card-footer text-end">
-                            <button type="submit" class="btn btn-primary" aria-label="Submit and create new farmer profile">Create Farmer</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </div>
-        <div class="col-md-4">
-            <aside class="card shadow" aria-labelledby="info-heading">
-                <div class="card-header bg-info text-white">
-                    <h3 id="info-heading" class="h5 mb-0">Information</h3>
-                </div>
-                <div class="card-body">
-                    <p>When you create a new farmer:</p>
-                    <ul>
-                        <li>A user account will be created automatically.</li>
-                        <li>The farmer will be assigned the "Farmer" role.</li>
-                        <li>A temporary password will be generated and must be changed on first login.</li>
-                        <li>The farmer can use their email to log in.</li>
-                    </ul>
-                </div>
-            </aside>
-        </div>
+<h4 data-translate-key="Farmer">Farmer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label" data-translate-key="Name">Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmName" class="control-label" data-translate-key="Farm Name">Farm Name</label>
+                <input asp-for="FarmName" class="form-control" />
+                <span asp-validation-for="FarmName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label" data-translate-key="Email">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label" data-translate-key="Phone">Phone</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label" data-translate-key="Address">Address</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
+
+<div>
+    <a asp-action="Index" data-translate-key="Back to List">Back to List</a>
 </div>
 
 @section Scripts {

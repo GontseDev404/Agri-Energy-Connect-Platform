@@ -12,4 +12,350 @@
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="WelcomeTitle" xml:space="preserve"><value>Welcome to Agri-Energy Connect</value></data>
+  <data name="AgriEnergyConnect" xml:space="preserve"><value>Agri-Energy Connect</value></data>
+  <data name="HeroLead" xml:space="preserve"><value>Empowering the agricultural community by bridging the gap between sustainable farming and modern energy solutions. Join us to cultivate a greener future.</value></data>
+  <data name="GetStarted" xml:space="preserve"><value>Get Started</value></data>
+  <data name="RegisterForAccount" xml:space="preserve"><value>Register for a new account</value></data>
+  <data name="Login" xml:space="preserve"><value>Login</value></data>
+  <data name="LoginToAccount" xml:space="preserve"><value>Login to your existing account</value></data>
+  <data name="ViewProducts" xml:space="preserve"><value>View Products</value></data>
+  <data name="GoToDashboard" xml:space="preserve"><value>Go to Dashboard</value></data>
+  <data name="OurCoreServices" xml:space="preserve"><value>Our Core Services</value></data>
+  <data name="ProductMarketplace" xml:space="preserve"><value>Product Marketplace</value></data>
+  <data name="ProductMarketplaceDescription" xml:space="preserve"><value>A central hub for farmers to list, manage, and sell their products directly to a wider market, with full control over inventory and pricing.</value></data>
+  <data name="BrowseProducts" xml:space="preserve"><value>Browse Products</value></data>
+  <data name="CommunityHub" xml:space="preserve"><value>Community Hub</value></data>
+  <data name="CommunityHubDescription" xml:space="preserve"><value>Connect with fellow farmers and industry experts in our community forum. Share knowledge, ask questions, and collaborate on new ideas.</value></data>
+  <data name="JoinDiscussion" xml:space="preserve"><value>Join Discussion</value></data>
+  <data name="SecureAudited" xml:space="preserve"><value>Secure &amp; Audited</value></data>
+  <data name="SecureAuditedDescription" xml:space="preserve"><value>Our platform is built with security in mind, featuring role-based access and comprehensive audit trails to ensure data integrity.</value></data>
+  <data name="ViewAuditLogs" xml:space="preserve"><value>View Audit Logs</value></data>
+  <data name="ProductsTitle" xml:space="preserve"><value>Products</value></data>
+  <data name="FilterProducts" xml:space="preserve"><value>Filter Products</value></data>
+  <data name="Farmer" xml:space="preserve"><value>Farmer</value></data>
+  <data name="FilterByFarmer" xml:space="preserve"><value>Filter by farmer</value></data>
+  <data name="AllFarmers" xml:space="preserve"><value>All Farmers</value></data>
+  <data name="Category" xml:space="preserve"><value>Category</value></data>
+  <data name="FilterByCategory" xml:space="preserve"><value>Filter by category</value></data>
+  <data name="AllCategories" xml:space="preserve"><value>All Categories</value></data>
+  <data name="StartDate" xml:space="preserve"><value>Start Date</value></data>
+  <data name="EndDate" xml:space="preserve"><value>End Date</value></data>
+  <data name="Search" xml:space="preserve"><value>Search</value></data>
+  <data name="SearchProductsPlaceholder" xml:space="preserve"><value>Product name or description</value></data>
+  <data name="SearchProducts" xml:space="preserve"><value>Search products</value></data>
+  <data name="ApplyFilters" xml:space="preserve"><value>Apply Filters</value></data>
+  <data name="ProductsList" xml:space="preserve"><value>Product Listings</value></data>
+  <data name="ProductName" xml:space="preserve"><value>Product Name</value></data>
+  <data name="ProductionDate" xml:space="preserve"><value>Production Date</value></data>
+  <data name="Price" xml:space="preserve"><value>Price</value></data>
+  <data name="QuantityAvailable" xml:space="preserve"><value>Quantity Available</value></data>
+  <data name="Actions" xml:space="preserve"><value>Actions</value></data>
+  <data name="ProductActionsFor" xml:space="preserve"><value>Product actions for</value></data>
+  <data name="ViewDetailsFor" xml:space="preserve"><value>View details for</value></data>
+  <data name="Details" xml:space="preserve"><value>Details</value></data>
+  <data name="Edit" xml:space="preserve"><value>Edit</value></data>
+  <data name="Delete" xml:space="preserve"><value>Delete</value></data>
+  <data name="NoProductsFound" xml:space="preserve"><value>No products found.</value></data>
+  <data name="AddFirstProduct" xml:space="preserve"><value>Click 'Add New Product' to add your first product.</value></data>
+  <data name="TryChangingFilter" xml:space="preserve"><value>Try changing your filter criteria.</value></data>
+  <data name="AddNewProductTitle" xml:space="preserve"><value>Add New Product</value></data>
+  <data name="ProductInformation" xml:space="preserve"><value>Product Information</value></data>
+  <data name="ProductNamePlaceholder" xml:space="preserve"><value>e.g., Organic Tomatoes</value></data>
+  <data name="CategoryPlaceholder" xml:space="preserve"><value>e.g., Vegetables</value></data>
+  <data name="SelectCategory" xml:space="preserve"><value>Select Category</value></data>
+  <data name="Vegetables" xml:space="preserve"><value>Vegetables</value></data>
+  <data name="Fruits" xml:space="preserve"><value>Fruits</value></data>
+  <data name="Dairy" xml:space="preserve"><value>Dairy</value></data>
+  <data name="Grains" xml:space="preserve"><value>Grains</value></data>
+  <data name="Meat" xml:space="preserve"><value>Meat</value></data>
+  <data name="Poultry" xml:space="preserve"><value>Poultry</value></data>
+  <data name="Other" xml:space="preserve"><value>Other</value></data>
+  <data name="PricePlaceholder" xml:space="preserve"><value>e.g., 25.50</value></data>
+  <data name="PriceInRand" xml:space="preserve"><value>Price in Rand</value></data>
+  <data name="DescriptionPlaceholder" xml:space="preserve"><value>Provide a brief description of the product</value></data>
+  <data name="QuantityAvailablePlaceholder" xml:space="preserve"><value>e.g., 100</value></data>
+  <data name="SubmitAndCreateProduct" xml:space="preserve"><value>Submit and create new product</value></data>
+  <data name="CreateProduct" xml:space="preserve"><value>Create Product</value></data>
+  <data name="BackToProductList" xml:space="preserve"><value>Back to Product List</value></data>
+  <data name="FarmInformation" xml:space="preserve"><value>Farm Information</value></data>
+  <data name="Farm" xml:space="preserve"><value>Farm</value></data>
+  <data name="FarmInformationHelpText" xml:space="preserve"><value>This product will be publicly associated with your farm profile.</value></data>
+  <data name="EditProductTitle" xml:space="preserve"><value>Edit Product</value></data>
+  <data name="EditProductInformation" xml:space="preserve"><value>Edit Product Information</value></data>
+  <data name="SaveProductChanges" xml:space="preserve"><value>Save changes to the product</value></data>
+  <data name="SaveChanges" xml:space="preserve"><value>Save Changes</value></data>
+  <data name="ProductDetailsTitle" xml:space="preserve"><value>Product Details</value></data>
+  <data name="ProductDetails" xml:space="preserve"><value>Product Details</value></data>
+  <data name="Units" xml:space="preserve"><value>units</value></data>
+  <data name="DeleteProductTitle" xml:space="preserve"><value>Delete Product</value></data>
+  <data name="Warning" xml:space="preserve"><value>Warning!</value></data>
+  <data name="DeleteProductWarning" xml:space="preserve"><value>Are you sure you want to permanently delete this product? This action cannot be undone.</value></data>
+  <data name="ConfirmDeletion" xml:space="preserve"><value>Confirm Deletion of</value></data>
+  <data name="CancelAndReturn" xml:space="preserve"><value>Cancel and return to product list</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="ConfirmPermanentDeletion" xml:space="preserve"><value>Confirm permanent deletion of product</value></data>
+  <data name="DeletePermanently" xml:space="preserve"><value>Delete Permanently</value></data>
+  <data name="FarmersTitle" xml:space="preserve"><value>Farmers</value></data>
+  <data name="AddNewFarmer" xml:space="preserve"><value>Add New Farmer</value></data>
+  <data name="RegisterNewFarmerProfile" xml:space="preserve"><value>Register a new farmer profile</value></data>
+  <data name="SearchFarmersPlaceholder" xml:space="preserve"><value>Search by name, farm, or email...</value></data>
+  <data name="SearchFarmers" xml:space="preserve"><value>Search farmers</value></data>
+  <data name="Close" xml:space="preserve"><value>Close</value></data>
+  <data name="FarmersList" xml:space="preserve"><value>Registered Farmers</value></data>
+  <data name="FarmerName" xml:space="preserve"><value>Farmer Name</value></data>
+  <data name="FarmName" xml:space="preserve"><value>Farm Name</value></data>
+  <data name="Email" xml:space="preserve"><value>Email</value></data>
+  <data name="PhoneNumber" xml:space="preserve"><value>Phone Number</value></data>
+  <data name="FarmerActionsFor" xml:space="preserve"><value>Actions for</value></data>
+  <data name="ViewDetailsFor" xml:space="preserve"><value>View details for</value></data>
+  <data name="NoFarmersFound" xml:space="preserve"><value>No farmers found.</value></data>
+  <data name="Forum" xml:space="preserve">
+    <value>Forum</value>
+  </data>
+  <data name="Forum Post" xml:space="preserve">
+    <value>Forum Post</value>
+  </data>
+  <data name="Forum Post Details" xml:space="preserve">
+    <value>Forum Post Details</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Posted by" xml:space="preserve">
+    <value>Posted by</value>
+  </data>
+  <data name="Posted on" xml:space="preserve">
+    <value>Posted on</value>
+  </data>
+  <data name="Replies" xml:space="preserve">
+    <value>Replies</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Showing results for" xml:space="preserve">
+    <value>Showing results for</value>
+  </data>
+  <data name="Search forum posts..." xml:space="preserve">
+    <value>Search forum posts...</value>
+  </data>
+  <data name="No forum posts found." xml:space="preserve">
+    <value>No forum posts found.</value>
+  </data>
+  <data name="Back to Post" xml:space="preserve">
+    <value>Back to Post</value>
+  </data>
+  <data name="Timestamp" xml:space="preserve">
+    <value>Timestamp</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Search audit logs..." xml:space="preserve">
+    <value>Search audit logs...</value>
+  </data>
+  <data name="No audit logs found." xml:space="preserve">
+    <value>No audit logs found.</value>
+  </data>
+  <data name="ApiDocumentationTitle" xml:space="preserve">
+    <value>API Documentation</value>
+  </data>
+  <data name="CopyAllEndpoints" xml:space="preserve">
+    <value>Copy All Endpoints</value>
+  </data>
+  <data name="ApiOverview" xml:space="preserve">
+    <value>API Overview</value>
+  </data>
+  <data name="ApiDescription" xml:space="preserve">
+    <value>This RESTful API provides programmatic access to the Agri-Energy Connect Platform. All endpoints require authentication and return JSON responses.</value>
+  </data>
+  <data name="BaseUrl" xml:space="preserve">
+    <value>Base URL</value>
+  </data>
+  <data name="Authentication" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="AuthenticationDescription" xml:space="preserve">
+    <value>All API endpoints require a valid Bearer token obtained through the login process. Include the token in the Authorization header.</value>
+  </data>
+  <data name="ProductsApi" xml:space="preserve">
+    <value>Products API</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>Method</value>
+  </data>
+  <data name="Endpoint" xml:space="preserve">
+    <value>Endpoint</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Auth" xml:space="preserve">
+    <value>Auth</value>
+  </data>
+  <data name="GetProductsDescription" xml:space="preserve">
+    <value>Retrieve a list of products with optional filtering and pagination</value>
+  </data>
+  <data name="GetProductDescription" xml:space="preserve">
+    <value>Retrieve a specific product by ID</value>
+  </data>
+  <data name="CreateProductDescription" xml:space="preserve">
+    <value>Create a new product (Farmers only)</value>
+  </data>
+  <data name="UpdateProductDescription" xml:space="preserve">
+    <value>Update an existing product</value>
+  </data>
+  <data name="DeleteProductDescription" xml:space="preserve">
+    <value>Delete a product</value>
+  </data>
+  <data name="GetCategoriesDescription" xml:space="preserve">
+    <value>Get all available product categories</value>
+  </data>
+  <data name="FarmersApi" xml:space="preserve">
+    <value>Farmers API</value>
+  </data>
+  <data name="GetFarmersDescription" xml:space="preserve">
+    <value>Retrieve a list of farmers with optional filtering and pagination</value>
+  </data>
+  <data name="GetFarmerDescription" xml:space="preserve">
+    <value>Retrieve a specific farmer by ID with their products</value>
+  </data>
+  <data name="CreateFarmerDescription" xml:space="preserve">
+    <value>Create a new farmer profile</value>
+  </data>
+  <data name="UpdateFarmerDescription" xml:space="preserve">
+    <value>Update an existing farmer profile</value>
+  </data>
+  <data name="DeleteFarmerDescription" xml:space="preserve">
+    <value>Delete a farmer profile (only if no products exist)</value>
+  </data>
+  <data name="GetFarmerProductsDescription" xml:space="preserve">
+    <value>Get all products for a specific farmer</value>
+  </data>
+  <data name="ForumApi" xml:space="preserve">
+    <value>Forum API</value>
+  </data>
+  <data name="GetForumPostsDescription" xml:space="preserve">
+    <value>Retrieve a list of forum posts with optional filtering and pagination</value>
+  </data>
+  <data name="GetForumPostDescription" xml:space="preserve">
+    <value>Retrieve a specific forum post with all replies</value>
+  </data>
+  <data name="CreateForumPostDescription" xml:space="preserve">
+    <value>Create a new forum post</value>
+  </data>
+  <data name="UpdateForumPostDescription" xml:space="preserve">
+    <value>Update an existing forum post (author or admin only)</value>
+  </data>
+  <data name="DeleteForumPostDescription" xml:space="preserve">
+    <value>Delete a forum post (author or admin only)</value>
+  </data>
+  <data name="AddReplyDescription" xml:space="preserve">
+    <value>Add a reply to a forum post</value>
+  </data>
+  <data name="DeleteReplyDescription" xml:space="preserve">
+    <value>Delete a reply (author or admin only)</value>
+  </data>
+  <data name="AuditLogsApi" xml:space="preserve">
+    <value>Audit Logs API</value>
+  </data>
+  <data name="GetAuditLogsDescription" xml:space="preserve">
+    <value>Retrieve audit logs with optional filtering and pagination</value>
+  </data>
+  <data name="GetAuditLogDescription" xml:space="preserve">
+    <value>Retrieve a specific audit log entry</value>
+  </data>
+  <data name="GetAuditActionsDescription" xml:space="preserve">
+    <value>Get all unique audit actions</value>
+  </data>
+  <data name="GetAuditUsersDescription" xml:space="preserve">
+    <value>Get all users who have generated audit logs</value>
+  </data>
+  <data name="GetAuditStatisticsDescription" xml:space="preserve">
+    <value>Get audit log statistics and analytics</value>
+  </data>
+  <data name="DeleteAuditLogDescription" xml:space="preserve">
+    <value>Delete a specific audit log entry (admin only)</value>
+  </data>
+  <data name="DeleteAuditLogsBulkDescription" xml:space="preserve">
+    <value>Delete multiple audit logs based on criteria (admin only)</value>
+  </data>
+  <data name="ExampleRequests" xml:space="preserve">
+    <value>Example Requests</value>
+  </data>
+  <data name="ProductsExample" xml:space="preserve">
+    <value>Products API Examples</value>
+  </data>
+  <data name="GetProducts" xml:space="preserve">
+    <value>Get Products</value>
+  </data>
+  <data name="CreateProduct" xml:space="preserve">
+    <value>Create Product</value>
+  </data>
+  <data name="ForumExample" xml:space="preserve">
+    <value>Forum API Examples</value>
+  </data>
+  <data name="CreateForumPost" xml:space="preserve">
+    <value>Create Forum Post</value>
+  </data>
+  <data name="AddReply" xml:space="preserve">
+    <value>Add Reply</value>
+  </data>
+
+  <!-- Notification System -->
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="MarkAllAsRead" xml:space="preserve">
+    <value>Mark All as Read</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="NoNotifications" xml:space="preserve">
+    <value>No notifications</value>
+  </data>
+  <data name="NoNotificationsDescription" xml:space="preserve">
+    <value>You're all caught up! No new notifications at the moment.</value>
+  </data>
+  <data name="MarkAsRead" xml:space="preserve">
+    <value>Mark as Read</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Critical" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+  <data name="High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="ViewAllNotifications" xml:space="preserve">
+    <value>View All Notifications</value>
+  </data>
+  <data name="ConfirmDeleteNotification" xml:space="preserve">
+    <value>Are you sure you want to delete this notification?</value>
+  </data>
+  <data name="ErrorMarkingAsRead" xml:space="preserve">
+    <value>Error marking notification as read. Please try again.</value>
+  </data>
+  <data name="ErrorDeletingNotification" xml:space="preserve">
+    <value>Error deleting notification. Please try again.</value>
+  </data>
+  <data name="ErrorMarkingAllAsRead" xml:space="preserve">
+    <value>Error marking all notifications as read. Please try again.</value>
+  </data>
 </root>

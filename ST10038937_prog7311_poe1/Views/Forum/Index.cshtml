@@ -1,55 +1,83 @@
 @model IEnumerable<ST10038937_prog7311_poe1.Models.ForumPost>
 
 @{
-    ViewData["Title"] = "Community Forum";
+    ViewData["Title"] = Localizer["Forum"];
 }
 
-<div class="container main-container">
-    <header class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="display-5">@ViewData["Title"]</h1>
-        <a class="btn btn-primary" asp-action="Create" aria-label="Create a new forum post">Create New Post</a>
-    </header>
+<h1 data-translate-key="Forum">Forum</h1>
 
-    <p class="lead text-center mb-5">Join the conversation, share your knowledge, and connect with peers.</p>
+<p>
+    <a asp-action="Create" data-translate-key="Create Forum Post">Create Forum Post</a>
+</p>
 
-    <section aria-labelledby="forum-posts-heading">
-        <h2 id="forum-posts-heading" class="visually-hidden">Forum Posts</h2>
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form asp-action="Index" method="get" class="d-flex">
+            <input type="text" name="searchString" class="form-control me-2" placeholder="@Localizer["Search forum posts..."]" value="@ViewData["CurrentFilter"]" />
+            <button type="submit" class="btn btn-primary" data-translate-key="Search">Search</button>
+        </form>
+    </div>
+</div>
 
-        @if (!Model.Any())
+@if (!string.IsNullOrEmpty(ViewData["CurrentFilter"]?.ToString()))
+{
+    <div class="alert alert-info">
+        <span data-translate-key="Showing results for">Showing results for:</span> "@ViewData["CurrentFilter"]"
+        <a asp-action="Index" class="btn btn-sm btn-outline-secondary ms-2" data-translate-key="Clear">Clear</a>
+    </div>
+}
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var item in Model)
         {
-            <div class="card" role="status">
-                <div class="card-body text-center">
-                    <p class="card-text">No posts have been made yet. Be the first to start a discussion!</p>
-                </div>
-            </div>
-        }
-        else
-        {
-            @foreach (var post in Model)
-            {
-                <article class="card mb-3">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <h3 class="h5 card-title mb-1">
-                                    <a asp-action="Details" asp-route-id="@post.Id" class="text-decoration-none">@post.Title</a>
-                                </h3>
-                                <small class="text-muted">
-                                    Posted by @(post.User?.UserName ?? "Anonymous") on @post.CreatedAt.ToLongDateString()
-                                </small>
-                            </div>
-                            <div class="text-end">
-                                <span class="badge bg-secondary me-2" aria-label="@post.Replies.Count() replies to this post">@post.Replies.Count() Replies</span>
-                                <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@post.Id" aria-label="View post: @post.Title">View</a>
-                                @if (User.IsInRole("Employee"))
+                        <h5 class="card-title">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="text-decoration-none">
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">
+                            <small>
+                                <span data-translate-key="Posted by">Posted by:</span> @(item.User?.UserName ?? "Anonymous") |
+                                <span data-translate-key="Posted on">Posted on:</span> @item.CreatedAt.ToString("MMM dd, yyyy")
+                            </small>
+                        </p>
+                        <p class="card-text">
+                            @{
+                                var content = item.Content;
+                                if (content.Length > 150)
                                 {
-                                    <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@post.Id" aria-label="Delete post: @post.Title">Delete</a>
+                                    content = content.Substring(0, 150) + "...";
+                                }
+                            }
+                            @content
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <span data-translate-key="Replies">Replies:</span> @(item.Replies?.Count ?? 0)
+                            </small>
+                            <div class="btn-group" role="group">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary" data-translate-key="View">View</a>
+                                @if (User.IsInRole("Admin") || User.Identity?.Name == item.User?.UserName)
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning" data-translate-key="Edit">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" data-translate-key="Delete">Delete</a>
                                 }
                             </div>
                         </div>
                     </div>
-                </article>
-            }
+                </div>
+            </div>
         }
-    </section>
-</div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        <span data-translate-key="No forum posts found.">No forum posts found.</span>
+    </div>
+}

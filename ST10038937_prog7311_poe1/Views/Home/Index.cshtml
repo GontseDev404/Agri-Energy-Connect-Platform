@@ -1,29 +1,28 @@
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 @{
-    ViewData["Title"] = "Welcome to Agri-Energy Connect";
+    ViewData["Title"] = Localizer["WelcomeTitle"];
 }
 
 <!-- Hero Section -->
 <section class="container col-xxl-8 px-4 py-5" aria-labelledby="hero-heading">
     <div class="card text-center shadow-lg">
         <div class="card-body p-5">
-            <h1 id="hero-heading" class="display-4 fw-bold">Agri-Energy Connect</h1>
-            <p class="lead my-4">
-                Empowering the agricultural community by bridging the gap between sustainable farming and modern energy solutions. Join us to cultivate a greener future.
-            </p>
+            <h1 id="hero-heading" class="display-4 fw-bold" data-translate-key="AgriEnergyConnect">@Localizer["AgriEnergyConnect"]</h1>
+            <p class="lead my-4" data-translate-key="HeroLead">@Localizer["HeroLead"]</p>
             @if (User.Identity?.IsAuthenticated != true)
             {
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg px-4 gap-3" aria-label="Register for a new account">Get Started</a>
-                    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-secondary btn-lg px-4" aria-label="Login to your existing account">Login</a>
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg px-4 gap-3" aria-label="@Localizer["RegisterForAccount"]" data-translate-key="GetStarted">@Localizer["GetStarted"]</a>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-secondary btn-lg px-4" aria-label="@Localizer["LoginToAccount"]" data-translate-key="Login">@Localizer["Login"]</a>
                 </div>
             }
             else
             {
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a asp-controller="Product" asp-action="Index" class="btn btn-primary btn-lg px-4" aria-label="View all available products">View Products</a>
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-primary btn-lg px-4" aria-label="@Localizer["ViewProducts"]" data-translate-key="ViewProducts">@Localizer["ViewProducts"]</a>
                     @if (User.IsInRole("Employee"))
                     {
-                        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-secondary btn-lg px-4" aria-label="Go to the employee dashboard">Go to Dashboard</a>
+                        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-secondary btn-lg px-4" aria-label="@Localizer["GoToDashboard"]" data-translate-key="GoToDashboard">@Localizer["GoToDashboard"]</a>
                     }
                 </div>
             }
@@ -33,18 +32,16 @@
 
 <!-- Features Section -->
 <section class="container px-4 py-5" id="featured-services" aria-labelledby="features-heading">
-    <h2 id="features-heading" class="pb-2 border-bottom text-center mb-5">Our Core Services</h2>
+    <h2 id="features-heading" class="pb-2 border-bottom text-center mb-5">@Localizer["OurCoreServices"]</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
         <div class="col">
             <div class="card h-100 p-4 text-center d-flex flex-column">
                 <div class="feature-icon-container mb-3 mx-auto">
                      <i class="bi bi-shop fs-1 text-primary" aria-hidden="true"></i>
                 </div>
-                <h3 class="fs-2">Product Marketplace</h3>
-                <p>A central hub for farmers to list, manage, and sell their products directly to a wider market, with full control over inventory and pricing.</p>
-                <a asp-controller="Product" asp-action="Index" class="btn btn-sm btn-outline-primary mt-auto" aria-label="Browse the product marketplace">
-                    Browse Products
-                </a>
+                <h3 class="fs-2">@Localizer["ProductMarketplace"]</h3>
+                <p data-translate-key="ProductMarketplaceDescription">@Localizer["ProductMarketplaceDescription"]</p>
+                <a asp-controller="Product" asp-action="Index" class="btn btn-sm btn-outline-primary mt-auto" aria-label="@Localizer["BrowseProducts"]" data-translate-key="BrowseProducts">@Localizer["BrowseProducts"]</a>
             </div>
         </div>
         <div class="col">
@@ -52,11 +49,9 @@
                 <div class="feature-icon-container mb-3 mx-auto">
                     <i class="bi bi-people-fill fs-1 text-primary" aria-hidden="true"></i>
                 </div>
-                <h3 class="fs-2">Community Hub</h3>
-                <p>Connect with fellow farmers and industry experts in our community forum. Share knowledge, ask questions, and collaborate on new ideas.</p>
-                <a asp-controller="Forum" asp-action="Index" class="btn btn-sm btn-outline-primary mt-auto" aria-label="Join the discussion in our community hub">
-                    Join Discussion
-                </a>
+                <h3 class="fs-2">@Localizer["CommunityHub"]</h3>
+                <p data-translate-key="CommunityHubDescription">@Localizer["CommunityHubDescription"]</p>
+                <a asp-controller="Forum" asp-action="Index" class="btn btn-sm btn-outline-primary mt-auto" aria-label="@Localizer["JoinDiscussion"]" data-translate-key="JoinDiscussion">@Localizer["JoinDiscussion"]</a>
             </div>
         </div>
         <div class="col">
@@ -64,13 +59,11 @@
                 <div class="feature-icon-container mb-3 mx-auto">
                     <i class="bi bi-shield-check fs-1 text-primary" aria-hidden="true"></i>
                 </div>
-                <h3 class="fs-2">Secure & Audited</h3>
-                <p>Our platform is built with security in mind, featuring role-based access and comprehensive audit trails to ensure data integrity.</p>
+                <h3 class="fs-2">@Localizer["SecureAudited"]</h3>
+                <p data-translate-key="SecureAuditedDescription">@Localizer["SecureAuditedDescription"]</p>
                  @if (User.IsInRole("Employee"))
                 {
-                    <a asp-controller="AuditLogs" asp-action="Index" class="btn btn-sm btn-outline-primary mt-auto" aria-label="View the system audit logs">
-                        View Audit Logs
-                    </a>
+                    <a asp-controller="AuditLogs" asp-action="Index" class="btn btn-sm btn-outline-primary mt-auto" aria-label="@Localizer["ViewAuditLogs"]" data-translate-key="ViewAuditLogs">@Localizer["ViewAuditLogs"]</a>
                 }
             </div>
         </div>

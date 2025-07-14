@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lab_services_student\\Desktop\\prog7311-part-2-ST10038937\\ST10038937_prog7311_poe1\\ST10038937_prog7311_poe1.csproj": {}
+    "C:\\Users\\bonol\\Desktop\\Agri-Energy-Connect-Platform\\ST10038937_prog7311_poe1\\ST10038937_prog7311_poe1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lab_services_student\\Desktop\\prog7311-part-2-ST10038937\\ST10038937_prog7311_poe1\\ST10038937_prog7311_poe1.csproj": {
+    "C:\\Users\\bonol\\Desktop\\Agri-Energy-Connect-Platform\\ST10038937_prog7311_poe1\\ST10038937_prog7311_poe1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\prog7311-part-2-ST10038937\\ST10038937_prog7311_poe1\\ST10038937_prog7311_poe1.csproj",
+        "projectUniqueName": "C:\\Users\\bonol\\Desktop\\Agri-Energy-Connect-Platform\\ST10038937_prog7311_poe1\\ST10038937_prog7311_poe1.csproj",
         "projectName": "ST10038937_prog7311_poe1",
-        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\prog7311-part-2-ST10038937\\ST10038937_prog7311_poe1\\ST10038937_prog7311_poe1.csproj",
-        "packagesPath": "C:\\Users\\lab_services_student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\prog7311-part-2-ST10038937\\ST10038937_prog7311_poe1\\obj\\",
+        "projectPath": "C:\\Users\\bonol\\Desktop\\Agri-Energy-Connect-Platform\\ST10038937_prog7311_poe1\\ST10038937_prog7311_poe1.csproj",
+        "packagesPath": "C:\\Users\\bonol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bonol\\Desktop\\Agri-Energy-Connect-Platform\\ST10038937_prog7311_poe1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\lab_services_student\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\bonol\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,6 +44,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.5, )"
@@ -67,8 +65,22 @@
               "version": "[9.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.5, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             }
           },
           "imports": [
@@ -90,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

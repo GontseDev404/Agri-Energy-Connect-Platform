@@ -1,0 +1,492 @@
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+@{
+    ViewData["Title"] = Localizer["ApiDocumentationTitle"];
+}
+
+<div class="container-fluid">
+    <main class="px-md-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2" data-translate-key="ApiDocumentationTitle">@Localizer["ApiDocumentationTitle"]</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="copyAllEndpoints()">
+                        <i class="bi bi-clipboard"></i> @Localizer["CopyAllEndpoints"]
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Overview -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0" data-translate-key="ApiOverview">@Localizer["ApiOverview"]</h5>
+                    </div>
+                    <div class="card-body">
+                        <p data-translate-key="ApiDescription">@Localizer["ApiDescription"]</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 data-translate-key="BaseUrl">@Localizer["BaseUrl"]</h6>
+                                <code class="bg-light p-2 rounded d-block">https://your-domain.com/api</code>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 data-translate-key="Authentication">@Localizer["Authentication"]</h6>
+                                <p data-translate-key="AuthenticationDescription">@Localizer["AuthenticationDescription"]</p>
+                            </div>
+                        </div>
+                        
+                        <!-- JWT Authentication Section -->
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <h6>JWT Authentication</h6>
+                                <p>The API uses JWT (JSON Web Token) authentication. Include the token in the Authorization header:</p>
+                                <code class="bg-light p-2 rounded d-block">Authorization: Bearer {your-jwt-token}</code>
+                                
+                                <h6 class="mt-3">Authentication Endpoints</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Method</th>
+                                                <th>Endpoint</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="badge bg-warning">POST</span></td>
+                                                <td><code>/api/Auth/login</code></td>
+                                                <td>Login and get JWT token</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="badge bg-warning">POST</span></td>
+                                                <td><code>/api/Auth/register</code></td>
+                                                <td>Register new user and get JWT token</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="badge bg-success">GET</span></td>
+                                                <td><code>/api/Auth/profile</code></td>
+                                                <td>Get current user profile (requires authentication)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="badge bg-warning">POST</span></td>
+                                                <td><code>/api/Auth/refresh</code></td>
+                                                <td>Refresh JWT token (requires authentication)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h6 class="mt-3">Example Login Request</h6>
+                                <pre class="bg-light p-3 rounded"><code>POST /api/Auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123"
+}</code></pre>
+                                
+                                <h6 class="mt-3">Example Response</h6>
+                                <pre class="bg-light p-3 rounded"><code>{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "id": "user-id",
+    "email": "user@example.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "userRole": "Farmer",
+    "roles": ["Farmer"]
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products API -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0" data-translate-key="ProductsApi">@Localizer["ProductsApi"]</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th data-translate-key="Method">@Localizer["Method"]</th>
+                                        <th data-translate-key="Endpoint">@Localizer["Endpoint"]</th>
+                                        <th data-translate-key="Description">@Localizer["Description"]</th>
+                                        <th data-translate-key="Auth">@Localizer["Auth"]</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/Products</code></td>
+                                        <td data-translate-key="GetProductsDescription">@Localizer["GetProductsDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/Products/{id}</code></td>
+                                        <td data-translate-key="GetProductDescription">@Localizer["GetProductDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-warning">POST</span></td>
+                                        <td><code>/api/Products</code></td>
+                                        <td data-translate-key="CreateProductDescription">@Localizer["CreateProductDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-info">PUT</span></td>
+                                        <td><code>/api/Products/{id}</code></td>
+                                        <td data-translate-key="UpdateProductDescription">@Localizer["UpdateProductDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-danger">DELETE</span></td>
+                                        <td><code>/api/Products/{id}</code></td>
+                                        <td data-translate-key="DeleteProductDescription">@Localizer["DeleteProductDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/Products/categories</code></td>
+                                        <td data-translate-key="GetCategoriesDescription">@Localizer["GetCategoriesDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Farmers API -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0" data-translate-key="FarmersApi">@Localizer["FarmersApi"]</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th data-translate-key="Method">@Localizer["Method"]</th>
+                                        <th data-translate-key="Endpoint">@Localizer["Endpoint"]</th>
+                                        <th data-translate-key="Description">@Localizer["Description"]</th>
+                                        <th data-translate-key="Auth">@Localizer["Auth"]</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/Farmers</code></td>
+                                        <td data-translate-key="GetFarmersDescription">@Localizer["GetFarmersDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/Farmers/{id}</code></td>
+                                        <td data-translate-key="GetFarmerDescription">@Localizer["GetFarmerDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-warning">POST</span></td>
+                                        <td><code>/api/Farmers</code></td>
+                                        <td data-translate-key="CreateFarmerDescription">@Localizer["CreateFarmerDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-info">PUT</span></td>
+                                        <td><code>/api/Farmers/{id}</code></td>
+                                        <td data-translate-key="UpdateFarmerDescription">@Localizer["UpdateFarmerDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-danger">DELETE</span></td>
+                                        <td><code>/api/Farmers/{id}</code></td>
+                                        <td data-translate-key="DeleteFarmerDescription">@Localizer["DeleteFarmerDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/Farmers/{id}/products</code></td>
+                                        <td data-translate-key="GetFarmerProductsDescription">@Localizer["GetFarmerProductsDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forum API -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0" data-translate-key="ForumApi">@Localizer["ForumApi"]</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th data-translate-key="Method">@Localizer["Method"]</th>
+                                        <th data-translate-key="Endpoint">@Localizer["Endpoint"]</th>
+                                        <th data-translate-key="Description">@Localizer["Description"]</th>
+                                        <th data-translate-key="Auth">@Localizer["Auth"]</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/Forum</code></td>
+                                        <td data-translate-key="GetForumPostsDescription">@Localizer["GetForumPostsDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/Forum/{id}</code></td>
+                                        <td data-translate-key="GetForumPostDescription">@Localizer["GetForumPostDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-warning">POST</span></td>
+                                        <td><code>/api/Forum</code></td>
+                                        <td data-translate-key="CreateForumPostDescription">@Localizer["CreateForumPostDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-info">PUT</span></td>
+                                        <td><code>/api/Forum/{id}</code></td>
+                                        <td data-translate-key="UpdateForumPostDescription">@Localizer["UpdateForumPostDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-danger">DELETE</span></td>
+                                        <td><code>/api/Forum/{id}</code></td>
+                                        <td data-translate-key="DeleteForumPostDescription">@Localizer["DeleteForumPostDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-warning">POST</span></td>
+                                        <td><code>/api/Forum/{id}/replies</code></td>
+                                        <td data-translate-key="AddReplyDescription">@Localizer["AddReplyDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-danger">DELETE</span></td>
+                                        <td><code>/api/Forum/replies/{id}</code></td>
+                                        <td data-translate-key="DeleteReplyDescription">@Localizer["DeleteReplyDescription"]</td>
+                                        <td><span class="badge bg-primary">Required</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audit Logs API -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0" data-translate-key="AuditLogsApi">@Localizer["AuditLogsApi"]</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th data-translate-key="Method">@Localizer["Method"]</th>
+                                        <th data-translate-key="Endpoint">@Localizer["Endpoint"]</th>
+                                        <th data-translate-key="Description">@Localizer["Description"]</th>
+                                        <th data-translate-key="Auth">@Localizer["Auth"]</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/AuditLogs</code></td>
+                                        <td data-translate-key="GetAuditLogsDescription">@Localizer["GetAuditLogsDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/AuditLogs/{id}</code></td>
+                                        <td data-translate-key="GetAuditLogDescription">@Localizer["GetAuditLogDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/AuditLogs/actions</code></td>
+                                        <td data-translate-key="GetAuditActionsDescription">@Localizer["GetAuditActionsDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/AuditLogs/users</code></td>
+                                        <td data-translate-key="GetAuditUsersDescription">@Localizer["GetAuditUsersDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-success">GET</span></td>
+                                        <td><code>/api/AuditLogs/statistics</code></td>
+                                        <td data-translate-key="GetAuditStatisticsDescription">@Localizer["GetAuditStatisticsDescription"]</td>
+                                        <td><span class="badge bg-warning">Admin/Employee</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-danger">DELETE</span></td>
+                                        <td><code>/api/AuditLogs/{id}</code></td>
+                                        <td data-translate-key="DeleteAuditLogDescription">@Localizer["DeleteAuditLogDescription"]</td>
+                                        <td><span class="badge bg-danger">Admin Only</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-danger">DELETE</span></td>
+                                        <td><code>/api/AuditLogs/bulk</code></td>
+                                        <td data-translate-key="DeleteAuditLogsBulkDescription">@Localizer["DeleteAuditLogsBulkDescription"]</td>
+                                        <td><span class="badge bg-danger">Admin Only</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example Requests -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0" data-translate-key="ExampleRequests">@Localizer["ExampleRequests"]</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="exampleAccordion">
+                            <!-- Products Example -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="productsExample">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProducts">
+                                        <span data-translate-key="ProductsExample">@Localizer["ProductsExample"]</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseProducts" class="accordion-collapse collapse show" data-bs-parent="#exampleAccordion">
+                                    <div class="accordion-body">
+                                        <h6 data-translate-key="GetProducts">@Localizer["GetProducts"]</h6>
+                                        <pre><code>GET /api/Products?search=organic&category=Vegetables&page=1&pageSize=10
+Authorization: Bearer {your-token}</code></pre>
+                                        
+                                        <h6 data-translate-key="CreateProduct">@Localizer["CreateProduct"]</h6>
+                                        <pre><code>POST /api/Products
+Authorization: Bearer {your-token}
+Content-Type: application/json
+
+{
+  "name": "Organic Tomatoes",
+  "description": "Fresh organic tomatoes",
+  "category": "Vegetables",
+  "price": 25.99,
+  "quantityAvailable": 100,
+  "productionDate": "2025-01-15T00:00:00Z"
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Forum Example -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="forumExample">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseForum">
+                                        <span data-translate-key="ForumExample">@Localizer["ForumExample"]</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseForum" class="accordion-collapse collapse" data-bs-parent="#exampleAccordion">
+                                    <div class="accordion-body">
+                                        <h6 data-translate-key="CreateForumPost">@Localizer["CreateForumPost"]</h6>
+                                        <pre><code>POST /api/Forum
+Authorization: Bearer {your-token}
+Content-Type: application/json
+
+{
+  "title": "Best practices for organic farming",
+  "content": "I would like to share some tips..."
+}</code></pre>
+                                        
+                                        <h6 data-translate-key="AddReply">@Localizer["AddReply"]</h6>
+                                        <pre><code>POST /api/Forum/1/replies
+Authorization: Bearer {your-token}
+Content-Type: application/json
+
+{
+  "content": "Great tips! I also found that..."
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+function copyAllEndpoints() {
+    const endpoints = [
+        'GET /api/Products',
+        'GET /api/Products/{id}',
+        'POST /api/Products',
+        'PUT /api/Products/{id}',
+        'DELETE /api/Products/{id}',
+        'GET /api/Products/categories',
+        'GET /api/Farmers',
+        'GET /api/Farmers/{id}',
+        'POST /api/Farmers',
+        'PUT /api/Farmers/{id}',
+        'DELETE /api/Farmers/{id}',
+        'GET /api/Farmers/{id}/products',
+        'GET /api/Forum',
+        'GET /api/Forum/{id}',
+        'POST /api/Forum',
+        'PUT /api/Forum/{id}',
+        'DELETE /api/Forum/{id}',
+        'POST /api/Forum/{id}/replies',
+        'DELETE /api/Forum/replies/{id}',
+        'GET /api/AuditLogs',
+        'GET /api/AuditLogs/{id}',
+        'GET /api/AuditLogs/actions',
+        'GET /api/AuditLogs/users',
+        'GET /api/AuditLogs/statistics',
+        'DELETE /api/AuditLogs/{id}',
+        'DELETE /api/AuditLogs/bulk'
+    ];
+    
+    navigator.clipboard.writeText(endpoints.join('\n')).then(() => {
+        // Show success message
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="bi bi-check"></i> Copied!';
+        setTimeout(() => {
+            button.innerHTML = originalText;
+        }, 2000);
+    });
+}
+</script> 

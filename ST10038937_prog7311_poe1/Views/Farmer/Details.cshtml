@@ -1,72 +1,38 @@
 @model ST10038937_prog7311_poe1.Models.Farmer
 
 @{
-    ViewData["Title"] = $"Details for {Model.Name}";
+    ViewData["Title"] = Localizer["Farmer Details"];
 }
 
-<div class="container main-container">
-    <header class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="display-4">@Model.Name</h1>
-        <a asp-action="Index" class="btn btn-outline-secondary" aria-label="Return to the main farmer list">Back to List</a>
-    </header>
+<h1 data-translate-key="Farmer Details">Farmer Details</h1>
 
-    <div class="row">
-        <div class="col-lg-7">
-            <section class="card shadow mb-4" aria-labelledby="farmer-details-heading">
-                <div class="card-header bg-primary text-white">
-                    <h2 id="farmer-details-heading" class="h5 mb-0">Farmer Profile</h2>
-                </div>
-                <div class="card-body">
-                    <dl class="row">
-                        <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.FarmName)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.FarmName)</dd>
-
-                        <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.Address)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Address)</dd>
-
-                        <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.PhoneNumber)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.PhoneNumber)</dd>
-
-                        <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.Email)</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
-                    </dl>
-                </div>
-                <div class="card-footer text-end">
-                    <div class="btn-group" role="group" aria-label="Actions for @Model.Name">
-                        <a asp-action="Edit" asp-route-id="@Model.FarmerId" class="btn btn-warning" aria-label="Edit profile for @Model.Name">Edit Profile</a>
-                        <a asp-controller="Product" asp-action="Index" asp-route-farmerId="@Model.FarmerId" class="btn btn-primary" aria-label="View all products from @Model.Name">View Products</a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div class="col-lg-5">
-            <aside class="card shadow" aria-labelledby="product-summary-heading">
-                <div class="card-header bg-success text-white">
-                    <h2 id="product-summary-heading" class="h5 mb-0">Products Summary</h2>
-                </div>
-                <div class="card-body">
-                    @if (Model.Products != null && Model.Products.Any())
-                    {
-                        <p><strong>Total Products:</strong> @Model.Products.Count</p>
-                        <h3 class="h6 mt-3">Products by Category:</h3>
-                        <ul class="list-group list-group-flush">
-                            @foreach (var category in Model.Products.Select(p => p.Category).Distinct().OrderBy(c => c))
-                            {
-                                var count = Model.Products.Count(p => p.Category == category);
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    @category
-                                    <span class="badge bg-primary rounded-pill">@count</span>
-                                </li>
-                            }
-                        </ul>
-                    }
-                    else
-                    {
-                        <p class="text-muted" role="status">No products are currently associated with this farmer.</p>
-                    }
-                </div>
-            </aside>
-        </div>
-    </div>
+<div>
+    <h4 data-translate-key="Farmer">Farmer</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2" data-translate-key="Name">Name</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2" data-translate-key="Farm Name">Farm Name</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FarmName)
+        </dd>
+        <dt class="col-sm-2" data-translate-key="Email">Email</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2" data-translate-key="Phone">Phone</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2" data-translate-key="Address">Address</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.FarmerId" data-translate-key="Edit">Edit</a> |
+    <a asp-action="Index" data-translate-key="Back to List">Back to List</a>
 </div>

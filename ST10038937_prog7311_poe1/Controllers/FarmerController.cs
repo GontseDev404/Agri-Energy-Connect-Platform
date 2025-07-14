@@ -6,27 +6,42 @@ using ST10038937_prog7311_poe1.Data;
 using ST10038937_prog7311_poe1.Models;
 using System.Security.Claims;
 using ST10038937_prog7311_poe1.Services;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace ST10038937_prog7311_poe1.Controllers
 {
-    [Authorize(Roles = "Employee")]
+    [Authorize(Roles = "Admin,Employee")]
     public class FarmerController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IAuditService _auditService;
+        private readonly IMemoryCache _cache;
 
-        public FarmerController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IAuditService auditService)
+        public FarmerController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IAuditService auditService, IMemoryCache cache)
         {
             _context = context;
             _userManager = userManager;
             _auditService = auditService;
+            _cache = cache;
         }
 
         // GET: Farmer
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
-            return View(await _context.Farmers.ToListAsync());
+            string cacheKey = $"farmers_{search}";
+            if (!_cache.TryGetValue(cacheKey, out List<Farmer> farmers))
+            {
+                var farmersQuery = _context.Farmers.AsNoTracking().AsQueryable();
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    farmersQuery = farmersQuery.Where(f => f.Name.Contains(search) || f.FarmName.Contains(search) || f.Email.Contains(search));
+                }
+                farmers = await farmersQuery.ToListAsync();
+                _cache.Set(cacheKey, farmers, TimeSpan.FromMinutes(1));
+            }
+            ViewBag.Search = search;
+            return View(farmers);
         }
 
         // GET: Farmer/Details/5

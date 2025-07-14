@@ -226,9 +226,11 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.Property<string>("Action")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Details")
+                        .HasMaxLength(1000)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Timestamp")
@@ -239,6 +241,16 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Action");
+
+                    b.HasIndex("Timestamp");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("Action", "Timestamp");
+
+                    b.HasIndex("UserId", "Timestamp");
 
                     b.ToTable("AuditLogs");
                 });
@@ -280,6 +292,11 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.HasKey("FarmerId");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("Name");
+
                     b.HasIndex("UserId")
                         .IsUnique();
 
@@ -294,6 +311,7 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
+                        .HasMaxLength(5000)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
@@ -301,7 +319,58 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasMaxLength(200)
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ForumPosts");
+                });
+
+            modelBuilder.Entity("ST10038937_prog7311_poe1.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("ReadAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RelatedEntityId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RelatedEntityType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -311,7 +380,7 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ForumPosts");
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("ST10038937_prog7311_poe1.Models.PostReply", b =>
@@ -322,6 +391,7 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
+                        .HasMaxLength(2000)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
@@ -336,9 +406,13 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CreatedAt");
+
                     b.HasIndex("ForumPostId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("ForumPostId", "CreatedAt");
 
                     b.ToTable("PostReplies");
                 });
@@ -351,12 +425,12 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.Property<string>("Category")
                         .IsRequired()
-                        .HasMaxLength(50)
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
+                        .HasMaxLength(1000)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("FarmerId")
@@ -364,7 +438,7 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
+                        .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Price")
@@ -378,7 +452,15 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
 
                     b.HasKey("ProductId");
 
+                    b.HasIndex("Category");
+
                     b.HasIndex("FarmerId");
+
+                    b.HasIndex("ProductionDate");
+
+                    b.HasIndex("Category", "ProductionDate");
+
+                    b.HasIndex("FarmerId", "Category");
 
                     b.ToTable("Products");
                 });
@@ -446,6 +528,17 @@ namespace ST10038937_prog7311_poe1.Data.Migrations
                 });
 
             modelBuilder.Entity("ST10038937_prog7311_poe1.Models.ForumPost", b =>
+                {
+                    b.HasOne("ST10038937_prog7311_poe1.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ST10038937_prog7311_poe1.Models.Notification", b =>
                 {
                     b.HasOne("ST10038937_prog7311_poe1.Models.ApplicationUser", "User")
                         .WithMany()

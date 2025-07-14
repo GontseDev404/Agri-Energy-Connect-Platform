@@ -1,74 +1,75 @@
 @model ST10038937_prog7311_poe1.Models.Product
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 
 @{
-    ViewData["Title"] = "Add New Product";
+    ViewData["Title"] = Localizer["AddNewProductTitle"];
 }
 
 <div class="container main-container">
-    <h1 class="display-4 mb-4">Add New Product</h1>
+    <h1 class="display-4 mb-4" data-translate-key="AddNewProductTitle">@Localizer["AddNewProductTitle"]</h1>
 
     <div class="row">
         <div class="col-md-8">
             <form asp-action="Create">
                 <section class="card shadow" aria-labelledby="product-info-heading">
                     <div class="card-header">
-                        <h2 id="product-info-heading" class="h5 mb-0 text-white">Product Information</h2>
+                        <h2 id="product-info-heading" class="h5 mb-0 text-white" data-translate-key="ProductInformation">@Localizer["ProductInformation"]</h2>
                     </div>
                     <div class="card-body">
                         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                         <input type="hidden" asp-for="FarmerId" value="@ViewBag.FarmerId" />
 
                         <div class="mb-3">
-                            <label asp-for="Name" class="form-label fw-bold"></label>
-                            <input asp-for="Name" id="Name" class="form-control" placeholder="e.g., Organic Tomatoes" aria-required="true" aria-describedby="name-validation" />
+                            <label asp-for="Name" class="form-label fw-bold" data-translate-key="ProductName">@Localizer["ProductName"]</label>
+                            <input asp-for="Name" id="Name" class="form-control" placeholder="@Localizer["ProductNamePlaceholder"]" aria-required="true" aria-describedby="name-validation" />
                             <span asp-validation-for="Name" id="name-validation" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Category" class="form-label fw-bold"></label>
+                            <label asp-for="Category" class="form-label fw-bold" data-translate-key="Category">@Localizer["Category"]</label>
                             <select asp-for="Category" id="Category" class="form-select" aria-required="true" aria-describedby="category-validation">
-                                <option value="">Select Category</option>
-                                <option value="Vegetables">Vegetables</option>
-                                <option value="Fruits">Fruits</option>
-                                <option value="Dairy">Dairy</option>
-                                <option value="Grains">Grains</option>
-                                <option value="Meat">Meat</option>
-                                <option value="Poultry">Poultry</option>
-                                <option value="Other">Other</option>
+                                <option value="">@Localizer["SelectCategory"]</option>
+                                <option value="Vegetables">@Localizer["Vegetables"]</option>
+                                <option value="Fruits">@Localizer["Fruits"]</option>
+                                <option value="Dairy">@Localizer["Dairy"]</option>
+                                <option value="Grains">@Localizer["Grains"]</option>
+                                <option value="Meat">@Localizer["Meat"]</option>
+                                <option value="Poultry">@Localizer["Poultry"]</option>
+                                <option value="Other">@Localizer["Other"]</option>
                             </select>
                             <span asp-validation-for="Category" id="category-validation" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="ProductionDate" class="form-label fw-bold"></label>
-                            <input asp-for="ProductionDate" id="ProductionDate" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" aria-required="true" aria-describedby="date-validation" />
-                            <span asp-validation-for="ProductionDate" id="date-validation" class="text-danger"></span>
+                            <label asp-for="ProductionDate" class="form-label fw-bold" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</label>
+                            <input asp-for="ProductionDate" id="ProductionDate" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" aria-required="true" aria-describedby="productiondate-validation" />
+                            <span asp-validation-for="ProductionDate" id="productiondate-validation" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Price" class="form-label fw-bold"></label>
+                            <label asp-for="Price" class="form-label fw-bold" data-translate-key="Price">@Localizer["Price"]</label>
                             <div class="input-group">
                                 <span class="input-group-text">R</span>
-                                <input asp-for="Price" id="Price" class="form-control" type="number" step="0.01" min="0" placeholder="e.g., 25.50" aria-label="Price in Rand" aria-required="true" aria-describedby="price-validation" />
+                                <input asp-for="Price" id="Price" class="form-control" type="number" step="0.01" min="0" placeholder="@Localizer["PricePlaceholder"]" aria-label="@Localizer["PriceInRand"]" aria-required="true" aria-describedby="price-validation" />
                             </div>
                             <span asp-validation-for="Price" id="price-validation" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Description" class="form-label fw-bold"></label>
-                            <textarea asp-for="Description" id="Description" class="form-control" rows="3" placeholder="Provide a brief description of the product"></textarea>
+                            <label asp-for="Description" class="form-label fw-bold" data-translate-key="Description">@Localizer["Description"]</label>
+                            <textarea asp-for="Description" id="Description" class="form-control" rows="3" placeholder="@Localizer["DescriptionPlaceholder"]"></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="QuantityAvailable" class="form-label fw-bold"></label>
-                            <input asp-for="QuantityAvailable" id="QuantityAvailable" class="form-control" type="number" min="0" placeholder="e.g., 100" aria-required="true" aria-describedby="quantity-validation" />
+                            <label asp-for="QuantityAvailable" class="form-label fw-bold" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</label>
+                            <input asp-for="QuantityAvailable" id="QuantityAvailable" class="form-control" type="number" min="0" placeholder="@Localizer["QuantityAvailablePlaceholder"]" aria-required="true" aria-describedby="quantity-validation" />
                             <span asp-validation-for="QuantityAvailable" id="quantity-validation" class="text-danger"></span>
                         </div>
 
                         <div class="d-flex justify-content-between mt-4">
-                            <a asp-action="Index" class="btn btn-outline-secondary" aria-label="Cancel and return to the product list">Back to List</a>
-                            <button type="submit" class="btn btn-primary" aria-label="Save the new product">Create Product</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary" aria-label="Cancel and return to the product list">@Localizer["BackToProductList"]</a>
+                            <button type="submit" class="btn btn-primary" aria-label="@Localizer["SubmitAndCreateProduct"]" data-translate-key="CreateProduct">@Localizer["CreateProduct"]</button>
                         </div>
                     </div>
                 </section>
@@ -77,11 +78,11 @@
         <div class="col-md-4">
             <section class="card shadow" aria-labelledby="farm-info-heading">
                 <div class="card-header">
-                    <h2 id="farm-info-heading" class="h5 mb-0 text-white">Farm Information</h2>
+                    <h2 id="farm-info-heading" class="h5 mb-0 text-white">@Localizer["FarmInformation"]</h2>
                 </div>
                 <div class="card-body">
-                    <p class="mb-1"><strong>Farm:</strong> @ViewBag.FarmerName</p>
-                    <p class="text-muted small">This product will be publicly associated with your farm profile.</p>
+                    <p class="mb-1"><strong>@Localizer["Farm"]:</strong> @ViewBag.FarmerName</p>
+                    <p class="text-muted small">@Localizer["FarmInformationHelpText"]</p>
                 </div>
             </section>
         </div>
