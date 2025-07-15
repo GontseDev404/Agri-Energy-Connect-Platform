@@ -5,29 +5,30 @@
     ViewData["Title"] = Localizer["AddNewProductTitle"];
 }
 
-<div class="container main-container py-4 bg-light rounded-4 shadow-sm">
-    <h1 class="display-4 mb-4" data-translate-key="AddNewProductTitle">
-        <i class="fa fa-plus-square me-2"></i>@Localizer["AddNewProductTitle"]
+<div class="aec-container main-container aec-py-4">
+    <h1 class="aec-title aec-mb-4" data-translate-key="AddNewProductTitle">
+        <i class="fa fa-plus-square aec-mr-2"></i>@Localizer["AddNewProductTitle"]
     </h1>
-    <div class="row g-4">
-        <div class="col-md-8">
-            <form asp-action="Create" novalidate>
-                <section class="card shadow-lg border-0 rounded-4 mb-4" aria-labelledby="product-info-heading">
-                    <div class="card-header bg-primary text-white rounded-top-4">
-                        <h2 id="product-info-heading" class="h5 mb-0" data-translate-key="ProductInformation">
-                            <i class="fa fa-box-open me-2"></i>@Localizer["ProductInformation"]
+    <div class="aec-row aec-row-gap">
+        <div class="aec-col-12 aec-col-md-8">
+            <form asp-action="Create" novalidate class="aec-form">
+                <section class="aec-card aec-mb-4" aria-labelledby="product-info-heading">
+                    <div class="aec-card-header aec-bg-primary">
+                        <h2 id="product-info-heading" class="aec-card-title" data-translate-key="ProductInformation">
+                            <i class="fa fa-box-open aec-mr-2"></i>@Localizer["ProductInformation"]
                         </h2>
                     </div>
-                    <div class="card-body">
-                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+                    <div class="aec-card-body">
+                        <div asp-validation-summary="ModelOnly" class="aec-validation aec-mb-3" role="alert"></div>
                         <input type="hidden" asp-for="FarmerId" value="@ViewBag.FarmerId" />
-                        <div class="form-floating mb-3">
-                            <input asp-for="Name" id="Name" class="form-control rounded-3 border border-2" placeholder="@Localizer["ProductNamePlaceholder"]" aria-required="true" aria-describedby="name-validation" />
-                            <label asp-for="Name">@Localizer["ProductName"]</label>
-                            <span asp-validation-for="Name" id="name-validation" class="invalid-feedback"></span>
+                        <div class="aec-form-group">
+                            <label asp-for="Name" class="aec-label" data-translate-key="ProductName">@Localizer["ProductName"]</label>
+                            <input asp-for="Name" id="Name" class="aec-input" placeholder="@Localizer["ProductNamePlaceholder"]" aria-required="true" aria-describedby="name-validation" />
+                            <span asp-validation-for="Name" id="name-validation" class="aec-validation"></span>
                         </div>
-                        <div class="form-floating mb-3">
-                            <select asp-for="Category" id="Category" class="form-select rounded-3 border border-2" aria-required="true" aria-describedby="category-validation">
+                        <div class="aec-form-group">
+                            <label asp-for="Category" class="aec-label" data-translate-key="Category">@Localizer["Category"]</label>
+                            <select asp-for="Category" id="Category" class="aec-input" aria-required="true" aria-describedby="category-validation">
                                 <option value="">@Localizer["SelectCategory"]</option>
                                 <option value="Vegetables">@Localizer["Vegetables"]</option>
                                 <option value="Fruits">@Localizer["Fruits"]</option>
@@ -37,60 +38,59 @@
                                 <option value="Poultry">@Localizer["Poultry"]</option>
                                 <option value="Other">@Localizer["Other"]</option>
                             </select>
-                            <label asp-for="Category">@Localizer["Category"]</label>
-                            <span asp-validation-for="Category" id="category-validation" class="invalid-feedback"></span>
+                            <span asp-validation-for="Category" id="category-validation" class="aec-validation"></span>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="ProductionDate" id="ProductionDate" class="form-control rounded-3 border border-2" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" aria-required="true" aria-describedby="productiondate-validation" />
-                            <label asp-for="ProductionDate">@Localizer["ProductionDate"]</label>
-                            <span asp-validation-for="ProductionDate" id="productiondate-validation" class="invalid-feedback"></span>
+                        <div class="aec-form-group">
+                            <label asp-for="ProductionDate" class="aec-label" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</label>
+                            <input asp-for="ProductionDate" id="ProductionDate" class="aec-input" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" aria-required="true" aria-describedby="productiondate-validation" />
+                            <span asp-validation-for="ProductionDate" id="productiondate-validation" class="aec-validation"></span>
                         </div>
-                        <div class="mb-3">
-                            <label asp-for="Price" class="form-label fw-bold" data-translate-key="Price">@Localizer["Price"]</label>
-                            <div class="input-group">
-                                <span class="input-group-text">R</span>
-                                <input asp-for="Price" id="Price" class="form-control rounded-3 border border-2" type="number" step="0.01" min="0" placeholder="@Localizer["PricePlaceholder"]" aria-label="@Localizer["PriceInRand"]" aria-required="true" aria-describedby="price-validation" />
+                        <div class="aec-form-group">
+                            <label asp-for="Price" class="aec-label" data-translate-key="Price">@Localizer["Price"]</label>
+                            <div class="aec-input-group">
+                                <span class="aec-input-group-text">R</span>
+                                <input asp-for="Price" id="Price" class="aec-input" type="number" step="0.01" min="0" placeholder="@Localizer["PricePlaceholder"]" aria-label="@Localizer["PriceInRand"]" aria-required="true" aria-describedby="price-validation" />
                             </div>
-                            <span asp-validation-for="Price" id="price-validation" class="invalid-feedback"></span>
+                            <span asp-validation-for="Price" id="price-validation" class="aec-validation"></span>
                         </div>
-                        <div class="form-floating mb-3">
-                            <textarea asp-for="Description" id="Description" class="form-control rounded-3 border border-2" rows="3" placeholder="@Localizer["DescriptionPlaceholder"]"></textarea>
-                            <label asp-for="Description">@Localizer["Description"]</label>
-                            <span asp-validation-for="Description" class="invalid-feedback"></span>
+                        <div class="aec-form-group">
+                            <label asp-for="Description" class="aec-label" data-translate-key="Description">@Localizer["Description"]</label>
+                            <textarea asp-for="Description" id="Description" class="aec-input" rows="3" placeholder="@Localizer["DescriptionPlaceholder"]"></textarea>
+                            <span asp-validation-for="Description" class="aec-validation"></span>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input asp-for="QuantityAvailable" id="QuantityAvailable" class="form-control rounded-3 border border-2" type="number" min="0" placeholder="@Localizer["QuantityAvailablePlaceholder"]" aria-required="true" aria-describedby="quantity-validation" />
-                            <label asp-for="QuantityAvailable">@Localizer["QuantityAvailable"]</label>
-                            <span asp-validation-for="QuantityAvailable" id="quantity-validation" class="invalid-feedback"></span>
+                        <div class="aec-form-group">
+                            <label asp-for="QuantityAvailable" class="aec-label" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</label>
+                            <input asp-for="QuantityAvailable" id="QuantityAvailable" class="aec-input" type="number" min="0" placeholder="@Localizer["QuantityAvailablePlaceholder"]" aria-required="true" aria-describedby="quantity-validation" />
+                            <span asp-validation-for="QuantityAvailable" id="quantity-validation" class="aec-validation"></span>
                         </div>
-                        <div class="d-flex justify-content-between mt-4">
-                            <a asp-action="Index" class="btn btn-outline-secondary rounded-3" aria-label="Cancel and return to the product list">
-                                <i class="fa fa-arrow-left me-1"></i>@Localizer["BackToProductList"]
+                        <div class="aec-form-actions aec-mt-4 aec-flex-between">
+                            <a asp-action="Index" class="aec-btn aec-btn-outline-secondary" aria-label="Cancel and return to the product list">
+                                <i class="fa fa-arrow-left"></i> @Localizer["BackToProductList"]
                             </a>
-                            <button type="submit" class="btn btn-primary rounded-3" aria-label="@Localizer["SubmitAndCreateProduct"]" data-translate-key="CreateProduct">
-                                <i class="fa fa-plus me-1"></i>@Localizer["CreateProduct"]
+                            <button type="submit" class="aec-btn aec-btn-primary" aria-label="@Localizer["SubmitAndCreateProduct"]" data-translate-key="CreateProduct">
+                                <i class="fa fa-plus"></i> @Localizer["CreateProduct"]
                             </button>
                         </div>
                     </div>
                 </section>
             </form>
         </div>
-        <div class="col-md-4">
-            <section class="card shadow-lg border-0 rounded-4" aria-labelledby="farm-info-heading">
-                <div class="card-header bg-success text-white rounded-top-4">
-                    <h2 id="farm-info-heading" class="h5 mb-0">
-                        <i class="fa fa-tractor me-2"></i>@Localizer["FarmInformation"]
+        <div class="aec-col-12 aec-col-md-4">
+            <section class="aec-card" aria-labelledby="farm-info-heading">
+                <div class="aec-card-header aec-bg-success">
+                    <h2 id="farm-info-heading" class="aec-card-title">
+                        <i class="fa fa-tractor aec-mr-2"></i>@Localizer["FarmInformation"]
                     </h2>
                 </div>
-                <div class="card-body">
-                    <p class="mb-1"><strong>@Localizer["Farm"]:</strong> @ViewBag.FarmerName</p>
-                    <p class="text-muted small">@Localizer["FarmInformationHelpText"]</p>
+                <div class="aec-card-body">
+                    <p class="aec-mb-1"><strong>@Localizer["Farm"]:</strong> @ViewBag.FarmerName</p>
+                    <p class="aec-text-muted aec-small">@Localizer["FarmInformationHelpText"]</p>
                 </div>
             </section>
         </div>
     </div>
-    <div class="text-end mt-3">
-        <button class="btn btn-outline-dark btn-sm rounded-pill" id="toggleThemeBtn" aria-label="Toggle dark/light mode">
+    <div class="aec-text-end aec-mt-3">
+        <button class="aec-btn aec-btn-outline-dark aec-btn-sm aec-rounded-pill" id="toggleThemeBtn" aria-label="Toggle dark/light mode">
             <i class="fa fa-moon" id="themeIcon"></i> Toggle Dark/Light Mode
         </button>
     </div>
@@ -98,16 +98,15 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
     <script>
         // Dark/Light mode toggle
         document.getElementById('toggleThemeBtn').addEventListener('click', function () {
-            document.body.classList.toggle('bg-dark');
-            document.body.classList.toggle('text-white');
-            var cards = document.querySelectorAll('.card');
-            cards.forEach(function(card) { card.classList.toggle('bg-dark'); });
+            document.body.classList.toggle('aec-bg-dark');
+            document.body.classList.toggle('aec-text-white');
+            var cards = document.querySelectorAll('.aec-card');
+            cards.forEach(function(card) { card.classList.toggle('aec-bg-dark'); });
             var icon = document.getElementById('themeIcon');
-            if (document.body.classList.contains('bg-dark')) {
+            if (document.body.classList.contains('aec-bg-dark')) {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
             } else {

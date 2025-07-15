@@ -10,78 +10,84 @@
     var isFarmer = User.IsInRole("Farmer");
 }
 
-<div class="container main-container">
-    <h1 class="display-4 mb-4" data-translate-key="ProductDetailsTitle">@Localizer["ProductDetailsTitle"]</h1>
+<div class="aec-container main-container">
+    <h1 class="aec-title aec-mb-4" data-translate-key="ProductDetailsTitle">@Localizer["ProductDetailsTitle"]</h1>
 
-    <div class="row">
-        <main class="col-md-8">
-            <section class="card shadow mb-4" aria-labelledby="product-details-heading">
-                <div class="card-header">
-                    <h2 id="product-details-heading" class="h5 mb-0 text-white" data-translate-key="ProductDetails">@Localizer["ProductDetails"]</h2>
+    <div class="aec-row aec-row-gap">
+        <main class="aec-col-12 aec-col-md-8">
+            <section class="aec-card aec-mb-4" aria-labelledby="product-details-heading">
+                <div class="aec-card-header aec-bg-primary">
+                    <h2 id="product-details-heading" class="aec-card-title" data-translate-key="ProductDetails">@Localizer["ProductDetails"]</h2>
                 </div>
-                <div class="card-body">
-                    <dl class="row">
-                        <dt class="col-sm-4 fw-bold" data-translate-key="Category">@Localizer["Category"]</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Category)</dd>
-
-                        <dt class="col-sm-4 fw-bold" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</dt>
-                        <dd class="col-sm-8">@Model.ProductionDate.ToLongDateString()</dd>
-
-                        <dt class="col-sm-4 fw-bold" data-translate-key="Price">@Localizer["Price"]</dt>
-                        <dd class="col-sm-8">R @Html.DisplayFor(model => model.Price)</dd>
-
-                        <dt class="col-sm-4 fw-bold" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.QuantityAvailable) @Localizer["Units"]</dd>
-
-                        <dt class="col-sm-4 fw-bold" data-translate-key="Description">@Localizer["Description"]</dt>
-                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Description)</dd>
-
+                <div class="aec-card-body">
+                    <div class="aec-details-list">
+                        <div class="aec-details-row">
+                            <span class="aec-details-label" data-translate-key="Category">@Localizer["Category"]</span>
+                            <span class="aec-details-value">@Html.DisplayFor(model => model.Category)</span>
+                        </div>
+                        <div class="aec-details-row">
+                            <span class="aec-details-label" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</span>
+                            <span class="aec-details-value">@Model.ProductionDate.ToLongDateString()</span>
+                        </div>
+                        <div class="aec-details-row">
+                            <span class="aec-details-label" data-translate-key="Price">@Localizer["Price"]</span>
+                            <span class="aec-details-value">R @Html.DisplayFor(model => model.Price)</span>
+                        </div>
+                        <div class="aec-details-row">
+                            <span class="aec-details-label" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</span>
+                            <span class="aec-details-value">@Html.DisplayFor(model => model.QuantityAvailable) @Localizer["Units"]</span>
+                        </div>
+                        <div class="aec-details-row">
+                            <span class="aec-details-label" data-translate-key="Description">@Localizer["Description"]</span>
+                            <span class="aec-details-value">@Html.DisplayFor(model => model.Description)</span>
+                        </div>
                         @if (isEmployee)
                         {
-                            <dt class="col-sm-4 fw-bold">Farmer</dt>
-                            <dd class="col-sm-8">
-                                <a asp-controller="Farmer" asp-action="Details" asp-route-id="@Model.FarmerId" aria-label="View details for farmer @(Model.Farmer?.Name)">
-                                    @(Model.Farmer?.Name)
-                                </a>
-                            </dd>
-
-                            <dt class="col-sm-4 fw-bold">Farm Name</dt>
-                            <dd class="col-sm-8">@(Model.Farmer?.FarmName)</dd>
-                        }
-                    </dl>
-                </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a asp-action="Index" class="btn btn-outline-secondary" aria-label="@Localizer["BackToProductList"]">@Localizer["BackToProductList"]</a>
-                        @if (isFarmer)
-                        {
-                            <div class="btn-group" role="group">
-                                <a asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-warning" aria-label="@Localizer["Edit"]">@Localizer["Edit"]</a>
-                                <a asp-action="Delete" asp-route-id="@Model.ProductId" class="btn btn-danger" aria-label="@Localizer["Delete"]">@Localizer["Delete"]</a>
+                            <div class="aec-details-row">
+                                <span class="aec-details-label">Farmer</span>
+                                <span class="aec-details-value">
+                                    <a asp-controller="Farmer" asp-action="Details" asp-route-id="@Model.FarmerId" aria-label="View details for farmer @(Model.Farmer?.Name)">
+                                        @(Model.Farmer?.Name)
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="aec-details-row">
+                                <span class="aec-details-label">Farm Name</span>
+                                <span class="aec-details-value">@(Model.Farmer?.FarmName)</span>
                             </div>
                         }
                     </div>
                 </div>
+                <div class="aec-card-footer aec-flex-between aec-align-center">
+                    <a asp-action="Index" class="aec-btn aec-btn-outline-secondary" aria-label="@Localizer["BackToProductList"]"><i class="fa fa-arrow-left"></i> @Localizer["BackToProductList"]</a>
+                    @if (isFarmer)
+                    {
+                        <div class="aec-btn-group" role="group">
+                            <a asp-action="Edit" asp-route-id="@Model.ProductId" class="aec-btn aec-btn-outline-warning" aria-label="@Localizer["Edit"]"><i class="fa fa-edit"></i> @Localizer["Edit"]</a>
+                            <a asp-action="Delete" asp-route-id="@Model.ProductId" class="aec-btn aec-btn-outline-danger" aria-label="@Localizer["Delete"]"><i class="fa fa-trash"></i> @Localizer["Delete"]</a>
+                        </div>
+                    }
+                </div>
             </section>
         </main>
 
-        <aside class="col-md-4">
-            <section class="card shadow" aria-labelledby="summary-heading">
-                <div class="card-header">
-                    <h2 id="summary-heading" class="h5 mb-0 text-white">Summary</h2>
+        <aside class="aec-col-12 aec-col-md-4">
+            <section class="aec-card" aria-labelledby="summary-heading">
+                <div class="aec-card-header aec-bg-info">
+                    <h2 id="summary-heading" class="aec-card-title">Summary</h2>
                 </div>
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Category
-                            <span class="badge bg-primary rounded-pill">@Model.Category</span>
+                <div class="aec-card-body">
+                    <ul class="aec-list aec-list-flush">
+                        <li class="aec-list-item aec-flex-between aec-align-center">
+                            <span>Category</span>
+                            <span class="aec-badge aec-bg-primary">@Model.Category</span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Price
-                            <span class="fw-bold">R @Model.Price</span>
+                        <li class="aec-list-item aec-flex-between aec-align-center">
+                            <span>Price</span>
+                            <span class="aec-fw-bold">R @Model.Price</span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Available
+                        <li class="aec-list-item aec-flex-between aec-align-center">
+                            <span>Available</span>
                             <span>@Model.QuantityAvailable units</span>
                         </li>
                     </ul>
