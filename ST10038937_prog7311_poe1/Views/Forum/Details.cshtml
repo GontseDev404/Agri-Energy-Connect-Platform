@@ -4,57 +4,59 @@
     ViewData["Title"] = Localizer["Forum Post Details"];
 }
 
-<h1 data-translate-key="Forum Post Details">Forum Post Details</h1>
+<h1 class="aec-title" data-translate-key="Forum Post Details">Forum Post Details</h1>
 
-<div>
-    <h4 data-translate-key="Forum Post">Forum Post</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2" data-translate-key="Title">Title</dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2" data-translate-key="Content">Content</dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-        <dt class="col-sm-2" data-translate-key="Posted by">Posted by</dt>
-        <dd class="col-sm-10">
-            @(Model.User?.UserName ?? "Anonymous")
-        </dd>
-        <dt class="col-sm-2" data-translate-key="Posted on">Posted on</dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-    </dl>
+<div class="aec-card aec-mb-4">
+    <div class="aec-card-body">
+        <div class="aec-details-list">
+            <div class="aec-details-row">
+                <span class="aec-details-label" data-translate-key="Title">Title</span>
+                <span class="aec-details-value">@Html.DisplayFor(model => model.Title)</span>
+            </div>
+            <div class="aec-details-row">
+                <span class="aec-details-label" data-translate-key="Content">Content</span>
+                <span class="aec-details-value">@Html.DisplayFor(model => model.Content)</span>
+            </div>
+            <div class="aec-details-row">
+                <span class="aec-details-label" data-translate-key="Posted by">Posted by</span>
+                <span class="aec-details-value">@(Model.User?.UserName ?? "Anonymous")</span>
+            </div>
+            <div class="aec-details-row">
+                <span class="aec-details-label" data-translate-key="Posted on">Posted on</span>
+                <span class="aec-details-value">@Html.DisplayFor(model => model.CreatedAt)</span>
+            </div>
+        </div>
+    </div>
 </div>
 
 @if (Model.Replies != null && Model.Replies.Any())
 {
-    <h3 data-translate-key="Replies">Replies</h3>
-    <div class="replies-section">
-        @foreach (var reply in Model.Replies.OrderBy(r => r.CreatedAt))
-        {
-            <div class="reply-item border-bottom pb-3 mb-3">
-                <div class="reply-header">
-                    <strong>@(reply.User?.UserName ?? "Anonymous")</strong>
-                    <small class="text-muted">@reply.CreatedAt.ToString("MMM dd, yyyy HH:mm")</small>
-                </div>
-                <div class="reply-content mt-2">
-                    @reply.Content
-                </div>
-                @if (User.IsInRole("Admin") || User.Identity?.Name == reply.User?.UserName)
-                {
-                    <div class="reply-actions mt-2">
-                        <a asp-controller="Forum" asp-action="DeleteReply" asp-route-id="@reply.Id" class="btn btn-sm btn-outline-danger" data-translate-key="Delete">Delete</a>
+    <h2 class="aec-title aec-mt-4" data-translate-key="Replies">Replies</h2>
+    <div class="aec-card aec-mb-4">
+        <div class="aec-card-body">
+            @foreach (var reply in Model.Replies.OrderBy(r => r.CreatedAt))
+            {
+                <div class="aec-reply-item aec-border-bottom aec-pb-3 aec-mb-3">
+                    <div class="aec-reply-header">
+                        <strong><i class="fa fa-user"></i> @(reply.User?.UserName ?? "Anonymous")</strong>
+                        <small class="aec-text-muted"><i class="fa fa-calendar"></i> @reply.CreatedAt.ToString("MMM dd, yyyy HH:mm")</small>
                     </div>
-                }
-            </div>
-        }
+                    <div class="aec-reply-content aec-mt-2">
+                        @reply.Content
+                    </div>
+                    @if (User.IsInRole("Admin") || User.Identity?.Name == reply.User?.UserName)
+                    {
+                        <div class="aec-reply-actions aec-mt-2">
+                            <a asp-controller="Forum" asp-action="DeleteReply" asp-route-id="@reply.Id" class="aec-btn aec-btn-sm aec-btn-outline-danger" data-translate-key="Delete"><i class="fa fa-trash"></i> Delete</a>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
     </div>
 }
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id" data-translate-key="Edit">Edit</a> |
-    <a asp-action="Index" data-translate-key="Back to List">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="aec-btn aec-btn-outline-primary" data-translate-key="Edit"><i class="fa fa-edit"></i> Edit</a>
+    <a asp-action="Index" class="aec-btn aec-btn-outline-secondary" data-translate-key="Back to List"><i class="fa fa-arrow-left"></i> Back to List</a>
 </div>

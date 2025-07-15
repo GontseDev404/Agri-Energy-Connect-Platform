@@ -4,49 +4,47 @@
     ViewData["Title"] = Localizer["Forum"];
 }
 
-<h1 data-translate-key="Forum">Forum</h1>
+<h1 class="aec-title" data-translate-key="Forum">Forum</h1>
 
 <p>
-    <a asp-action="Create" data-translate-key="Create Forum Post">Create Forum Post</a>
+    <a asp-action="Create" class="aec-btn aec-btn-primary" data-translate-key="Create Forum Post"><i class="fa fa-plus"></i> Create Forum Post</a>
 </p>
 
-<div class="row mb-3">
-    <div class="col-md-6">
-        <form asp-action="Index" method="get" class="d-flex">
-            <input type="text" name="searchString" class="form-control me-2" placeholder="@Localizer["Search forum posts..."]" value="@ViewData["CurrentFilter"]" />
-            <button type="submit" class="btn btn-primary" data-translate-key="Search">Search</button>
-        </form>
-    </div>
+<div class="aec-container aec-mb-3">
+    <form asp-action="Index" method="get" class="aec-form aec-form-inline" aria-label="Search forum posts">
+        <input type="text" name="searchString" class="aec-input aec-mr-2" placeholder="@Localizer["Search forum posts..."]" value="@ViewData["CurrentFilter"]" aria-label="Search" />
+        <button type="submit" class="aec-btn aec-btn-secondary" data-translate-key="Search"><i class="fa fa-search"></i> Search</button>
+    </form>
 </div>
 
 @if (!string.IsNullOrEmpty(ViewData["CurrentFilter"]?.ToString()))
 {
-    <div class="alert alert-info">
+    <div class="aec-alert aec-alert-info" role="status">
         <span data-translate-key="Showing results for">Showing results for:</span> "@ViewData["CurrentFilter"]"
-        <a asp-action="Index" class="btn btn-sm btn-outline-secondary ms-2" data-translate-key="Clear">Clear</a>
+        <a asp-action="Index" class="aec-btn aec-btn-sm aec-btn-outline" data-translate-key="Clear"><i class="fa fa-times"></i> Clear</a>
     </div>
 }
 
 @if (Model.Any())
 {
-    <div class="row">
+    <div class="aec-row aec-row-gap">
         @foreach (var item in Model)
         {
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a asp-action="Details" asp-route-id="@item.Id" class="text-decoration-none">
+            <div class="aec-col-12 aec-col-md-6 aec-mb-4">
+                <div class="aec-card aec-h-100">
+                    <div class="aec-card-body">
+                        <h2 class="aec-card-title">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="aec-link aec-link-title" tabindex="0">
                                 @Html.DisplayFor(modelItem => item.Title)
                             </a>
-                        </h5>
-                        <p class="card-text text-muted">
+                        </h2>
+                        <p class="aec-card-meta">
                             <small>
-                                <span data-translate-key="Posted by">Posted by:</span> @(item.User?.UserName ?? "Anonymous") |
-                                <span data-translate-key="Posted on">Posted on:</span> @item.CreatedAt.ToString("MMM dd, yyyy")
+                                <span data-translate-key="Posted by">Posted by:</span> <i class="fa fa-user"></i> @(item.User?.UserName ?? "Anonymous") |
+                                <span data-translate-key="Posted on">Posted on:</span> <i class="fa fa-calendar"></i> @item.CreatedAt.ToString("MMM dd, yyyy")
                             </small>
                         </p>
-                        <p class="card-text">
+                        <p class="aec-card-text">
                             @{
                                 var content = item.Content;
                                 if (content.Length > 150)
@@ -56,16 +54,14 @@
                             }
                             @content
                         </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted">
-                                <span data-translate-key="Replies">Replies:</span> @(item.Replies?.Count ?? 0)
-                            </small>
-                            <div class="btn-group" role="group">
-                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary" data-translate-key="View">View</a>
+                        <div class="aec-card-actions">
+                            <span class="aec-card-meta"><i class="fa fa-comments"></i> <span data-translate-key="Replies">Replies:</span> @(item.Replies?.Count ?? 0)</span>
+                            <div class="aec-btn-group" role="group">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="aec-btn aec-btn-sm aec-btn-outline-primary" data-translate-key="View"><i class="fa fa-eye"></i> View</a>
                                 @if (User.IsInRole("Admin") || User.Identity?.Name == item.User?.UserName)
                                 {
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning" data-translate-key="Edit">Edit</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" data-translate-key="Delete">Delete</a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="aec-btn aec-btn-sm aec-btn-outline-warning" data-translate-key="Edit"><i class="fa fa-edit"></i> Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="aec-btn aec-btn-sm aec-btn-outline-danger" data-translate-key="Delete"><i class="fa fa-trash"></i> Delete</a>
                                 }
                             </div>
                         </div>
@@ -77,7 +73,7 @@
 }
 else
 {
-    <div class="alert alert-info" role="alert">
-        <span data-translate-key="No forum posts found.">No forum posts found.</span>
+    <div class="aec-alert aec-alert-info" role="status">
+        <i class="fa fa-info-circle"></i> <span data-translate-key="No forum posts found.">No forum posts found.</span>
     </div>
 }
