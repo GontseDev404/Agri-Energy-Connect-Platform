@@ -5,38 +5,51 @@
     ViewData["Title"] = Localizer["FarmersTitle"];
 }
 
-<div class="container main-container">
+<div class="container main-container py-4 bg-light rounded-4 shadow-sm">
     <header class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="display-4" data-translate-key="FarmersTitle">@Localizer["FarmersTitle"]</h1>
-        <a asp-action="Create" class="btn btn-primary" aria-label="@Localizer["RegisterNewFarmerProfile"]" data-translate-key="AddNewFarmer">@Localizer["AddNewFarmer"]</a>
+        <h1 class="display-4" data-translate-key="FarmersTitle">
+            <i class="fa fa-users me-2"></i>@Localizer["FarmersTitle"]
+        </h1>
+        <a asp-action="Create" class="btn btn-primary rounded-3 shadow-sm" aria-label="@Localizer["RegisterNewFarmerProfile"]" data-translate-key="AddNewFarmer">
+            <i class="fa fa-user-plus me-1"></i>@Localizer["AddNewFarmer"]
+        </a>
     </header>
     <form asp-action="Index" method="get" class="row mb-3 g-2 align-items-end">
         <div class="col-md-4">
-            <input type="text" name="search" class="form-control" value="@ViewBag.Search" placeholder="@Localizer["SearchFarmersPlaceholder"]" aria-label="@Localizer["SearchFarmers"]" />
+            <input type="text" name="search" class="form-control rounded-3 border border-2" value="@ViewBag.Search" placeholder="@Localizer["SearchFarmersPlaceholder"]" aria-label="@Localizer["SearchFarmers"]" />
         </div>
         <div class="col-md-2">
-            <button type="submit" class="btn btn-primary" data-translate-key="Search">@Localizer["Search"]</button>
+            <button type="submit" class="btn btn-outline-primary rounded-3 shadow-sm" data-translate-key="Search">
+                <i class="fa fa-search me-1"></i>@Localizer["Search"]
+            </button>
+        </div>
+        <div class="col-md-6 text-end">
+            <button class="btn btn-outline-dark btn-sm rounded-pill" id="toggleThemeBtn" aria-label="Toggle dark/light mode">
+                <i class="fa fa-moon" id="themeIcon"></i> Toggle Dark/Light Mode
+            </button>
         </div>
     </form>
 
     @if (TempData["SuccessMessage"] != null)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            @TempData["SuccessMessage"]
+            <i class="fa fa-check-circle me-2"></i>@TempData["SuccessMessage"]
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="@Localizer["Close"]"></button>
         </div>
     }
 
-    <section class="card shadow mb-4" aria-labelledby="farmers-list-heading">
-        <div class="card-header">
-            <h2 id="farmers-list-heading" class="h5 mb-0 text-white" data-translate-key="FarmersList">@Localizer["FarmersList"]</h2>
+    <section class="card shadow mb-4 border-0 rounded-4" aria-labelledby="farmers-list-heading">
+        <div class="card-header bg-primary text-white rounded-top-4">
+            <h2 id="farmers-list-heading" class="h5 mb-0" data-translate-key="FarmersList">
+                <i class="fa fa-list me-2"></i>@Localizer["FarmersList"]
+            </h2>
         </div>
         <div class="card-body">
             @if (Model.Any())
             {
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover align-middle">
-                        <thead>
+                    <table class="table table-striped table-hover align-middle rounded-3 overflow-hidden">
+                        <thead class="table-light">
                             <tr>
                                 <th data-translate-key="FarmerName">@Localizer["FarmerName"]</th>
                                 <th data-translate-key="FarmName">@Localizer["FarmName"]</th>
@@ -55,9 +68,15 @@
                                     <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="@Localizer["FarmerActionsFor"] @item.Name">
-                                            <a asp-action="Details" asp-route-id="@item.FarmerId" class="btn btn-info btn-sm" aria-label="@Localizer["ViewDetailsFor"] @item.Name" data-translate-key="Details">@Localizer["Details"]</a>
-                                            <a asp-action="Edit" asp-route-id="@item.FarmerId" class="btn btn-warning btn-sm" aria-label="@Localizer["Edit"] @item.Name" data-translate-key="Edit">@Localizer["Edit"]</a>
-                                            <a asp-action="Delete" asp-route-id="@item.FarmerId" class="btn btn-danger btn-sm" aria-label="@Localizer["Delete"] @item.Name" data-translate-key="Delete">@Localizer["Delete"]</a>
+                                            <a asp-action="Details" asp-route-id="@item.FarmerId" class="btn btn-info btn-sm rounded-3" aria-label="@Localizer["ViewDetailsFor"] @item.Name" data-translate-key="Details">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a asp-action="Edit" asp-route-id="@item.FarmerId" class="btn btn-warning btn-sm rounded-3 text-dark" aria-label="@Localizer["Edit"] @item.Name" data-translate-key="Edit">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.FarmerId" class="btn btn-danger btn-sm rounded-3" aria-label="@Localizer["Delete"] @item.Name" data-translate-key="Delete">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -69,9 +88,30 @@
             else
             {
                 <div class="alert alert-info" role="alert" data-translate-key="NoFarmersFound">
-                    @Localizer["NoFarmersFound"]
+                    <i class="fa fa-info-circle me-2"></i>@Localizer["NoFarmersFound"]
                 </div>
             }
         </div>
     </section>
 </div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script>
+        // Dark/Light mode toggle
+        document.getElementById('toggleThemeBtn').addEventListener('click', function () {
+            document.body.classList.toggle('bg-dark');
+            document.body.classList.toggle('text-white');
+            var cards = document.querySelectorAll('.card');
+            cards.forEach(function(card) { card.classList.toggle('bg-dark'); });
+            var icon = document.getElementById('themeIcon');
+            if (document.body.classList.contains('bg-dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
+}
