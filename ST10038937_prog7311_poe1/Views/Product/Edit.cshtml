@@ -5,85 +5,85 @@
     ViewData["Title"] = Localizer["EditProductTitle"];
 }
 
-<div class="container main-container">
-    <h1 class="display-4 mb-4" data-translate-key="EditProductTitle">@Localizer["EditProductTitle"]</h1>
+<div class="aec-container main-container">
+    <h1 class="aec-title aec-mb-4" data-translate-key="EditProductTitle">@Localizer["EditProductTitle"]</h1>
 
-    <div class="row">
-        <div class="col-md-8">
-            <form asp-action="Edit">
-                <section class="card shadow" aria-labelledby="product-info-heading">
-                    <div class="card-header">
-                        <h2 id="product-info-heading" class="h5 mb-0 text-white" data-translate-key="EditProductInformation">@Localizer["EditProductInformation"]</h2>
+    <div class="aec-row aec-row-gap">
+        <div class="aec-col-12 aec-col-md-8">
+            <form asp-action="Edit" class="aec-form">
+                <section class="aec-card" aria-labelledby="product-info-heading">
+                    <div class="aec-card-header aec-bg-primary">
+                        <h2 id="product-info-heading" class="aec-card-title" data-translate-key="EditProductInformation">@Localizer["EditProductInformation"]</h2>
                     </div>
-                    <div class="card-body">
-                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <div class="aec-card-body">
+                        <div asp-validation-summary="ModelOnly" class="aec-validation" role="alert"></div>
                         <input type="hidden" asp-for="ProductId" />
                         <input type="hidden" asp-for="FarmerId" />
 
-                        <div class="mb-3">
-                            <label asp-for="Name" class="form-label fw-bold" data-translate-key="ProductName">@Localizer["ProductName"]</label>
-                            <input asp-for="Name" id="Name" class="form-control" aria-required="true" aria-describedby="name-validation" />
-                            <span asp-validation-for="Name" id="name-validation" class="text-danger"></span>
+                        <div class="aec-form-group">
+                            <label asp-for="Name" class="aec-label" data-translate-key="ProductName">@Localizer["ProductName"]</label>
+                            <input asp-for="Name" id="Name" class="aec-input" aria-required="true" aria-describedby="name-validation" />
+                            <span asp-validation-for="Name" id="name-validation" class="aec-validation"></span>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Category" class="form-label fw-bold" data-translate-key="Category">@Localizer["Category"]</label>
-                            <select asp-for="Category" id="Category" class="form-select" aria-required="true" aria-describedby="category-validation">
-                                <option value="">Select Category</option>
-                                <option value="Vegetables">Vegetables</option>
-                                <option value="Fruits">Fruits</option>
-                                <option value="Dairy">Dairy</option>
-                                <option value="Grains">Grains</option>
-                                <option value="Meat">Meat</option>
-                                <option value="Poultry">Poultry</option>
-                                <option value="Other">Other</option>
+                        <div class="aec-form-group">
+                            <label asp-for="Category" class="aec-label" data-translate-key="Category">@Localizer["Category"]</label>
+                            <select asp-for="Category" id="Category" class="aec-input" aria-required="true" aria-describedby="category-validation">
+                                <option value="">@Localizer["SelectCategory"]</option>
+                                <option value="Vegetables">@Localizer["Vegetables"]</option>
+                                <option value="Fruits">@Localizer["Fruits"]</option>
+                                <option value="Dairy">@Localizer["Dairy"]</option>
+                                <option value="Grains">@Localizer["Grains"]</option>
+                                <option value="Meat">@Localizer["Meat"]</option>
+                                <option value="Poultry">@Localizer["Poultry"]</option>
+                                <option value="Other">@Localizer["Other"]</option>
                             </select>
-                            <span asp-validation-for="Category" id="category-validation" class="text-danger"></span>
+                            <span asp-validation-for="Category" id="category-validation" class="aec-validation"></span>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="ProductionDate" class="form-label fw-bold" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</label>
-                            <input asp-for="ProductionDate" id="ProductionDate" class="form-control" type="date" aria-required="true" aria-describedby="productiondate-validation" />
-                            <span asp-validation-for="ProductionDate" id="productiondate-validation" class="text-danger"></span>
+                        <div class="aec-form-group">
+                            <label asp-for="ProductionDate" class="aec-label" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</label>
+                            <input asp-for="ProductionDate" id="ProductionDate" class="aec-input" type="date" aria-required="true" aria-describedby="productiondate-validation" />
+                            <span asp-validation-for="ProductionDate" id="productiondate-validation" class="aec-validation"></span>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Price" class="form-label fw-bold" data-translate-key="Price">@Localizer["Price"]</label>
-                            <div class="input-group">
-                                <span class="input-group-text">R</span>
-                                <input asp-for="Price" id="Price" class="form-control" type="number" step="0.01" min="0" aria-label="@Localizer["PriceInRand"]" aria-required="true" aria-describedby="price-validation" />
+                        <div class="aec-form-group">
+                            <label asp-for="Price" class="aec-label" data-translate-key="Price">@Localizer["Price"]</label>
+                            <div class="aec-input-group">
+                                <span class="aec-input-group-text">R</span>
+                                <input asp-for="Price" id="Price" class="aec-input" type="number" step="0.01" min="0" aria-label="@Localizer["PriceInRand"]" aria-required="true" aria-describedby="price-validation" />
                             </div>
-                            <span asp-validation-for="Price" id="price-validation" class="text-danger"></span>
+                            <span asp-validation-for="Price" id="price-validation" class="aec-validation"></span>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Description" class="form-label fw-bold" data-translate-key="Description">@Localizer["Description"]</label>
-                            <textarea asp-for="Description" id="Description" class="form-control" rows="3"></textarea>
-                            <span asp-validation-for="Description" class="text-danger"></span>
+                        <div class="aec-form-group">
+                            <label asp-for="Description" class="aec-label" data-translate-key="Description">@Localizer["Description"]</label>
+                            <textarea asp-for="Description" id="Description" class="aec-input" rows="3"></textarea>
+                            <span asp-validation-for="Description" class="aec-validation"></span>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="QuantityAvailable" class="form-label fw-bold" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</label>
-                            <input asp-for="QuantityAvailable" id="QuantityAvailable" class="form-control" type="number" min="0" aria-required="true" aria-describedby="quantity-validation" />
-                            <span asp-validation-for="QuantityAvailable" id="quantity-validation" class="text-danger"></span>
+                        <div class="aec-form-group">
+                            <label asp-for="QuantityAvailable" class="aec-label" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</label>
+                            <input asp-for="QuantityAvailable" id="QuantityAvailable" class="aec-input" type="number" min="0" aria-required="true" aria-describedby="quantity-validation" />
+                            <span asp-validation-for="QuantityAvailable" id="quantity-validation" class="aec-validation"></span>
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
-                            <a asp-action="Index" class="btn btn-outline-secondary" aria-label="@Localizer["BackToProductList"]">@Localizer["BackToProductList"]</a>
-                            <button type="submit" class="btn btn-primary" aria-label="@Localizer["SaveProductChanges"]" data-translate-key="SaveChanges">@Localizer["SaveChanges"]</button>
+                        <div class="aec-form-actions aec-mt-4 aec-flex-between">
+                            <a asp-action="Index" class="aec-btn aec-btn-outline-secondary" aria-label="@Localizer["BackToProductList"]"><i class="fa fa-arrow-left"></i> @Localizer["BackToProductList"]</a>
+                            <button type="submit" class="aec-btn aec-btn-primary" aria-label="@Localizer["SaveProductChanges"]" data-translate-key="SaveChanges"><i class="fa fa-save"></i> @Localizer["SaveChanges"]</button>
                         </div>
                     </div>
                 </section>
             </form>
         </div>
-        <div class="col-md-4">
-            <section class="card shadow" aria-labelledby="farm-info-heading">
-                <div class="card-header">
-                    <h2 id="farm-info-heading" class="h5 mb-0 text-white">Farm Information</h2>
+        <div class="aec-col-12 aec-col-md-4">
+            <section class="aec-card" aria-labelledby="farm-info-heading">
+                <div class="aec-card-header aec-bg-success">
+                    <h2 id="farm-info-heading" class="aec-card-title">@Localizer["FarmInformation"]</h2>
                 </div>
-                <div class="card-body">
-                    <p class="mb-1"><strong>Farm:</strong> @ViewBag.FarmerName</p>
-                    <p class="text-muted small">This product is associated with your farm profile.</p>
+                <div class="aec-card-body">
+                    <p class="aec-mb-1"><strong>@Localizer["Farm"]:</strong> @ViewBag.FarmerName</p>
+                    <p class="aec-text-muted aec-small">@Localizer["FarmInformationHelpText"]</p>
                 </div>
             </section>
         </div>

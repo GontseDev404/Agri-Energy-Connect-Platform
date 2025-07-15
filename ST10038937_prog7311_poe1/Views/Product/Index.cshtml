@@ -10,20 +10,20 @@
     var isFarmer = User.IsInRole("Farmer");
 }
 
-<div class="container main-container">
-    <h1 class="display-4 mb-4" data-translate-key="ProductsTitle">@Localizer["ProductsTitle"]</h1>
+<div class="aec-container main-container">
+    <h1 class="aec-title aec-mb-4" data-translate-key="ProductsTitle">@Localizer["ProductsTitle"]</h1>
 
     @if (isEmployee)
     {
-        <section class="card shadow mb-4" aria-labelledby="filter-heading">
-            <div class="card-header">
-                <h2 id="filter-heading" class="h5 mb-0 text-white" data-translate-key="FilterProducts">@Localizer["FilterProducts"]</h2>
+        <section class="aec-card aec-mb-4" aria-labelledby="filter-heading">
+            <div class="aec-card-header">
+                <h2 id="filter-heading" class="aec-card-title" data-translate-key="FilterProducts">@Localizer["FilterProducts"]</h2>
             </div>
-            <div class="card-body">
-                <form asp-action="Index" method="get" class="row g-3 align-items-end">
-                    <div class="col-md-3">
-                        <label for="farmerId" class="form-label fw-bold" data-translate-key="Farmer">@Localizer["Farmer"]</label>
-                        <select id="farmerId" name="farmerId" class="form-select" aria-label="@Localizer["FilterByFarmer"]">
+            <div class="aec-card-body">
+                <form asp-action="Index" method="get" class="aec-row aec-row-gap aec-form" aria-label="Filter products">
+                    <div class="aec-col-12 aec-col-md-3">
+                        <label for="farmerId" class="aec-label" data-translate-key="Farmer">@Localizer["Farmer"]</label>
+                        <select id="farmerId" name="farmerId" class="aec-input" aria-label="@Localizer["FilterByFarmer"]">
                             <option value="">@Localizer["AllFarmers"]</option>
                             @foreach (var farmer in ViewBag.Farmers)
                             {
@@ -31,9 +31,9 @@
                             }
                         </select>
                     </div>
-                    <div class="col-md-3">
-                        <label for="category" class="form-label fw-bold" data-translate-key="Category">@Localizer["Category"]</label>
-                        <select id="category" name="category" class="form-select" aria-label="@Localizer["FilterByCategory"]">
+                    <div class="aec-col-12 aec-col-md-3">
+                        <label for="category" class="aec-label" data-translate-key="Category">@Localizer["Category"]</label>
+                        <select id="category" name="category" class="aec-input" aria-label="@Localizer["FilterByCategory"]">
                             <option value="">@Localizer["AllCategories"]</option>
                             @foreach (var cat in ViewBag.Categories)
                             {
@@ -41,20 +41,20 @@
                             }
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <label for="startDate" class="form-label fw-bold" data-translate-key="StartDate">@Localizer["StartDate"]</label>
-                        <input type="date" id="startDate" name="startDate" class="form-control" value="@(ViewBag.StartDate?.ToString("yyyy-MM-dd"))" />
+                    <div class="aec-col-6 aec-col-md-2">
+                        <label for="startDate" class="aec-label" data-translate-key="StartDate">@Localizer["StartDate"]</label>
+                        <input type="date" id="startDate" name="startDate" class="aec-input" value="@(ViewBag.StartDate?.ToString("yyyy-MM-dd"))" />
                     </div>
-                    <div class="col-md-2">
-                        <label for="endDate" class="form-label fw-bold" data-translate-key="EndDate">@Localizer["EndDate"]</label>
-                        <input type="date" id="endDate" name="endDate" class="form-control" value="@(ViewBag.EndDate?.ToString("yyyy-MM-dd"))" />
+                    <div class="aec-col-6 aec-col-md-2">
+                        <label for="endDate" class="aec-label" data-translate-key="EndDate">@Localizer["EndDate"]</label>
+                        <input type="date" id="endDate" name="endDate" class="aec-input" value="@(ViewBag.EndDate?.ToString("yyyy-MM-dd"))" />
                     </div>
-                    <div class="col-md-2">
-                        <label for="search" class="form-label fw-bold" data-translate-key="Search">@Localizer["Search"]</label>
-                        <input type="text" id="search" name="search" class="form-control" value="@ViewBag.Search" placeholder="@Localizer["SearchProductsPlaceholder"]" aria-label="@Localizer["SearchProducts"]" />
+                    <div class="aec-col-12 aec-col-md-2">
+                        <label for="search" class="aec-label" data-translate-key="Search">@Localizer["Search"]</label>
+                        <input type="text" id="search" name="search" class="aec-input" value="@ViewBag.Search" placeholder="@Localizer["SearchProductsPlaceholder"]" aria-label="@Localizer["SearchProducts"]" />
                     </div>
-                    <div class="col-md-12 text-end mt-3">
-                        <button type="submit" class="btn btn-primary" data-translate-key="ApplyFilters">@Localizer["ApplyFilters"]</button>
+                    <div class="aec-col-12 aec-mt-3 aec-text-end">
+                        <button type="submit" class="aec-btn aec-btn-primary" data-translate-key="ApplyFilters"><i class="fa fa-filter"></i> @Localizer["ApplyFilters"]</button>
                     </div>
                 </form>
             </div>
@@ -62,28 +62,28 @@
     }
     @if (isFarmer)
     {
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <form asp-action="Index" method="get" class="input-group mb-2">
-                    <input type="text" name="search" class="form-control" value="@ViewBag.Search" placeholder="Search your products..." aria-label="Search products" />
-                    <button type="submit" class="btn btn-primary">Search</button>
+        <div class="aec-row aec-mb-3 aec-align-center">
+            <div class="aec-col-12 aec-col-md-6">
+                <form asp-action="Index" method="get" class="aec-form aec-form-inline">
+                    <input type="text" name="search" class="aec-input aec-mr-2" value="@ViewBag.Search" placeholder="Search your products..." aria-label="Search products" />
+                    <button type="submit" class="aec-btn aec-btn-primary"><i class="fa fa-search"></i> Search</button>
                 </form>
             </div>
-            <div class="col-md-6 text-end">
-                <a asp-action="Create" class="btn btn-primary" aria-label="Add a new product to the marketplace">Add New Product</a>
+            <div class="aec-col-12 aec-col-md-6 aec-text-end">
+                <a asp-action="Create" class="aec-btn aec-btn-primary" aria-label="Add a new product to the marketplace"><i class="fa fa-plus"></i> Add New Product</a>
             </div>
         </div>
     }
 
-    <section class="card shadow mb-4" aria-labelledby="products-list-heading">
-        <div class="card-header">
-            <h2 id="products-list-heading" class="h5 mb-0 text-white" data-translate-key="ProductsList">@Localizer["ProductsList"]</h2>
+    <section class="aec-card aec-mb-4" aria-labelledby="products-list-heading">
+        <div class="aec-card-header">
+            <h2 id="products-list-heading" class="aec-card-title" data-translate-key="ProductsList">@Localizer["ProductsList"]</h2>
         </div>
-        <div class="card-body">
+        <div class="aec-card-body">
             @if (Model.Any())
             {
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover align-middle">
+                <div class="aec-table-responsive">
+                    <table class="aec-table">
                         <thead>
                             <tr>
                                 <th data-translate-key="ProductName">@Localizer["ProductName"]</th>
@@ -112,12 +112,12 @@
                                         <td>@(item.Farmer?.Name)</td>
                                     }
                                     <td>
-                                        <div class="btn-group" role="group" aria-label="@Localizer["ProductActionsFor"] @item.Name">
-                                            <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-info btn-sm" aria-label="@Localizer["ViewDetailsFor"] @item.Name" data-translate-key="Details">@Localizer["Details"]</a>
+                                        <div class="aec-btn-group" role="group" aria-label="@Localizer["ProductActionsFor"] @item.Name">
+                                            <a asp-action="Details" asp-route-id="@item.ProductId" class="aec-btn aec-btn-sm aec-btn-outline-info" aria-label="@Localizer["ViewDetailsFor"] @item.Name" data-translate-key="Details"><i class="fa fa-eye"></i> @Localizer["Details"]</a>
                                             @if (isFarmer)
                                             {
-                                                <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-warning btn-sm" aria-label="@Localizer["Edit"] @item.Name" data-translate-key="Edit">@Localizer["Edit"]</a>
-                                                <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger btn-sm" aria-label="@Localizer["Delete"] @item.Name" data-translate-key="Delete">@Localizer["Delete"]</a>
+                                                <a asp-action="Edit" asp-route-id="@item.ProductId" class="aec-btn aec-btn-sm aec-btn-outline-warning" aria-label="@Localizer["Edit"] @item.Name" data-translate-key="Edit"><i class="fa fa-edit"></i> @Localizer["Edit"]</a>
+                                                <a asp-action="Delete" asp-route-id="@item.ProductId" class="aec-btn aec-btn-sm aec-btn-outline-danger" aria-label="@Localizer["Delete"] @item.Name" data-translate-key="Delete"><i class="fa fa-trash"></i> @Localizer["Delete"]</a>
                                             }
                                         </div>
                                     </td>
@@ -129,8 +129,8 @@
             }
             else
             {
-                <div class="alert alert-info" role="alert" data-translate-key="NoProductsFound">
-                    @Localizer["NoProductsFound"] @(isFarmer ? Localizer["AddFirstProduct"] : Localizer["TryChangingFilter"])
+                <div class="aec-alert aec-alert-info" role="status" data-translate-key="NoProductsFound">
+                    <i class="fa fa-info-circle"></i> @Localizer["NoProductsFound"] @(isFarmer ? Localizer["AddFirstProduct"] : Localizer["TryChangingFilter"])
                 </div>
             }
         </div>

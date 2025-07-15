@@ -5,46 +5,51 @@
     ViewData["Title"] = Localizer["DeleteProductTitle"];
 }
 
-<div class="container main-container">
-    <h1 class="display-4 mb-4" data-translate-key="DeleteProductTitle">@Localizer["DeleteProductTitle"]</h1>
+<div class="aec-container main-container">
+    <h1 class="aec-title aec-text-danger aec-mb-4" data-translate-key="DeleteProductTitle">@Localizer["DeleteProductTitle"]</h1>
 
-    <div class="alert alert-danger" role="alert">
-        <h4 class="alert-heading" data-translate-key="Warning">@Localizer["Warning"]</h4>
-        <p class="mb-0" data-translate-key="DeleteProductWarning">@Localizer["DeleteProductWarning"]</p>
+    <div class="aec-alert aec-alert-danger" role="alert">
+        <h2 class="aec-alert-title" data-translate-key="Warning"><i class="fa fa-exclamation-triangle"></i> @Localizer["Warning"]</h2>
+        <p class="aec-mb-0" data-translate-key="DeleteProductWarning">@Localizer["DeleteProductWarning"]</p>
     </div>
 
-    <section class="card shadow mb-4" aria-labelledby="delete-confirm-heading">
-        <div class="card-header">
-            <h2 id="delete-confirm-heading" class="h5 mb-0 text-white" data-translate-key="ConfirmDeletion">@Localizer["ConfirmDeletion"]: @Model.Name</h2>
+    <section class="aec-card aec-mb-4" aria-labelledby="delete-confirm-heading">
+        <div class="aec-card-header aec-bg-danger">
+            <h2 id="delete-confirm-heading" class="aec-card-title" data-translate-key="ConfirmDeletion">@Localizer["ConfirmDeletion"]: @Model.Name</h2>
         </div>
-        <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-3 fw-bold" data-translate-key="ProductName">@Localizer["ProductName"]</dt>
-                <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
-
-                <dt class="col-sm-3 fw-bold" data-translate-key="Category">@Localizer["Category"]</dt>
-                <dd class="col-sm-9">@Html.DisplayFor(model => model.Category)</dd>
-
-                <dt class="col-sm-3 fw-bold" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</dt>
-                <dd class="col-sm-9">@Model.ProductionDate.ToLongDateString()</dd>
-
-                <dt class="col-sm-3 fw-bold" data-translate-key="Price">@Localizer["Price"]</dt>
-                <dd class="col-sm-9">R @Html.DisplayFor(model => model.Price)</dd>
-
-                <dt class="col-sm-3 fw-bold" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</dt>
-                <dd class="col-sm-9">@Html.DisplayFor(model => model.QuantityAvailable) @Localizer["Units"]</dd>
-
-                <dt class="col-sm-3 fw-bold" data-translate-key="Description">@Localizer["Description"]</dt>
-                <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
-            </dl>
-        </div>
-        <div class="card-footer">
-            <form asp-action="Delete">
-                <input type="hidden" asp-for="ProductId" />
-                <div class="d-flex justify-content-between">
-                    <a asp-action="Index" class="btn btn-outline-secondary" aria-label="@Localizer["CancelAndReturn"]">@Localizer["Cancel"]</a>
-                    <button type="submit" class="btn btn-danger" aria-label="@Localizer["ConfirmPermanentDeletion"]">@Localizer["DeletePermanently"]</button>
+        <div class="aec-card-body">
+            <div class="aec-details-list">
+                <div class="aec-details-row">
+                    <span class="aec-details-label" data-translate-key="ProductName">@Localizer["ProductName"]</span>
+                    <span class="aec-details-value">@Html.DisplayFor(model => model.Name)</span>
                 </div>
+                <div class="aec-details-row">
+                    <span class="aec-details-label" data-translate-key="Category">@Localizer["Category"]</span>
+                    <span class="aec-details-value">@Html.DisplayFor(model => model.Category)</span>
+                </div>
+                <div class="aec-details-row">
+                    <span class="aec-details-label" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</span>
+                    <span class="aec-details-value">@Model.ProductionDate.ToLongDateString()</span>
+                </div>
+                <div class="aec-details-row">
+                    <span class="aec-details-label" data-translate-key="Price">@Localizer["Price"]</span>
+                    <span class="aec-details-value">R @Html.DisplayFor(model => model.Price)</span>
+                </div>
+                <div class="aec-details-row">
+                    <span class="aec-details-label" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</span>
+                    <span class="aec-details-value">@Html.DisplayFor(model => model.QuantityAvailable) @Localizer["Units"]</span>
+                </div>
+                <div class="aec-details-row">
+                    <span class="aec-details-label" data-translate-key="Description">@Localizer["Description"]</span>
+                    <span class="aec-details-value">@Html.DisplayFor(model => model.Description)</span>
+                </div>
+            </div>
+        </div>
+        <div class="aec-card-footer aec-flex-between">
+            <form asp-action="Delete" class="aec-form aec-flex-between aec-align-center">
+                <input type="hidden" asp-for="ProductId" />
+                <a asp-action="Index" class="aec-btn aec-btn-outline-secondary" aria-label="@Localizer["CancelAndReturn"]"><i class="fa fa-arrow-left"></i> @Localizer["Cancel"]</a>
+                <button type="submit" class="aec-btn aec-btn-danger" aria-label="@Localizer["ConfirmPermanentDeletion"]"><i class="fa fa-trash"></i> @Localizer["DeletePermanently"]</button>
             </form>
         </div>
     </section>
