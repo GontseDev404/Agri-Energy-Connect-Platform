@@ -2,86 +2,86 @@
     ViewData["Title"] = "Employee Dashboard";
 }
 
-<div class="container">
-    <div class="row mb-4">
-        <div class="col">
-            <div class="card bg-primary text-white shadow">
-                <div class="card-body">
-                    <h1 class="display-4">Employee Dashboard</h1>
-                    <p class="lead">Agri-Energy Connect Platform Management</p>
+<div class="aec-container aec-mt-2">
+    <div class="aec-row aec-mb-4">
+        <div class="aec-col-12">
+            <div class="aec-card aec-bg-primary aec-text-white aec-shadow">
+                <div class="aec-card-body">
+                    <h1 class="aec-display-4">Employee Dashboard</h1>
+                    <p class="aec-lead">Agri-Energy Connect Platform Management</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row mb-4">
-        <div class="col-md-4">
-            <div class="card shadow h-100">
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0">Farmers</h5>
+    <div class="aec-row aec-mb-4">
+        <div class="aec-col-4">
+            <div class="aec-card aec-shadow aec-h-100">
+                <div class="aec-card-header aec-bg-success aec-text-white">
+                    <h5 class="aec-mb-0">Farmers</h5>
                 </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h2 class="display-4">@ViewBag.FarmerCount</h2>
-                        <i class="bi bi-people fs-1"></i>
+                <div class="aec-card-body">
+                    <div class="aec-d-flex aec-justify-content-between aec-align-items-center">
+                        <h2 class="aec-display-4">@ViewBag.FarmerCount</h2>
+                        <i class="bi bi-people aec-fs-1"></i>
                     </div>
                     <p>Total registered farmers</p>
                 </div>
-                <div class="card-footer">
-                    <a asp-controller="Farmer" asp-action="Index" class="btn btn-outline-success">Manage Farmers</a>
+                <div class="aec-card-footer">
+                    <a asp-controller="Farmer" asp-action="Index" class="aec-btn aec-btn-outline-success">Manage Farmers</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card shadow h-100">
-                <div class="card-header bg-info text-white">
-                    <h5 class="mb-0">Products</h5>
+        <div class="aec-col-4">
+            <div class="aec-card aec-shadow aec-h-100">
+                <div class="aec-card-header aec-bg-info aec-text-white">
+                    <h5 class="aec-mb-0">Products</h5>
                 </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h2 class="display-4">@ViewBag.ProductCount</h2>
-                        <i class="bi bi-box-seam fs-1"></i>
+                <div class="aec-card-body">
+                    <div class="aec-d-flex aec-justify-content-between aec-align-items-center">
+                        <h2 class="aec-display-4">@ViewBag.ProductCount</h2>
+                        <i class="bi bi-box-seam aec-fs-1"></i>
                     </div>
                     <p>Total products in the system</p>
                 </div>
-                <div class="card-footer">
-                    <a asp-controller="Product" asp-action="Index" class="btn btn-outline-info">View All Products</a>
+                <div class="aec-card-footer">
+                    <a asp-controller="Product" asp-action="Index" class="aec-btn aec-btn-outline-info">View All Products</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card shadow h-100">
-                <div class="card-header bg-warning">
-                    <h5 class="mb-0">Categories</h5>
+        <div class="aec-col-4">
+            <div class="aec-card aec-shadow aec-h-100">
+                <div class="aec-card-header aec-bg-warning">
+                    <h5 class="aec-mb-0">Categories</h5>
                 </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h2 class="display-4">@(ViewBag.Categories?.Count ?? 0)</h2>
-                        <i class="bi bi-tags fs-1"></i>
+                <div class="aec-card-body">
+                    <div class="aec-d-flex aec-justify-content-between aec-align-items-center">
+                        <h2 class="aec-display-4">@(ViewBag.Categories?.Count ?? 0)</h2>
+                        <i class="bi bi-tags aec-fs-1"></i>
                     </div>
                     <p>Different product categories</p>
                 </div>
-                <div class="card-footer">
-                    <a asp-controller="Farmer" asp-action="Create" class="btn btn-outline-warning">Add New Farmer</a>
+                <div class="aec-card-footer">
+                    <a asp-controller="Farmer" asp-action="Create" class="aec-btn aec-btn-outline-warning">Add New Farmer</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Recent Products</h5>
+    <div class="aec-row">
+        <div class="aec-col-12">
+            <div class="aec-card aec-shadow">
+                <div class="aec-card-header aec-bg-primary aec-text-white">
+                    <h5 class="aec-mb-0">Recent Products</h5>
                 </div>
-                <div class="card-body">
+                <div class="aec-card-body">
                     @if (ViewBag.RecentProducts != null && ViewBag.RecentProducts.Count > 0)
                     {
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead class="table-light">
+                        <div class="aec-table-responsive">
+                            <table class="aec-table aec-table-hover">
+                                <thead class="aec-table-light">
                                     <tr>
                                         <th>Name</th>
                                         <th>Category</th>
@@ -101,7 +101,7 @@
                                             <td>@product.ProductionDate.ToString("MMM dd, yyyy")</td>
                                             <td>R @product.Price</td>
                                             <td>
-                                                <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId" class="btn btn-info btn-sm">Details</a>
+                                                <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId" class="aec-btn aec-btn-info aec-btn-sm">Details</a>
                                             </td>
                                         </tr>
                                     }
@@ -111,47 +111,47 @@
                     }
                     else
                     {
-                        <div class="alert alert-info">
+                        <div class="aec-alert aec-alert-info">
                             No recent products available.
                         </div>
                     }
                 </div>
-                <div class="card-footer">
-                    <a asp-controller="Product" asp-action="Index" class="btn btn-primary">View All Products</a>
+                <div class="aec-card-footer">
+                    <a asp-controller="Product" asp-action="Index" class="aec-btn aec-btn-primary">View All Products</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row mt-4">
-        <div class="col">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Quick Actions</h5>
+    <div class="aec-row aec-mt-4">
+        <div class="aec-col-12">
+            <div class="aec-card aec-shadow">
+                <div class="aec-card-header aec-bg-primary aec-text-white">
+                    <h5 class="aec-mb-0">Quick Actions</h5>
                 </div>
-                <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-3">
-                            <a asp-controller="Farmer" asp-action="Create" class="btn btn-outline-primary w-100 p-3">
-                                <i class="bi bi-person-plus fs-4 d-block mb-2"></i>
+                <div class="aec-card-body">
+                    <div class="aec-row aec-g-3">
+                        <div class="aec-col-3">
+                            <a asp-controller="Farmer" asp-action="Create" class="aec-btn aec-btn-outline-primary aec-w-100 aec-p-3">
+                                <i class="bi bi-person-plus aec-fs-4 aec-d-block aec-mb-2"></i>
                                 Add New Farmer
                             </a>
                         </div>
-                        <div class="col-md-3">
-                            <a asp-controller="Farmer" asp-action="Index" class="btn btn-outline-primary w-100 p-3">
-                                <i class="bi bi-people fs-4 d-block mb-2"></i>
+                        <div class="aec-col-3">
+                            <a asp-controller="Farmer" asp-action="Index" class="aec-btn aec-btn-outline-primary aec-w-100 aec-p-3">
+                                <i class="bi bi-people aec-fs-4 aec-d-block aec-mb-2"></i>
                                 Manage Farmers
                             </a>
                         </div>
-                        <div class="col-md-3">
-                            <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary w-100 p-3">
-                                <i class="bi bi-box-seam fs-4 d-block mb-2"></i>
+                        <div class="aec-col-3">
+                            <a asp-controller="Product" asp-action="Index" class="aec-btn aec-btn-outline-primary aec-w-100 aec-p-3">
+                                <i class="bi bi-box-seam aec-fs-4 aec-d-block aec-mb-2"></i>
                                 View All Products
                             </a>
                         </div>
-                        <div class="col-md-3">
-                            <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-outline-primary w-100 p-3">
-                                <i class="bi bi-person-circle fs-4 d-block mb-2"></i>
+                        <div class="aec-col-3">
+                            <a asp-area="Identity" asp-page="/Account/Manage/Index" class="aec-btn aec-btn-outline-primary aec-w-100 aec-p-3">
+                                <i class="bi bi-person-circle aec-fs-4 aec-d-block aec-mb-2"></i>
                                 Manage Account
                             </a>
                         </div>

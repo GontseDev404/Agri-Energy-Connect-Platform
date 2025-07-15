@@ -4,25 +4,25 @@
 }
 
 <!-- Hero Section -->
-<section class="container col-xxl-8 px-4 py-5" aria-labelledby="hero-heading">
-    <div class="card text-center shadow-lg">
-        <div class="card-body p-5">
-            <h1 id="hero-heading" class="display-4 fw-bold" data-translate-key="AgriEnergyConnect">@Localizer["AgriEnergyConnect"]</h1>
-            <p class="lead my-4" data-translate-key="HeroLead">@Localizer["HeroLead"]</p>
+<section class="aec-container aec-mt-2" aria-labelledby="hero-heading">
+    <div class="aec-card aec-text-center">
+        <div class="aec-card-body aec-p-5">
+            <h1 id="hero-heading" class="aec-display-4 aec-fw-bold" data-translate-key="AgriEnergyConnect">@Localizer["AgriEnergyConnect"]</h1>
+            <p class="aec-lead aec-my-4" data-translate-key="HeroLead">@Localizer["HeroLead"]</p>
             @if (User.Identity?.IsAuthenticated != true)
             {
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg px-4 gap-3" aria-label="@Localizer["RegisterForAccount"]" data-translate-key="GetStarted">@Localizer["GetStarted"]</a>
-                    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-secondary btn-lg px-4" aria-label="@Localizer["LoginToAccount"]" data-translate-key="Login">@Localizer["Login"]</a>
+                <div class="aec-d-grid aec-gap-2 aec-d-sm-flex aec-justify-content-sm-center">
+                    <a asp-area="Identity" asp-page="/Account/Register" class="aec-btn aec-btn-lg aec-mr-2" aria-label="@Localizer["RegisterForAccount"]" data-translate-key="GetStarted">@Localizer["GetStarted"]</a>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="aec-btn aec-btn-secondary aec-btn-lg" aria-label="@Localizer["LoginToAccount"]" data-translate-key="Login">@Localizer["Login"]</a>
                 </div>
             }
             else
             {
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a asp-controller="Product" asp-action="Index" class="btn btn-primary btn-lg px-4" aria-label="@Localizer["ViewProducts"]" data-translate-key="ViewProducts">@Localizer["ViewProducts"]</a>
+                <div class="aec-d-grid aec-gap-2 aec-d-sm-flex aec-justify-content-sm-center">
+                    <a asp-controller="Product" asp-action="Index" class="aec-btn aec-btn-lg" aria-label="@Localizer["ViewProducts"]" data-translate-key="ViewProducts">@Localizer["ViewProducts"]</a>
                     @if (User.IsInRole("Employee"))
                     {
-                        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-secondary btn-lg px-4" aria-label="@Localizer["GoToDashboard"]" data-translate-key="GoToDashboard">@Localizer["GoToDashboard"]</a>
+                        <a asp-controller="Dashboard" asp-action="Index" class="aec-btn aec-btn-secondary aec-btn-lg" aria-label="@Localizer["GoToDashboard"]" data-translate-key="GoToDashboard">@Localizer["GoToDashboard"]</a>
                     }
                 </div>
             }
@@ -31,39 +31,39 @@
 </section>
 
 <!-- Features Section -->
-<section class="container px-4 py-5" id="featured-services" aria-labelledby="features-heading">
-    <h2 id="features-heading" class="pb-2 border-bottom text-center mb-5">@Localizer["OurCoreServices"]</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        <div class="col">
-            <div class="card h-100 p-4 text-center d-flex flex-column">
-                <div class="feature-icon-container mb-3 mx-auto">
-                     <i class="bi bi-shop fs-1 text-primary" aria-hidden="true"></i>
+<section class="aec-container aec-mt-2" id="featured-services" aria-labelledby="features-heading">
+    <h2 id="features-heading" class="aec-pb-2 aec-border-bottom aec-text-center aec-mb-5">@Localizer["OurCoreServices"]</h2>
+    <div class="aec-row aec-g-4 aec-py-5">
+        <div class="aec-col-4">
+            <div class="aec-card aec-h-100 aec-p-4 aec-text-center aec-d-flex aec-flex-column">
+                <div class="feature-icon-container aec-mb-3 aec-mx-auto">
+                     <i class="bi bi-shop aec-fs-1 aec-text-primary" aria-hidden="true"></i>
                 </div>
-                <h3 class="fs-2">@Localizer["ProductMarketplace"]</h3>
+                <h3 class="aec-fs-2">@Localizer["ProductMarketplace"]</h3>
                 <p data-translate-key="ProductMarketplaceDescription">@Localizer["ProductMarketplaceDescription"]</p>
-                <a asp-controller="Product" asp-action="Index" class="btn btn-sm btn-outline-primary mt-auto" aria-label="@Localizer["BrowseProducts"]" data-translate-key="BrowseProducts">@Localizer["BrowseProducts"]</a>
+                <a asp-controller="Product" asp-action="Index" class="aec-btn aec-btn-sm aec-btn-outline-primary aec-mt-auto" aria-label="@Localizer["BrowseProducts"]" data-translate-key="BrowseProducts">@Localizer["BrowseProducts"]</a>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100 p-4 text-center d-flex flex-column">
-                <div class="feature-icon-container mb-3 mx-auto">
-                    <i class="bi bi-people-fill fs-1 text-primary" aria-hidden="true"></i>
+        <div class="aec-col-4">
+            <div class="aec-card aec-h-100 aec-p-4 aec-text-center aec-d-flex aec-flex-column">
+                <div class="feature-icon-container aec-mb-3 aec-mx-auto">
+                    <i class="bi bi-people-fill aec-fs-1 aec-text-primary" aria-hidden="true"></i>
                 </div>
-                <h3 class="fs-2">@Localizer["CommunityHub"]</h3>
+                <h3 class="aec-fs-2">@Localizer["CommunityHub"]</h3>
                 <p data-translate-key="CommunityHubDescription">@Localizer["CommunityHubDescription"]</p>
-                <a asp-controller="Forum" asp-action="Index" class="btn btn-sm btn-outline-primary mt-auto" aria-label="@Localizer["JoinDiscussion"]" data-translate-key="JoinDiscussion">@Localizer["JoinDiscussion"]</a>
+                <a asp-controller="Forum" asp-action="Index" class="aec-btn aec-btn-sm aec-btn-outline-primary aec-mt-auto" aria-label="@Localizer["JoinDiscussion"]" data-translate-key="JoinDiscussion">@Localizer["JoinDiscussion"]</a>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100 p-4 text-center d-flex flex-column">
-                <div class="feature-icon-container mb-3 mx-auto">
-                    <i class="bi bi-shield-check fs-1 text-primary" aria-hidden="true"></i>
+        <div class="aec-col-4">
+            <div class="aec-card aec-h-100 aec-p-4 aec-text-center aec-d-flex aec-flex-column">
+                <div class="feature-icon-container aec-mb-3 aec-mx-auto">
+                    <i class="bi bi-shield-check aec-fs-1 aec-text-primary" aria-hidden="true"></i>
                 </div>
-                <h3 class="fs-2">@Localizer["SecureAudited"]</h3>
+                <h3 class="aec-fs-2">@Localizer["SecureAudited"]</h3>
                 <p data-translate-key="SecureAuditedDescription">@Localizer["SecureAuditedDescription"]</p>
                  @if (User.IsInRole("Employee"))
                 {
-                    <a asp-controller="AuditLogs" asp-action="Index" class="btn btn-sm btn-outline-primary mt-auto" aria-label="@Localizer["ViewAuditLogs"]" data-translate-key="ViewAuditLogs">@Localizer["ViewAuditLogs"]</a>
+                    <a asp-controller="AuditLogs" asp-action="Index" class="aec-btn aec-btn-sm aec-btn-outline-primary aec-mt-auto" aria-label="@Localizer["ViewAuditLogs"]" data-translate-key="ViewAuditLogs">@Localizer["ViewAuditLogs"]</a>
                 }
             </div>
         </div>
