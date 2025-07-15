@@ -1,0 +1,99 @@
+@page
+@model ST10038937_prog7311_poe1.Areas.Identity.Pages.Account.LoginModel
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container d-flex align-items-center justify-content-center min-vh-100 bg-light">
+    <div class="col-12 col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-gradient bg-primary text-white rounded-top-4">
+                <h2 class="h4 mb-0"><i class="fa fa-sign-in-alt me-2"></i>@ViewData["Title"]</h2>
+                <p class="small mb-0">Sign in to your Agri-Energy Connect account</p>
+            </div>
+            <div class="card-body p-4">
+                @if (Model.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa fa-exclamation-circle me-2"></i>@Model.ErrorMessage
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+                <form id="loginForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Email" class="form-control rounded-3 border border-2" autocomplete="username" aria-required="true" placeholder="employee@agrienergy.com" />
+                        <label asp-for="Input.Email">Email</label>
+                        <span asp-validation-for="Input.Email" class="invalid-feedback"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Password" class="form-control rounded-3 border border-2" autocomplete="current-password" aria-required="true" placeholder="Password" type="password" id="passwordInput" />
+                        <label asp-for="Input.Password">Password</label>
+                        <span asp-validation-for="Input.Password" class="invalid-feedback"></span>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute end-0 top-50 translate-middle-y me-3" style="z-index:2;" onclick="togglePassword()" aria-label="Show/Hide password">
+                            <i class="fa fa-eye" id="togglePasswordIcon"></i>
+                        </button>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input asp-for="Input.RememberMe" class="form-check-input" />
+                        <label asp-for="Input.RememberMe" class="form-check-label">Remember me</label>
+                    </div>
+                    <button id="loginSubmit" type="submit" class="btn btn-primary btn-lg w-100 rounded-3 shadow-sm mb-2">
+                        <i class="fa fa-sign-in-alt me-2"></i>Login
+                    </button>
+                </form>
+                <div class="text-center mt-3">
+                    <span>Don't have an account?</span>
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="fw-bold">Register</a>
+                </div>
+                <div class="text-center mt-2">
+                    <button class="btn btn-outline-dark btn-sm rounded-pill" id="toggleThemeBtn" aria-label="Toggle dark/light mode">
+                        <i class="fa fa-moon" id="themeIcon"></i> Toggle Dark/Light Mode
+                    </button>
+                </div>
+                <div class="text-center mt-3 small text-muted">
+                    <i class="fa fa-info-circle me-1"></i>
+                    <span>Demo Accounts:</span><br />
+                    <span>Employee: <b>employee@agrienergy.com</b> / <b>Employee1!</b></span><br />
+                    <span>Farmer: <b>john@farm.com</b> / <b>Farmer1!</b></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script>
+        function togglePassword() {
+            var input = document.getElementById('passwordInput');
+            var icon = document.getElementById('togglePasswordIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        // Dark/Light mode toggle
+        document.getElementById('toggleThemeBtn').addEventListener('click', function () {
+            document.body.classList.toggle('bg-dark');
+            document.body.classList.toggle('text-white');
+            var card = document.querySelector('.card');
+            if (card) card.classList.toggle('bg-dark');
+            var icon = document.getElementById('themeIcon');
+            if (document.body.classList.contains('bg-dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
+}

@@ -1,53 +1,80 @@
 @model ST10038937_prog7311_poe1.Models.Farmer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 
 @{
     ViewData["Title"] = Localizer["Create Farmer"];
 }
 
-<h1 data-translate-key="Create Farmer">Create Farmer</h1>
-
-<h4 data-translate-key="Farmer">Farmer</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label" data-translate-key="Name">Name</label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+<div class="container d-flex align-items-center justify-content-center min-vh-100 bg-light">
+    <div class="col-12 col-md-7 col-lg-6">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-gradient bg-primary text-white rounded-top-4">
+                <h2 class="h4 mb-0"><i class="fa fa-user-plus me-2"></i>@ViewData["Title"]</h2>
+                <p class="small mb-0">@Localizer["Create a new farmer profile"]</p>
             </div>
-            <div class="form-group">
-                <label asp-for="FarmName" class="control-label" data-translate-key="Farm Name">Farm Name</label>
-                <input asp-for="FarmName" class="form-control" />
-                <span asp-validation-for="FarmName" class="text-danger"></span>
+            <div class="card-body p-4">
+                <form asp-action="Create" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Name" class="form-control rounded-3 border border-2" placeholder="@Localizer["Name"]" aria-required="true" />
+                        <label asp-for="Name">@Localizer["Name"]</label>
+                        <span asp-validation-for="Name" class="invalid-feedback"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="FarmName" class="form-control rounded-3 border border-2" placeholder="@Localizer["Farm Name"]" aria-required="true" />
+                        <label asp-for="FarmName">@Localizer["Farm Name"]</label>
+                        <span asp-validation-for="FarmName" class="invalid-feedback"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Email" class="form-control rounded-3 border border-2" placeholder="@Localizer["Email"]" aria-required="true" />
+                        <label asp-for="Email">@Localizer["Email"]</label>
+                        <span asp-validation-for="Email" class="invalid-feedback"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="PhoneNumber" class="form-control rounded-3 border border-2" placeholder="@Localizer["Phone"]" aria-required="true" />
+                        <label asp-for="PhoneNumber">@Localizer["Phone"]</label>
+                        <span asp-validation-for="PhoneNumber" class="invalid-feedback"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Address" class="form-control rounded-3 border border-2" placeholder="@Localizer["Address"]" aria-required="true" />
+                        <label asp-for="Address">@Localizer["Address"]</label>
+                        <span asp-validation-for="Address" class="invalid-feedback"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg w-100 rounded-3 shadow-sm mb-2">
+                        <i class="fa fa-plus me-2"></i>@Localizer["Create"]
+                    </button>
+                </form>
+                <div class="text-center mt-3">
+                    <a asp-action="Index" class="fw-bold"><i class="fa fa-arrow-left me-1"></i>@Localizer["Back to List"]</a>
+                </div>
+                <div class="text-center mt-2">
+                    <button class="btn btn-outline-dark btn-sm rounded-pill" id="toggleThemeBtn" aria-label="Toggle dark/light mode">
+                        <i class="fa fa-moon" id="themeIcon"></i> Toggle Dark/Light Mode
+                    </button>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label" data-translate-key="Email">Email</label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label" data-translate-key="Phone">Phone</label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label" data-translate-key="Address">Address</label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" data-translate-key="Back to List">Back to List</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script>
+        // Dark/Light mode toggle
+        document.getElementById('toggleThemeBtn').addEventListener('click', function () {
+            document.body.classList.toggle('bg-dark');
+            document.body.classList.toggle('text-white');
+            var card = document.querySelector('.card');
+            if (card) card.classList.toggle('bg-dark');
+            var icon = document.getElementById('themeIcon');
+            if (document.body.classList.contains('bg-dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
 }

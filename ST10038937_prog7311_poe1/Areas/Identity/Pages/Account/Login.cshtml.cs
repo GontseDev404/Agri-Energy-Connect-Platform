@@ -88,17 +88,20 @@ namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User logged in.");
                     await _auditService.LogActionAsync(userId, "Login Success", $"Email: {Input.Email}");
-                    // Role-based redirect
                     if (user != null)
                     {
                         var roles = await _signInManager.UserManager.GetRolesAsync(user);
-                        if (roles.Contains("Farmer"))
+                        if (roles.Contains("Admin"))
                         {
-                            return LocalRedirect("~/"); // HomeController will show FarmerDashboard
+                            return Redirect("/AdminPanel");
                         }
                         else if (roles.Contains("Employee"))
                         {
-                            return LocalRedirect("~/"); // HomeController will show EmployeeDashboard
+                            return Redirect("/Home/EmployeeDashboard");
+                        }
+                        else if (roles.Contains("Farmer"))
+                        {
+                            return Redirect("/Home/FarmerDashboard");
                         }
                     }
                     return LocalRedirect(returnUrl);

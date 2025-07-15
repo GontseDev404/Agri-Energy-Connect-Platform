@@ -4,71 +4,73 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="row justify-content-center mt-4">
-    <div class="col-md-6">
-        <div class="card shadow">
-            <div class="card-header bg-success text-white">
-                <h2 class="h4 mb-0"><i class="bi bi-person-plus me-2"></i>@ViewData["Title"]</h2>
+<div class="container d-flex align-items-center justify-content-center min-vh-100 bg-light">
+    <div class="col-12 col-md-7 col-lg-6">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-gradient bg-success text-white rounded-top-4">
+                <h2 class="h4 mb-0"><i class="fa fa-user-plus me-2"></i>@ViewData["Title"]</h2>
                 <p class="small mb-0">Create a new account to join Agri-Energy Connect</p>
             </div>
             <div class="card-body p-4">
-                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                    
-                    <div class="row mb-3">
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+                    <div class="row g-3 mb-3">
                         <div class="col-md-6">
-                            <div class="form-floating mb-3 mb-md-0">
-                                <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" aria-required="true" placeholder="John" />
+                            <div class="form-floating">
+                                <input asp-for="Input.FirstName" class="form-control rounded-3 border border-2" autocomplete="firstname" aria-required="true" placeholder="John" />
                                 <label asp-for="Input.FirstName">First Name</label>
-                                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                <span asp-validation-for="Input.FirstName" class="invalid-feedback"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input asp-for="Input.LastName" class="form-control" autocomplete="lastname" aria-required="true" placeholder="Doe" />
+                                <input asp-for="Input.LastName" class="form-control rounded-3 border border-2" autocomplete="lastname" aria-required="true" placeholder="Doe" />
                                 <label asp-for="Input.LastName">Last Name</label>
-                                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                <span asp-validation-for="Input.LastName" class="invalid-feedback"></span>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-floating mb-3">
-                        <select asp-for="Input.Role" class="form-select" aria-required="true">
+                        <select asp-for="Input.Role" class="form-select rounded-3 border border-2" aria-required="true">
                             <option value="" selected disabled>Select your role</option>
                             <option value="Farmer">Farmer</option>
                             <option value="Employee">Employee</option>
                         </select>
                         <label asp-for="Input.Role">Role</label>
-                        <span asp-validation-for="Input.Role" class="text-danger"></span>
+                        <span asp-validation-for="Input.Role" class="invalid-feedback"></span>
                     </div>
-
                     <div class="form-floating mb-3">
-                        <input asp-for="Input.EmailUsername" class="form-control" autocomplete="username" aria-required="true" placeholder="username" />
+                        <input asp-for="Input.EmailUsername" class="form-control rounded-3 border border-2" autocomplete="username" aria-required="true" placeholder="username" />
                         <label asp-for="Input.EmailUsername">Email Username</label>
-                        <span asp-validation-for="Input.EmailUsername" class="text-danger"></span>
+                        <span asp-validation-for="Input.EmailUsername" class="invalid-feedback"></span>
                         <small class="form-text text-muted">
                             Your email will be your username followed by @@farmer.com or @@agrienergy.com based on your role.
                         </small>
                     </div>
-
                     <div class="form-floating mb-3">
-                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                        <input asp-for="Input.Password" class="form-control rounded-3 border border-2" autocomplete="new-password" aria-required="true" placeholder="password" type="password" id="passwordInput" />
                         <label asp-for="Input.Password">Password</label>
-                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        <span asp-validation-for="Input.Password" class="invalid-feedback"></span>
+                        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute end-0 top-50 translate-middle-y me-3" style="z-index:2;" onclick="togglePassword()" aria-label="Show/Hide password">
+                            <i class="fa fa-eye" id="togglePasswordIcon"></i>
+                        </button>
                     </div>
-
                     <div class="form-floating mb-3">
-                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                        <input asp-for="Input.ConfirmPassword" class="form-control rounded-3 border border-2" autocomplete="new-password" aria-required="true" placeholder="password" type="password" id="confirmPasswordInput" />
                         <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        <span asp-validation-for="Input.ConfirmPassword" class="invalid-feedback"></span>
                     </div>
-
-                    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-success">Register</button>
+                    <button id="registerSubmit" type="submit" class="btn btn-success btn-lg w-100 rounded-3 shadow-sm mb-2">
+                        <i class="fa fa-user-plus me-2"></i>Register
+                    </button>
                 </form>
-            </div>
-            <div class="card-footer bg-light py-3">
-                <div class="text-center">
-                    Already have an account? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Log in</a>
+                <div class="text-center mt-3">
+                    Already have an account? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" class="fw-bold">Log in</a>
+                </div>
+                <div class="text-center mt-2">
+                    <button class="btn btn-outline-dark btn-sm rounded-pill" id="toggleThemeBtn" aria-label="Toggle dark/light mode">
+                        <i class="fa fa-moon" id="themeIcon"></i> Toggle Dark/Light Mode
+                    </button>
                 </div>
             </div>
         </div>
@@ -77,4 +79,35 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script>
+        function togglePassword() {
+            var input = document.getElementById('passwordInput');
+            var icon = document.getElementById('togglePasswordIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        // Dark/Light mode toggle
+        document.getElementById('toggleThemeBtn').addEventListener('click', function () {
+            document.body.classList.toggle('bg-dark');
+            document.body.classList.toggle('text-white');
+            var card = document.querySelector('.card');
+            if (card) card.classList.toggle('bg-dark');
+            var icon = document.getElementById('themeIcon');
+            if (document.body.classList.contains('bg-dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
 }

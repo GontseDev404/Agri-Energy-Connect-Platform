@@ -4,34 +4,32 @@
     ViewData["Title"] = Localizer["Edit Forum Post"];
 }
 
-<h1 data-translate-key="Edit Forum Post">Edit Forum Post</h1>
+<h1 class="aec-title" data-translate-key="Edit Forum Post">Edit Forum Post</h1>
 
-<h4 data-translate-key="Forum Post">Forum Post</h4>
-<hr />
-<div class="row">
-    <div class="col-md-8">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="aec-card aec-mb-4">
+    <div class="aec-card-body">
+        <form asp-action="Edit" class="aec-form" aria-label="Edit Forum Post">
+            <div asp-validation-summary="ModelOnly" class="aec-validation"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label" data-translate-key="Title">Title</label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+            <div class="aec-form-group">
+                <label asp-for="Title" class="aec-label" data-translate-key="Title">Title</label>
+                <input asp-for="Title" class="aec-input" aria-required="true" />
+                <span asp-validation-for="Title" class="aec-validation"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Content" class="control-label" data-translate-key="Content">Content</label>
-                <textarea asp-for="Content" class="form-control" rows="10"></textarea>
-                <span asp-validation-for="Content" class="text-danger"></span>
+            <div class="aec-form-group">
+                <label asp-for="Content" class="aec-label" data-translate-key="Content">Content</label>
+                <textarea asp-for="Content" class="aec-input" rows="10" aria-required="true"></textarea>
+                <span asp-validation-for="Content" class="aec-validation"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
+            <div class="aec-form-group aec-mt-3">
+                <button type="submit" class="aec-btn aec-btn-primary"><i class="fa fa-save"></i> @Localizer["Save"]</button>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index" data-translate-key="Back to List">Back to List</a>
+    <a asp-action="Index" class="aec-btn aec-btn-outline-secondary" data-translate-key="Back to List"><i class="fa fa-arrow-left"></i> Back to List</a>
 </div>
 
 @section Scripts {
