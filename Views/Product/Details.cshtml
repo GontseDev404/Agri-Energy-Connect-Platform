@@ -1,0 +1,29 @@
+@model ST10038937_prog7311_poe1.Models.Product
+@using Microsoft.AspNetCore.Identity
+@using ST10038937_prog7311_poe1.Models
+@inject UserManager<ApplicationUser> UserManager
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+
+@{
+    ViewData["Title"] = Localizer["ProductDetailsTitle"];
+    var isEmployee = User.IsInRole("Employee");
+    var isFarmer = User.IsInRole("Farmer");
+}
+
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-8 aec-mx-auto">
+        <div class="aec-card">
+            <h1 class="aec-mb-2" data-translate-key="ProductDetailsTitle">@Localizer["ProductDetailsTitle"]</h1>
+            <dl>
+                <dt class="aec-mb-1" data-translate-key="Category">@Localizer["Category"]</dt>
+                <dd class="aec-mb-1">@Html.DisplayFor(model => model.Category)</dd>
+                <dt class="aec-mb-1" data-translate-key="ProductionDate">@Localizer["ProductionDate"]</dt>
+                <dd class="aec-mb-1">@Model.ProductionDate.ToLongDateString()</dd>
+                <dt class="aec-mb-1" data-translate-key="Price">@Localizer["Price"]</dt>
+                <dd class="aec-mb-1">R @Html.DisplayFor(model => model.Price)</dd>
+                <dt class="aec-mb-1" data-translate-key="QuantityAvailable">@Localizer["QuantityAvailable"]</dt>
+                <dd class="aec-mb-1">@Html.DisplayFor(model => model.QuantityAvailable) @Localizer["Units"]</dd>
+            </dl>
+        </div>
+    </div>
+</div> 

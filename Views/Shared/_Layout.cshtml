@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>@ViewBag.Title - Agri-Energy Connect</title>
+    <link rel="stylesheet" href="~/css/custom.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" />
+</head>
+<body>
+    <nav class="aec-navbar">
+        <div class="aec-navbar-logo">
+            <a href="/">
+                <img src="~/images/logo.png" alt="Agri-Energy Connect Logo" />
+            </a>
+        </div>
+        <button class="aec-navbar-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.aec-navbar-links').classList.toggle('active')">&#9776;</button>
+        <div class="aec-navbar-links">
+            <a href="/">Home</a>
+            <a href="/Farmer">Farmers</a>
+            <a href="/Forum">Forum</a>
+            <a href="/Product">Products</a>
+            <a href="/Home/About">About</a>
+            <a href="/Home/ApiDocumentation">API Docs</a>
+        </div>
+    </nav>
+    <div style="height:72px;"></div> <!-- Spacer for fixed navbar -->
+    <div class="aec-container">
+        @RenderBody()
+    </div>
+    <footer class="aec-footer">
+        <div class="aec-footer-container">
+            <div class="aec-footer-section">
+                <h4>Contact Info</h4>
+                <p>Agri-Energy Connect<br />Johannesburg, South Africa<br />info@agrienergy.co.za<br />+27 11 123 4567</p>
+            </div>
+            <div class="aec-footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Farmer">Farmers</a></li>
+                    <li><a href="/Forum">Forum</a></li>
+                    <li><a href="/Product">Products</a></li>
+                    <li><a href="/Home/About">About</a></li>
+                </ul>
+            </div>
+            <div class="aec-footer-section">
+                <h4>Social Media</h4>
+                <div class="aec-footer-social">
+                    <!-- Placeholder icons -->
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /></svg>
+                    <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" /></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 22,22 2,22" /></svg>
+                </div>
+            </div>
+        </div>
+        <div class="aec-footer-copyright">
+            &copy; 2025 Agri-Energy Connect. Proudly South African.
+        </div>
+    </footer>
+    @RenderSection("Scripts", required: false)
+    <script>
+        // Mobile nav toggle (for accessibility)
+        document.querySelectorAll('.aec-navbar-toggle').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelector('.aec-navbar-links').classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html> 

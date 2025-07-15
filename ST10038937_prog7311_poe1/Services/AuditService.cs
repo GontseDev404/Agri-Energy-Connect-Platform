@@ -2,6 +2,7 @@ using ST10038937_prog7311_poe1.Data;
 using ST10038937_prog7311_poe1.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace ST10038937_prog7311_poe1.Services
 {

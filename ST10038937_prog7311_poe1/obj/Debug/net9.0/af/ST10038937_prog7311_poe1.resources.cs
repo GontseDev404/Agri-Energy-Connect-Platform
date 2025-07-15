@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ST10038937_prog7311_poe1")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute(" ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9d4331c199ae58662d3b64d1dabcbe4c6d02b40")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2eafc498ae26bee9fdc8eabb090567980bfbbfeb")]
 [assembly: System.Reflection.AssemblyProductAttribute("ST10038937_prog7311_poe1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ST10038937_prog7311_poe1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

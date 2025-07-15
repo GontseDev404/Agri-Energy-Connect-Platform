@@ -1,0 +1,31 @@
+@model ST10038937_prog7311_poe1.Models.ForumPost
+
+@{
+    ViewData["Title"] = Localizer["Create Forum Post"];
+}
+
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-6 aec-mx-auto">
+        <div class="aec-card">
+            <h1 class="aec-mb-2" data-translate-key="Create Forum Post">Create Forum Post</h1>
+            <h4 class="aec-mb-2" data-translate-key="Forum Post">Forum Post</h4>
+            <hr />
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group aec-mb-2">
+                    <label asp-for="Title" class="control-label" data-translate-key="Title">Title</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group aec-mb-2">
+                    <label asp-for="Content" class="control-label" data-translate-key="Content">Content</label>
+                    <textarea asp-for="Content" class="form-control" rows="10"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div class="form-group aec-mb-2">
+                    <input type="submit" value="@Localizer["Create"]" class="aec-btn" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Farmer Dashboard";
+}
+
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-12 aec-mb-2">
+        <div class="aec-card aec-text-center">
+            <h1 class="aec-mb-2">Welcome, @ViewBag.Farmer.Name</h1>
+            <p class="aec-mb-2">@ViewBag.Farmer.FarmName</p>
+        </div>
+    </div>
+    <div class="aec-col-4">
+        <div class="aec-card aec-mb-2">
+            <h5 class="aec-mb-1">Products</h5>
+            <h2 class="aec-mb-1">@ViewBag.ProductCount</h2>
+            <p>Total products in your inventory</p>
+            <a asp-controller="Product" asp-action="Index" class="aec-btn">View Products</a>
+        </div>
+    </div>
+    <div class="aec-col-4">
+        <div class="aec-card aec-mb-2">
+            <h5 class="aec-mb-1">Categories</h5>
+            <h2 class="aec-mb-1">@(ViewBag.Categories?.Count ?? 0)</h2>
+            <p>Different product categories</p>
+            <a asp-controller="Product" asp-action="Create" class="aec-btn">Add New Product</a>
+        </div>
+    </div>
+    <div class="aec-col-4">
+        <div class="aec-card aec-mb-2">
+            <h5 class="aec-mb-1">Profile</h5>
+            <ul>
+                <li><strong>Farm Name:</strong> @ViewBag.Farmer.FarmName</li>
+                <li><strong>Email:</strong> @ViewBag.Farmer.Email</li>
+                <li><strong>Phone:</strong> @ViewBag.Farmer.PhoneNumber</li>
+            </ul>
+        </div>
+    </div>
+</div> 

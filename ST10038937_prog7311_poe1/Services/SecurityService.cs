@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using ST10038937_prog7311_poe1.Data;
 using ST10038937_prog7311_poe1.Models;
 using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace ST10038937_prog7311_poe1.Services
 {

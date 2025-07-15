@@ -1,0 +1,31 @@
+@model ST10038937_prog7311_poe1.Models.Farmer
+
+@{
+    ViewData["Title"] = Localizer["Farmer Details"];
+}
+
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-8 aec-mx-auto">
+        <div class="aec-card">
+            <h1 class="aec-mb-2" data-translate-key="Farmer Details">Farmer Details</h1>
+            <h4 class="aec-mb-2" data-translate-key="Farmer">Farmer</h4>
+            <hr />
+            <dl>
+                <dt data-translate-key="Name">Name</dt>
+                <dd>@Html.DisplayFor(model => model.Name)</dd>
+                <dt data-translate-key="Farm Name">Farm Name</dt>
+                <dd>@Html.DisplayFor(model => model.FarmName)</dd>
+                <dt data-translate-key="Email">Email</dt>
+                <dd>@Html.DisplayFor(model => model.Email)</dd>
+                <dt data-translate-key="Phone">Phone</dt>
+                <dd>@Html.DisplayFor(model => model.PhoneNumber)</dd>
+                <dt data-translate-key="Address">Address</dt>
+                <dd>@Html.DisplayFor(model => model.Address)</dd>
+            </dl>
+            <div class="aec-mt-2">
+                <a asp-action="Edit" asp-route-id="@Model?.FarmerId" class="aec-btn aec-mr-2" data-translate-key="Edit">Edit</a>
+                <a asp-action="Index" class="aec-btn" data-translate-key="Back to List">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div> 

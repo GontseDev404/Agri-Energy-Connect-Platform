@@ -1,0 +1,71 @@
+@model IEnumerable<ST10038937_prog7311_poe1.Models.ForumPost>
+
+@{
+    ViewData["Title"] = Localizer["Forum"];
+}
+
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-12">
+        <h1 class="aec-mb-2" data-translate-key="Forum">Forum</h1>
+        <a asp-action="Create" class="aec-btn aec-mb-2" data-translate-key="Create Forum Post">Create Forum Post</a>
+    </div>
+    <div class="aec-col-6">
+        <form asp-action="Index" method="get">
+            <input type="text" name="searchString" class="aec-card aec-mb-2" placeholder="@Localizer["Search forum posts..."]" value="@ViewData["CurrentFilter"]" />
+            <button type="submit" class="aec-btn" data-translate-key="Search">Search</button>
+        </form>
+    </div>
+    @if (!string.IsNullOrEmpty(ViewData["CurrentFilter"]?.ToString()))
+    {
+        <div class="aec-col-12">
+            <div class="aec-card aec-mb-2">
+                <span data-translate-key="Showing results for">Showing results for:</span> "@ViewData["CurrentFilter"]"
+                <a asp-action="Index" class="aec-btn aec-mt-2" data-translate-key="Clear">Clear</a>
+            </div>
+        </div>
+    }
+    @if (Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <div class="aec-col-6">
+                <div class="aec-card aec-mb-2">
+                    <h5 class="aec-mb-1">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="aec-link">
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </a>
+                    </h5>
+                    <p class="aec-mb-1">
+                        <small>
+                            <span data-translate-key="Posted by">Posted by:</span> @(item.User?.UserName ?? "Anonymous") |
+                            <span data-translate-key="Posted on">Posted on:</span> @item.CreatedAt.ToString("MMM dd, yyyy")
+                        </small>
+                    </p>
+                    <p class="aec-mb-1">
+                        @{
+                            var content = item.Content;
+                            if (content.Length > 150)
+                            {
+                                content = content.Substring(0, 150) + "...";
+                            }
+                        }
+                        @content
+                    </p>
+                    <div>
+                        <small>
+                            <span data-translate-key="Replies">Replies:</span> @(item.Replies?.Count ?? 0)
+                        </small>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="aec-col-12">
+            <div class="aec-card aec-mb-2">
+                <span data-translate-key="No forum posts found.">No forum posts found.</span>
+            </div>
+        </div>
+    }
+</div> 

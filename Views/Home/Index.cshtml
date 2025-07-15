@@ -1,0 +1,71 @@
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
+@{
+    ViewData["Title"] = Localizer["WelcomeTitle"];
+}
+
+<!-- Hero Section -->
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-8 aec-text-center aec-mx-auto">
+        <div class="aec-card aec-mb-2">
+            <h1 id="hero-heading" class="aec-mb-2" data-translate-key="AgriEnergyConnect">@Localizer["AgriEnergyConnect"]</h1>
+            <p class="aec-mb-2" data-translate-key="HeroLead">@Localizer["HeroLead"]</p>
+            @if (User.Identity?.IsAuthenticated != true)
+            {
+                <div>
+                    <a asp-area="Identity" asp-page="/Account/Register" class="aec-btn aec-mr-2" aria-label="@Localizer["RegisterForAccount"]" data-translate-key="GetStarted">@Localizer["GetStarted"]</a>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="aec-btn" aria-label="@Localizer["LoginToAccount"]" data-translate-key="Login">@Localizer["Login"]</a>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <a asp-controller="Product" asp-action="Index" class="aec-btn aec-mr-2" aria-label="@Localizer["ViewProducts"]" data-translate-key="ViewProducts">@Localizer["ViewProducts"]</a>
+                    @if (User.IsInRole("Employee"))
+                    {
+                        <a asp-controller="Dashboard" asp-action="Index" class="aec-btn" aria-label="@Localizer["GoToDashboard"]" data-translate-key="GoToDashboard">@Localizer["GoToDashboard"]</a>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="aec-container aec-mt-2" id="featured-services">
+    <div class="aec-col-12">
+        <h2 class="aec-text-center aec-mb-2" data-translate-key="OurCoreServices">@Localizer["OurCoreServices"]</h2>
+    </div>
+    <div class="aec-col-4">
+        <div class="aec-card aec-text-center">
+            <div class="aec-mb-2">
+                <i class="bi bi-shop fs-1" aria-hidden="true"></i>
+            </div>
+            <h3>@Localizer["ProductMarketplace"]</h3>
+            <p data-translate-key="ProductMarketplaceDescription">@Localizer["ProductMarketplaceDescription"]</p>
+            <a asp-controller="Product" asp-action="Index" class="aec-btn aec-mt-2" aria-label="@Localizer["BrowseProducts"]" data-translate-key="BrowseProducts">@Localizer["BrowseProducts"]</a>
+        </div>
+    </div>
+    <div class="aec-col-4">
+        <div class="aec-card aec-text-center">
+            <div class="aec-mb-2">
+                <i class="bi bi-people-fill fs-1" aria-hidden="true"></i>
+            </div>
+            <h3>@Localizer["CommunityHub"]</h3>
+            <p data-translate-key="CommunityHubDescription">@Localizer["CommunityHubDescription"]</p>
+            <a asp-controller="Forum" asp-action="Index" class="aec-btn aec-mt-2" aria-label="@Localizer["JoinDiscussion"]" data-translate-key="JoinDiscussion">@Localizer["JoinDiscussion"]</a>
+        </div>
+    </div>
+    <div class="aec-col-4">
+        <div class="aec-card aec-text-center">
+            <div class="aec-mb-2">
+                <i class="bi bi-shield-check fs-1" aria-hidden="true"></i>
+            </div>
+            <h3>@Localizer["SecureAudited"]</h3>
+            <p data-translate-key="SecureAuditedDescription">@Localizer["SecureAuditedDescription"]</p>
+            @if (User.IsInRole("Employee"))
+            {
+                <a asp-controller="AuditLogs" asp-action="Index" class="aec-btn aec-mt-2" aria-label="@Localizer["ViewAuditLogs"]" data-translate-key="ViewAuditLogs">@Localizer["ViewAuditLogs"]</a>
+            }
+        </div>
+    </div>
+</div> 
