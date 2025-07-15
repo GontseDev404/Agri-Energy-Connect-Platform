@@ -4,29 +4,27 @@
     ViewData["Title"] = Localizer["Audit Logs"];
 }
 
-<h1 data-translate-key="Audit Logs">Audit Logs</h1>
+<h1 class="aec-title" data-translate-key="Audit Logs">Audit Logs</h1>
 
-<div class="row mb-3">
-    <div class="col-md-6">
-        <form asp-action="Index" method="get" class="d-flex">
-            <input type="text" name="searchString" class="form-control me-2" placeholder="@Localizer["Search audit logs..."]" value="@ViewData["CurrentFilter"]" />
-            <button type="submit" class="btn btn-primary" data-translate-key="Search">Search</button>
-        </form>
-    </div>
+<div class="aec-container aec-mb-3">
+    <form asp-action="Index" method="get" class="aec-form aec-form-inline" aria-label="Search audit logs">
+        <input type="text" name="searchString" class="aec-input aec-mr-2" placeholder="@Localizer["Search audit logs..."]" value="@ViewData["CurrentFilter"]" aria-label="Search" />
+        <button type="submit" class="aec-btn aec-btn-secondary" data-translate-key="Search"><i class="fa fa-search"></i> Search</button>
+    </form>
 </div>
 
 @if (!string.IsNullOrEmpty(ViewData["CurrentFilter"]?.ToString()))
 {
-    <div class="alert alert-info">
+    <div class="aec-alert aec-alert-info" role="status">
         <span data-translate-key="Showing results for">Showing results for:</span> "@ViewData["CurrentFilter"]"
-        <a asp-action="Index" class="btn btn-sm btn-outline-secondary ms-2" data-translate-key="Clear">Clear</a>
+        <a asp-action="Index" class="aec-btn aec-btn-sm aec-btn-outline" data-translate-key="Clear"><i class="fa fa-times"></i> Clear</a>
     </div>
 }
 
 @if (Model.Any())
 {
-    <div class="table-responsive">
-        <table class="table table-striped">
+    <div class="aec-table-responsive">
+        <table class="aec-table">
             <thead>
                 <tr>
                     <th data-translate-key="Timestamp">Timestamp</th>
@@ -39,8 +37,8 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                        <td>@item.UserId</td>
+                        <td><i class="fa fa-clock"></i> @item.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td><i class="fa fa-user"></i> @item.UserId</td>
                         <td>@item.Action</td>
                         <td>@item.Details</td>
                     </tr>
@@ -51,7 +49,7 @@
 }
 else
 {
-    <div class="alert alert-info" role="alert">
-        <span data-translate-key="No audit logs found.">No audit logs found.</span>
+    <div class="aec-alert aec-alert-info" role="status">
+        <i class="fa fa-info-circle"></i> <span data-translate-key="No audit logs found.">No audit logs found.</span>
     </div>
 }
