@@ -1,41 +1,68 @@
 @model ST10038937_prog7311_poe1.Models.Farmer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResource> Localizer
 
 @{
     ViewData["Title"] = Localizer["Delete Farmer"];
 }
 
-<h1 data-translate-key="Delete Farmer">Delete Farmer</h1>
-
-<h3 data-translate-key="Are you sure you want to delete this farmer?">Are you sure you want to delete this farmer?</h3>
-<div>
-    <h4 data-translate-key="Farmer">Farmer</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2" data-translate-key="Name">Name</dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2" data-translate-key="Farm Name">Farm Name</dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FarmName)
-        </dd>
-        <dt class="col-sm-2" data-translate-key="Email">Email</dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class="col-sm-2" data-translate-key="Phone">Phone</dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class="col-sm-2" data-translate-key="Address">Address</dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="FarmerId" />
-        <input type="submit" value="@Localizer["Delete"]" class="btn btn-danger" /> |
-        <a asp-action="Index" data-translate-key="Back to List">Back to List</a>
-    </form>
+<div class="container d-flex align-items-center justify-content-center min-vh-100 bg-light">
+    <div class="col-12 col-md-7 col-lg-6">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-gradient bg-danger text-white rounded-top-4">
+                <h2 class="h4 mb-0"><i class="fa fa-user-times me-2"></i>@ViewData["Title"]</h2>
+            </div>
+            <div class="card-body p-4">
+                <h3 class="text-danger mb-4" data-translate-key="Are you sure you want to delete this farmer?">
+                    <i class="fa fa-exclamation-triangle me-2"></i>@Localizer["Are you sure you want to delete this farmer?"]
+                </h3>
+                <dl class="row mb-0">
+                    <dt class="col-sm-4" data-translate-key="Name"><i class="fa fa-id-card me-2"></i>@Localizer["Name"]</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+                    <dt class="col-sm-4" data-translate-key="Farm Name"><i class="fa fa-tractor me-2"></i>@Localizer["Farm Name"]</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.FarmName)</dd>
+                    <dt class="col-sm-4" data-translate-key="Email"><i class="fa fa-envelope me-2"></i>@Localizer["Email"]</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+                    <dt class="col-sm-4" data-translate-key="Phone"><i class="fa fa-phone me-2"></i>@Localizer["Phone"]</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+                    <dt class="col-sm-4" data-translate-key="Address"><i class="fa fa-map-marker-alt me-2"></i>@Localizer["Address"]</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Address)</dd>
+                </dl>
+                <form asp-action="Delete" class="mt-4">
+                    <input type="hidden" asp-for="FarmerId" />
+                    <button type="submit" class="btn btn-danger rounded-3 me-2">
+                        <i class="fa fa-trash me-1"></i>@Localizer["Delete"]
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary rounded-3">
+                        <i class="fa fa-arrow-left me-1"></i>@Localizer["Back to List"]
+                    </a>
+                </form>
+                <div class="text-center mt-2">
+                    <button class="btn btn-outline-dark btn-sm rounded-pill" id="toggleThemeBtn" aria-label="Toggle dark/light mode">
+                        <i class="fa fa-moon" id="themeIcon"></i> Toggle Dark/Light Mode
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script>
+        // Dark/Light mode toggle
+        document.getElementById('toggleThemeBtn').addEventListener('click', function () {
+            document.body.classList.toggle('bg-dark');
+            document.body.classList.toggle('text-white');
+            var card = document.querySelector('.card');
+            if (card) card.classList.toggle('bg-dark');
+            var icon = document.getElementById('themeIcon');
+            if (document.body.classList.contains('bg-dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
+}
