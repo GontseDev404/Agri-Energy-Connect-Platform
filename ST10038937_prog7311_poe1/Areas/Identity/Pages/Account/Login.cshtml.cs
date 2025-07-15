@@ -88,6 +88,22 @@ namespace ST10038937_prog7311_poe1.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User logged in.");
                     await _auditService.LogActionAsync(userId, "Login Success", $"Email: {Input.Email}");
+                    if (user != null)
+                    {
+                        var roles = await _signInManager.UserManager.GetRolesAsync(user);
+                        if (roles.Contains("Admin"))
+                        {
+                            return Redirect("/AdminPanel");
+                        }
+                        else if (roles.Contains("Employee"))
+                        {
+                            return Redirect("/Home/EmployeeDashboard");
+                        }
+                        else if (roles.Contains("Farmer"))
+                        {
+                            return Redirect("/Home/FarmerDashboard");
+                        }
+                    }
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
