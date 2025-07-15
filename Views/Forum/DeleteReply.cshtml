@@ -1,0 +1,26 @@
+@model ST10038937_prog7311_poe1.Models.ForumReply
+
+@{
+    ViewData["Title"] = Localizer["Delete Reply"];
+}
+
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-6 aec-mx-auto">
+        <div class="aec-card">
+            <h1 class="aec-mb-2" data-translate-key="Delete Reply">Delete Reply</h1>
+            <h4 class="aec-mb-2" data-translate-key="Are you sure you want to delete this reply?">Are you sure you want to delete this reply?</h4>
+            <hr />
+            <dl>
+                <dt data-translate-key="Content">Content</dt>
+                <dd>@Html.DisplayFor(model => model.Content)</dd>
+            </dl>
+            <form asp-action="DeleteReply">
+                <input type="hidden" asp-for="Id" />
+                <div class="aec-mt-2">
+                    <input type="submit" value="@Localizer["Delete"]" class="aec-btn aec-mr-2" />
+                    <a asp-action="Index" class="aec-btn">@Localizer["Back to List"]</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

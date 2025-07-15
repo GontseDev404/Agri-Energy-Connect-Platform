@@ -35,4 +35,26 @@
             </ul>
         </div>
     </div>
+    <div class="aec-col-12 aec-mt-2">
+        <div class="aec-card">
+            <h5 class="aec-mb-2">Quick Actions</h5>
+            <div class="aec-container">
+                <div class="aec-col-4">
+                    <a asp-controller="Product" asp-action="Create" class="aec-btn aec-mb-2 aec-w-100">
+                        Add New Product
+                    </a>
+                </div>
+                <div class="aec-col-4">
+                    <a asp-controller="Product" asp-action="Index" class="aec-btn aec-mb-2 aec-w-100">
+                        View My Products
+                    </a>
+                </div>
+                <div class="aec-col-4">
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" class="aec-btn aec-mb-2 aec-w-100">
+                        Manage Account
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div> 

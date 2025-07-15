@@ -1,0 +1,34 @@
+@model ST10038937_prog7311_poe1.Models.Product
+
+@{
+    ViewData["Title"] = Localizer["Delete Product"];
+}
+
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-6 aec-mx-auto">
+        <div class="aec-card">
+            <h1 class="aec-mb-2" data-translate-key="Delete Product">Delete Product</h1>
+            <h4 class="aec-mb-2" data-translate-key="Are you sure you want to delete this product?">Are you sure you want to delete this product?</h4>
+            <hr />
+            <dl>
+                <dt data-translate-key="Name">Name</dt>
+                <dd>@Html.DisplayFor(model => model.Name)</dd>
+                <dt data-translate-key="Category">Category</dt>
+                <dd>@Html.DisplayFor(model => model.Category)</dd>
+                <dt data-translate-key="ProductionDate">Production Date</dt>
+                <dd>@Html.DisplayFor(model => model.ProductionDate)</dd>
+                <dt data-translate-key="Price">Price</dt>
+                <dd>@Html.DisplayFor(model => model.Price)</dd>
+                <dt data-translate-key="QuantityAvailable">Quantity Available</dt>
+                <dd>@Html.DisplayFor(model => model.QuantityAvailable)</dd>
+            </dl>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ProductId" />
+                <div class="aec-mt-2">
+                    <input type="submit" value="@Localizer["Delete"]" class="aec-btn aec-mr-2" />
+                    <a asp-action="Index" class="aec-btn">@Localizer["Back to List"]</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

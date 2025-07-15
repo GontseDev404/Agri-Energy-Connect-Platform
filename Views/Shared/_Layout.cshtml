@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>@ViewBag.Title - Agri-Energy Connect</title>
+    <link rel="icon" type="image/png" href="~/images/logo.png" />
+    <meta name="theme-color" content="#388e3c" />
+    <meta name="description" content="Agri-Energy Connect: Sustainable Agriculture Platform for South Africa" />
     <link rel="stylesheet" href="~/css/custom.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 </head>
 <body>
     <nav class="aec-navbar">
@@ -59,6 +63,12 @@
             &copy; 2025 Agri-Energy Connect. Proudly South African.
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        // Expose TempData messages for JS toasts
+        window.TempDataMessage = '@(TempData["SuccessMessage"] ?? TempData["ErrorMessage"] ?? "")'.replace(/'/g, "");
+    </script>
+    <script src="~/js/site-custom.js"></script>
     @RenderSection("Scripts", required: false)
     <script>
         // Mobile nav toggle (for accessibility)

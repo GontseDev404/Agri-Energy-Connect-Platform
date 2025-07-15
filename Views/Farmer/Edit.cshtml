@@ -1,0 +1,42 @@
+@model ST10038937_prog7311_poe1.Models.Farmer
+
+@{
+    ViewData["Title"] = Localizer["Edit Farmer"];
+}
+
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-6 aec-mx-auto">
+        <div class="aec-card">
+            <h1 class="aec-mb-2" data-translate-key="Edit Farmer">Edit Farmer</h1>
+            <h4 class="aec-mb-2" data-translate-key="Farmer">Farmer</h4>
+            <hr />
+            <form asp-action="Edit">
+                <input type="hidden" asp-for="FarmerId" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group aec-mb-2">
+                    <label asp-for="Name" class="control-label" data-translate-key="Name">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group aec-mb-2">
+                    <label asp-for="FarmName" class="control-label" data-translate-key="Farm Name">Farm Name</label>
+                    <input asp-for="FarmName" class="form-control" />
+                    <span asp-validation-for="FarmName" class="text-danger"></span>
+                </div>
+                <div class="form-group aec-mb-2">
+                    <label asp-for="Email" class="control-label" data-translate-key="Email">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group aec-mb-2">
+                    <label asp-for="PhoneNumber" class="control-label" data-translate-key="Phone">Phone</label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group aec-mb-2">
+                    <input type="submit" value="@Localizer["Save"]" class="aec-btn" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

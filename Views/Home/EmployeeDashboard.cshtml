@@ -35,27 +35,45 @@
     </div>
     <div class="aec-col-12 aec-mt-2">
         <div class="aec-card">
+            <h5 class="aec-mb-2">Recent Products</h5>
+            @if (ViewBag.RecentProducts != null && ViewBag.RecentProducts.Count > 0)
+            {
+                <div class="aec-container">
+                    @foreach (var product in ViewBag.RecentProducts)
+                    {
+                        <div class="aec-col-4">
+                            <div class="aec-card aec-mb-2">
+                                <h4 class="aec-mb-1">@product.Name</h4>
+                                <p class="aec-mb-1"><strong>Category:</strong> @product.Category</p>
+                                <p class="aec-mb-1"><strong>Farmer:</strong> @product.Farmer?.Name</p>
+                                <p class="aec-mb-1"><strong>Production Date:</strong> @product.ProductionDate.ToShortDateString()</p>
+                                <p class="aec-mb-1"><strong>Price:</strong> R @product.Price</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="aec-card aec-mb-2">No recent products found.</div>
+            }
+        </div>
+    </div>
+    <div class="aec-col-12 aec-mt-2">
+        <div class="aec-card">
             <h5 class="aec-mb-2">Quick Actions</h5>
             <div class="aec-container">
                 <div class="aec-col-3">
-                    <a asp-controller="Farmer" asp-action="Create" class="aec-btn aec-mb-2 aec-w-100">
-                        Add New Farmer
-                    </a>
+                    <a asp-controller="Farmer" asp-action="Create" class="aec-btn aec-mb-2 aec-w-100">Add New Farmer</a>
                 </div>
                 <div class="aec-col-3">
-                    <a asp-controller="Farmer" asp-action="Index" class="aec-btn aec-mb-2 aec-w-100">
-                        Manage Farmers
-                    </a>
+                    <a asp-controller="Farmer" asp-action="Index" class="aec-btn aec-mb-2 aec-w-100">Manage Farmers</a>
                 </div>
                 <div class="aec-col-3">
-                    <a asp-controller="Product" asp-action="Index" class="aec-btn aec-mb-2 aec-w-100">
-                        View All Products
-                    </a>
+                    <a asp-controller="Product" asp-action="Index" class="aec-btn aec-mb-2 aec-w-100">View All Products</a>
                 </div>
                 <div class="aec-col-3">
-                    <a asp-area="Identity" asp-page="/Account/Manage/Index" class="aec-btn aec-mb-2 aec-w-100">
-                        Manage Account
-                    </a>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" class="aec-btn aec-mb-2 aec-w-100">Manage Account</a>
                 </div>
             </div>
         </div>

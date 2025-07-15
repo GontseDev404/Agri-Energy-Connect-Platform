@@ -1,0 +1,40 @@
+@model IEnumerable<ST10038937_prog7311_poe1.Models.Product>
+
+@{
+    ViewData["Title"] = Localizer["Products"];
+}
+
+<div class="aec-container aec-mt-2">
+    <div class="aec-col-12">
+        <h1 class="aec-mb-2" data-translate-key="Products">Products</h1>
+        <a asp-action="Create" class="aec-btn aec-mb-2" data-translate-key="Create New">Create New</a>
+    </div>
+    @if (Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <div class="aec-col-4">
+                <div class="aec-card aec-mb-2">
+                    <h4 class="aec-mb-1">@item.Name</h4>
+                    <p class="aec-mb-1"><strong>@Localizer["Category"]:</strong> @item.Category</p>
+                    <p class="aec-mb-1"><strong>@Localizer["ProductionDate"]:</strong> @item.ProductionDate.ToShortDateString()</p>
+                    <p class="aec-mb-1"><strong>@Localizer["Price"]:</strong> R @item.Price</p>
+                    <p class="aec-mb-1"><strong>@Localizer["QuantityAvailable"]:</strong> @item.QuantityAvailable</p>
+                    <div class="aec-mt-2">
+                        <a asp-action="Details" asp-route-id="@item.ProductId" class="aec-btn aec-mr-2">@Localizer["Details"]</a>
+                        <a asp-action="Edit" asp-route-id="@item.ProductId" class="aec-btn aec-mr-2">@Localizer["Edit"]</a>
+                        <a asp-action="Delete" asp-route-id="@item.ProductId" class="aec-btn">@Localizer["Delete"]</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="aec-col-12">
+            <div class="aec-card aec-mb-2">
+                <span data-translate-key="No products found.">No products found.</span>
+            </div>
+        </div>
+    }
+</div> 
