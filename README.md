@@ -1,131 +1,133 @@
-# Agri-Energy Connect Platform - Final Prototype
+# Agri-Energy Connect
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+Agri-Energy Connect is an individual academic ASP.NET Core MVC project developed as part of a Bachelor of Computer and Information Sciences programme. It models how farmers and employees could manage products, community activity and accountable system records in one application.
 
-> An enterprise-grade web platform connecting South African farmers with sustainable energy solutions, featuring a community forum, audit logging, and advanced accessibility.
+The project demonstrates role-aware workflows, relational persistence, application validation, localisation, audit-related behaviour and automated testing. It is a local academic prototype, not a hosted commercial product or a claim of enterprise production readiness.
 
-## Table of Contents
+## Project context
 
-- [Project Overview](#project-overview)
-- [YouTube Video Demonstration](#youtube-video-demonstration)
-- [Key Features](#key-features)
-  - [Core Functionality](#core-functionality)
-  - [Community & Collaboration](#community--collaboration)
-  - [Enterprise & Security](#enterprise--security)
-  - [User Experience & Accessibility](#user-experience--accessibility)
-- [Technical Details](#technical-details)
-  - [Architecture & Patterns](#architecture--patterns)
-  - [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Setup and Run](#setup-and-run)
-  - [Demo Accounts](#demo-accounts)
-- [Enterprise Software System Characteristics](#enterprise-software-system-characteristics)
-- [Project Structure](#project-structure)
-- [Development Approach](#development-approach)
-- [Troubleshooting](#troubleshooting)
-- [Screenshots](#screenshots)
-- [License](#license)
+- **Ownership:** Individual academic project
+- **Technology:** ASP.NET Core MVC on .NET 9.0, Entity Framework Core, SQLite and ASP.NET Core Identity
+- **Interface:** Razor views with Bootstrap, jQuery, AJAX and Chart.js
+- **Roles:** Farmer, Employee and Admin paths are implemented in the application
+- **Languages:** English (South Africa), Afrikaans and isiZulu resources
+- **Public repository:** [GontseDev404/Agri-Energy-Connect-Platform](https://github.com/GontseDev404/Agri-Energy-Connect-Platform)
 
-## Project Overview
-This final prototype for the Agri-Energy Connect Platform represents a complete, enterprise-ready web application. Building upon the initial foundation, this version introduces several advanced features designed to enhance security, user engagement, and accessibility. Key additions include a fully interactive community forum, comprehensive audit logging, seamless multi-language support, and a modernized user interface, making the platform robust, scalable, and user-centric.
+## What the project demonstrates
 
-## Github
-https://github.com/VCSTDN2024/prog7311-part3-poe-ST10038937.git
+### Product and farmer workflows
 
-## YouTube Video Demonstration
-https://youtu.be/mD866JBUwnQ
+- Farmers can create and manage product records through role-scoped routes.
+- Employees can review and manage relevant farmer and product records.
+- The application validates ownership and input before persisting changes.
 
-## Key Features
+### Community and dashboard features
 
-### Core Functionality
-- **Product Management:** Full CRUD (Create, Read, Update, Delete) capabilities for farmers to manage their product listings.
-- **Farmer Management:** Enables employees to manage farmer profiles and view their associated products.
-- **Dashboard Analytics:** Role-specific dashboards with data visualizations (charts) and widgets providing key insights.
+- Forum posts and replies provide a community discussion flow.
+- Role-aware dashboards expose product and activity information.
+- Chart.js is used for the dashboard visualisations present in the project.
 
-### Community & Collaboration
-- **Community Forum:** An interactive forum for farmers and employees to ask questions, share knowledge, and engage in discussions.
-- **Posts & Replies:** Users can create new posts and reply to existing ones, fostering a collaborative environment.
+### Identity and audit-related behaviour
 
-### Enterprise & Security
-- **Authentication & Authorization:** Secure login with ASP.NET Core Identity, enforcing strict role-based access control (Farmer vs. Employee).
-- **Audit Logging:** A comprehensive audit trail system that logs critical user actions (e.g., user login, product creation) for security and compliance.
-- **User Avatars:** Users can upload and manage their own profile pictures.
+- ASP.NET Core Identity provides authentication and role-based access paths.
+- Product and related actions are connected to application audit activity.
+- The audit trail is an implemented project feature; it is not presented as a compliance certification or a production security guarantee.
 
-### User Experience & Accessibility
-- **AJAX-Powered Localization:** Seamless, no-refresh language switching between English, Afrikaans, and isiZulu.
-- **Modern UI/UX:** A complete visual overhaul featuring an earth-tone color palette, glassmorphism effects, and a farm-themed background.
-- **Comprehensive Accessibility:** The platform meets modern accessibility standards (A11y), with semantic HTML, ARIA attributes, full keyboard navigation, and high-contrast design elements.
+### Localisation and interface work
 
-## Technical Details
+- Resource files support English (South Africa), Afrikaans and isiZulu.
+- The interface includes responsive styling, labels and selected semantic/ARIA affordances.
+- No independent WCAG conformance audit is claimed by this repository.
 
-### Architecture & Patterns
-- **Model-View-Controller (MVC):** The core architectural pattern separating application logic, data, and presentation.
-- **Repository Pattern:** Implemented via Entity Framework Core to abstract the data access layer.
-- **Observer Pattern:** Used to create a decoupled notification system, enabling real-time updates without tight component coupling.
-- **Service-Oriented Design:** Core logic, such as `IdentityRole` management and audit logging, is encapsulated in dedicated service layers for improved maintainability and testability.
+## Architecture
 
-### Technologies Used
-- **Backend:** ASP.NET Core MVC (.NET 9.0)
-- **Database:** Entity Framework Core with SQLite (easily configurable for SQL Server)
-- **Authentication:** ASP.NET Core Identity
-- **Frontend:** Bootstrap 5, jQuery, AJAX
-- **Charting:** Chart.js for dashboard visualizations
-- **Styling:** Custom CSS with modern design principles (glassmorphism, responsive design)
+The application uses an MVC structure with EF Core persistence and dedicated service boundaries for identity, notifications and audit-related behaviour.
 
-## Getting Started
+~~~
+Identity and role paths
+        |
+MVC controllers and Razor views
+        |
+Application services and validation
+        |
+EF Core DbContext and SQLite
+        |
+Farmers, products, forum records, notifications and audit records
+~~~
 
-### Prerequisites
-- .NET 9.0 SDK or later
-- Visual Studio 2022, Visual Studio Code, or any compatible IDE
+The repository layout separates controllers, data, models, services, views, localisation resources and Identity pages.
 
-### Setup and Run
+### Technologies used
 
-1.  **Clone the repository.**
-2.  **Navigate to the project directory** in your terminal.
-3.  Run `dotnet restore` to install all dependencies.
-4.  Run `dotnet run` to build and start the application.
-5.  Access the application in your browser, typically at `https://localhost:7198` or `http://localhost:5038`.
+- ASP.NET Core MVC and .NET 9.0
+- Entity Framework Core with SQLite
+- ASP.NET Core Identity
+- Bootstrap 5, jQuery and AJAX
+- Chart.js
+- Custom CSS and responsive layout work
 
-### Demo Accounts
-- **Employee Account:**
-  - **Email:** `employee@agrienergy.com`
-  - **Password:** `Employee1!`
-- **Farmer Account:**
-  - **Email:** `john@farm.com`
-  - **Password:** `Farmer1!`
+## Run locally
 
-## Enterprise Software System Characteristics
+The default development path uses a local SQLite database. No hosted demo environment is claimed.
 
-- **Security:** Enforced through role-based access, secure password hashing, and a comprehensive audit trail system.
-- **Scalability:** Built on ASP.NET Core with a decoupled architecture (Observer pattern, services) to handle growth efficiently.
-- **Reliability:** Ensured through robust error handling, data validation, and transactional database operations.
-- **Accessibility:** A core principle of the design, ensuring the platform is usable by people with a wide range of disabilities.
-- **Maintainability:** A clean, well-structured codebase with separation of concerns makes the system easy to update and extend.
+~~~
+dotnet restore .\ST10038937_prog7311_poe1.sln
+dotnet run --project .\ST10038937_prog7311_poe1\ST10038937_prog7311_poe1.csproj
+~~~
 
-## Project Structure
+Open the local URL printed by ASP.NET Core. The exact port can vary by the local launch profile.
 
-- **/Controllers:** Handles user requests and business logic.
-- **/Data:** Contains the `DbContext` and database migrations.
-- **/Models:** Contains all data models (`ApplicationUser`, `Product`, `Farmer`, `ForumPost`, `PostReply`, `AuditLog`).
-- **/Services:** Contains business logic services (`IAuditService`, `IObserver`, etc.).
-- **/Views:** Contains all UI-related `.cshtml` files.
-- **/Resources:** Contains `.resx` files for localization.
-- **/wwwroot:** Static assets (CSS, JavaScript, images, libraries).
-- **/Areas/Identity:** Custom authentication and user management pages.
+If the local database needs to be recreated, stop the application and remove the local app.db file. EF Core will recreate it when the application starts and the seed routine runs.
 
-## Development Approach
-This prototype was developed using an iterative, Agile-inspired approach. Each development cycle focused on delivering a complete, functional feature set, allowing for continuous feedback and refinement. The project evolved from a basic CRUD application to a feature-rich enterprise platform by incrementally adding and testing the Community Forum, Audit Logging, Localization, and other advanced features.
+### Local-only seed accounts
+
+The seed routine creates disposable development accounts so the role-scoped workflows can be exercised in an isolated checkout. The public README does not publish their passwords. Do not reuse any seeded development credential outside local testing, and change the seed values before using the code in any non-local environment.
+
+## Verification evidence
+
+An isolated local validation run passed **18/18 xUnit and WebApplicationFactory tests on 28 May 2026** after repairing the MVC cookie/JWT authentication split, Identity Razor Page tag-helper imports and source-quality warnings.
+
+That result is dated local evidence. It does not prove a current deployment, public hosting, load capacity, high availability, formal security compliance or accessibility conformance.
+
+For a fresh local check:
+
+~~~
+dotnet test .\ST10038937_prog7311_poe1.Tests\ST10038937_prog7311_poe1.Tests.csproj
+~~~
+
+## Known boundaries
+
+- The project is an academic prototype and has not been presented as a live commercial system.
+- The checked-in development configuration uses SQLite rather than a remotely managed database.
+- No AWS, Azure or other cloud deployment is claimed by this repository.
+- Reliability, scalability, penetration testing and formal accessibility compliance have not been independently established here.
+- The seeded accounts are for isolated local development only.
+
+## Project structure
+
+- Controllers — MVC and API controllers
+- Data — DbContext, seed logic and migrations
+- Models — ApplicationUser, Product, Farmer, ForumPost, PostReply and AuditLog
+- Services — identity, notification, audit and supporting services
+- Views — Razor views
+- Resources — localisation resources
+- Areas/Identity — customised Identity pages
+- wwwroot — CSS, JavaScript, images and client libraries
+
+## Development approach
+
+The project was developed iteratively as an academic prototype, with feature work covering product management, forum flows, audit activity, localisation and responsive interface changes. This describes the development approach, not a claim of a formal production delivery process.
 
 ## Troubleshooting
 
-- **Database Issues:** If you encounter database errors on startup, delete the `app.db` file in the project root and restart the application. Entity Framework will recreate it automatically.
-- **Build Errors:** Run `dotnet clean` followed by `dotnet restore` to resolve potential dependency issues.
-- **File Locked Errors:** Ensure no previous instances of the application are still running in the background. Use your system's Task Manager to terminate any lingering `ST10038937_prog7311_poe1.exe` processes.
+- If the local database needs to be recreated, stop the application and remove app.db before starting it again.
+- If dependencies need to be restored, run dotnet restore from the repository root.
+- If the application port is already in use, stop the previous local process or use the port printed by the active launch profile.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
-*ST10038937_prog7311_poe1 - Agri-Energy Connect Platform © 2025*
+
+Agri-Energy Connect — academic project, 2025
